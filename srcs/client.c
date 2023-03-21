@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/03/21 12:27:00 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/03/21 22:23:43 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ int	main(int argc, char **argv)
 	if (argc != 3)
 		return (ft_printf("Error. Invalid argument\nsould be : ./client {pid} {string}\n"));
 	pid = ft_atoi(argv[1]);
-	ft_printf("pid = %i\n", pid);
-	kill(pid, SIGUSR1);
+	send_char(pid, 'z');
 }
 
 /* print char as binary
@@ -35,7 +34,19 @@ while (size_char-- > 0)
 
 */
 
-
 void	send_char(int pid, char c)
 {
+	int size_char;
+
+	size_char = 8;
+	while (size_char-- > 0)
+	{
+		if (!!((c << 1) & 0x80))
+			kill(pid, SIGUSR2);
+		else
+			kill(pid, SIGUSR1);
+		ft_printf("%i", !!((c << 1) & 0x80));
+		c <<= 1;
+	}
+	ft_printf("\n");
 }

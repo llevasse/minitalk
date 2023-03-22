@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/03/21 22:23:43 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/03/22 09:21:33 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 3)
 		return (ft_printf("Error. Invalid argument\nsould be : ./client {pid} {string}\n"));
+	ft_printf("client pid : %i\n", getpid());
 	pid = ft_atoi(argv[1]);
 	send_char(pid, 'z');
 }

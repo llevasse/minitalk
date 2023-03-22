@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/03/22 09:59:49 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/03/22 10:10:08 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	sig_handler(int sig, siginfo_t *siginfo, void *context)
 {
 	if (sig == SIGUSR1 || sig == SIGUSR2)
 	{
-		ft_printf("(sender pid : %i)", siginfo->si_pid);
 		if (sig == SIGUSR1)
 			write(1, "0", 1);
 		if (sig == SIGUSR2)
 			write(1, "1", 1);
+		kill(siginfo->si_pid, SIGUSR1);
 	}
 	(void)context;
 }

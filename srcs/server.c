@@ -6,24 +6,33 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/03/22 10:10:08 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/03/22 15:28:38 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
 
-int		test = 0;
-
 void	sig_handler(int sig, siginfo_t *siginfo, void *context)
 {
-	if (sig == SIGUSR1 || sig == SIGUSR2)
+	static int				shift = -1;
+	static unsigned char	c;
+	if (shift < 0)
 	{
-		if (sig == SIGUSR1)
-			write(1, "0", 1);
-		if (sig == SIGUSR2)
-			write(1, "1", 1);
-		kill(siginfo->si_pid, SIGUSR1);
+		shift = 7;
+		c = 0;
 	}
+	if (sig == SIGUSR2)
+		c |= (1 << shift);
+	shift--;
+	if (shift < 0 && c)
+	{
+		write(1, &c, 1);
+		c = 0;
+	}
+	if (sig == SIGUSR1)
+		kill(siginfo->si_pid, SIGUSR1);
+	else
+		kill(siginfo->si_pid, SIGUSR2);
 	(void)context;
 }
 
@@ -38,6 +47,8 @@ int	main(void)
 	sa.sa_flags = SA_SIGINFO;
 	ft_printf("pid : %i\n", pid);
 	char_size = 0;
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 	if (sigaction(SIGUSR2, &sa, NULL) < 0 || sigaction(SIGUSR1, &sa, NULL) < 0)
 	{
 		ft_printf("sigaction");

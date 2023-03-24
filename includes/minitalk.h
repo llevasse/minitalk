@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/03/23 18:19:20 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/03/24 12:22:46 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 # define MINITALK_H
 
 # include "../libft/libft.h"
+# include <fcntl.h>
 # include <signal.h>
 
 void				send_str(int pid, char *str);
 void				send_char(int pid, char c);
+void				send_file(int pid, int fd);
 
 typedef struct s_sig_char
 {

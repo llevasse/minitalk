@@ -6,7 +6,7 @@
 #    By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/10 12:10:12 by llevasse          #+#    #+#              #
-#    Updated: 2023/03/21 11:10:22 by llevasse         ###   ########.fr        #
+#    Updated: 2023/03/24 12:46:52 by llevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,8 @@ ${NAME}:		${SERV_OBJS} ${CLIENT_OBJS} includes/minitalk.h Makefile
 					make -C libft 
 					ar rcs srcs/server.a libft/libft.a ${SERV_OBJS}
 					ar rcs srcs/client.a libft/libft.a ${CLIENT_OBJS}
-					gcc srcs/server.a libft/libft.a -o server
-					gcc srcs/client.a libft/libft.a -o client
+					gcc -g -fsanitize=address srcs/server.a libft/libft.a -o server
+					gcc -g -fsanitize=address srcs/client.a libft/libft.a -o client
 
 all:			${NAME}
 

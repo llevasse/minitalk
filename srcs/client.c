@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/03/24 11:25:17 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/03/24 11:33:02 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,11 @@ int	main(int argc, char **argv)
 	__pid_t	pid;
 
 	if (argc != 3)
-		return (ft_printf("Error. Invalid argument\nsould be : ./client {pid} {string}\n"));
+	{
+		ft_printf("Error. Invalid argument\n");
+		ft_printf("sould be : ./client {pid} \"{string}\"\n");
+		return (1);
+	}
 	ft_printf("client pid : %i\n", getpid());
 	pid = ft_atoi(argv[1]);
 	send_str(pid, argv[2]);
@@ -55,8 +59,8 @@ void	send_str(int pid, char *str)
 
 void	send_char(int pid, char c)
 {
-	struct sigaction sa;
-	int size_char;
+	int					size_char;
+	struct sigaction	sa;
 
 	size_char = -1;
 	sa.sa_sigaction = &handler;

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/03/22 15:05:34 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/03/24 11:25:17 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ while (size_char-- > 0)
 void	handler(int sig, siginfo_t *siginfo, void *context)
 {
 	if (sig == SIGUSR1)
-		write(1, "0", 1);
+		write(1, "", 1);
 	if (sig == SIGUSR2)
-		write(1, "1", 1);
+		ft_printf("Str printed\n");
 	(void)context;
 	(void)siginfo;
 }
@@ -50,6 +50,7 @@ void	send_str(int pid, char *str)
 	while (*str)
 		send_char(pid, *str++);
 	send_char(pid, '\n');
+	send_char(pid, '\0');
 }
 
 void	send_char(int pid, char c)
@@ -60,6 +61,8 @@ void	send_char(int pid, char c)
 	size_char = -1;
 	sa.sa_sigaction = &handler;
 	sa.sa_flags = SA_SIGINFO;
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 	if (sigaction(SIGUSR2, &sa, NULL) < 0 || sigaction(SIGUSR1, &sa, NULL) < 0)
 	{
 		ft_printf("sigaction");
@@ -71,13 +74,6 @@ void	send_char(int pid, char c)
 			kill(pid, SIGUSR2);
 		else
 			kill(pid, SIGUSR1);
-		pause();
+		usleep(1000);
 	}
-	ft_printf("\n");
-	size_char = -1;
-	while (size_char++ < 7)
-	{
-		ft_printf("%i", !!((c << size_char) & 0x80));
-	}
-	ft_printf("\n");
 }

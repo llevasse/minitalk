@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/03/24 12:48:03 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/03/25 17:53:46 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	main(int argc, char **argv)
 		ft_printf("client pid : %i\n", getpid());
 		send_str(pid, argv[2]);
 	}
+	send_char(pid, '\n');
+	send_char(pid, '\0');
 }
 
 /* print char as binary
@@ -69,21 +71,19 @@ void	handler(int sig, siginfo_t *siginfo, void *context)
 void	send_file(int pid, int fd)
 {
 	char	*str;
-	char	*temp;
 
 	str = get_next_line(fd);
+	if (!str)
+		return ((void)close(fd));
+	send_str(pid, str);
+	free(str);
 	while (str)
 	{
-		temp = get_next_line(fd);
-		if (!temp)
+		str = get_next_line(fd);
+		if (!str)
 			break ;
-		str = ft_strjoin(str, temp);
-		free(temp);
-	}
-	if (str)
-	{
 		send_str(pid, str);
-		free(str);	
+		free(str);
 	}
 	close(fd);
 }
@@ -91,12 +91,10 @@ void	send_file(int pid, int fd)
 void	send_str(int pid, char *str)
 {
 	int	i;
-	
+
 	i = 0;
 	while (str[i])
 		send_char(pid, str[i++]);
-	send_char(pid, '\n');
-	send_char(pid, '\0');
 }
 
 void	send_char(int pid, char c)

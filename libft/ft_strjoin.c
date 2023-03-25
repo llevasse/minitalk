@@ -6,13 +6,18 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 06:53:53 by llevasse          #+#    #+#             */
-/*   Updated: 2023/02/13 16:17:10 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/03/25 17:14:44 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 int	fill_str(char *s1, char *s2);
+
+
+// WARNING !!
+// THE FUNCTION WILL BREAK
+// IF ft_strlen(s1) + ft_strlen(s2) >16711568
 
 char	*ft_strjoin(char *s1, char *s2)
 {

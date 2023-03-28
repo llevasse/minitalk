@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/03/28 10:22:20 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/03/28 10:31:13 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,14 +70,14 @@ void	handler(int sig, siginfo_t *siginfo, void *context)
 
 void	send_file(int pid, int fd)
 {
-	char	str[10000];
+	char	str[1];
 	int		count;
 
-	count = read(fd, str, 10000);
+	count = read(fd, str, 1);
 	send_str(pid, str);
 	while (count > 0)
 	{
-		count = read(fd, str, 10000);
+		count = read(fd, str, 1);
 		if (count <= 0)
 			break ;
 		send_str(pid, str);

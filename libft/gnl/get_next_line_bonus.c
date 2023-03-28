@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 10:57:39 by llevasse          #+#    #+#             */
-/*   Updated: 2023/01/23 11:12:29 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/03/27 11:20:01 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void	get_left_over(char *line, char *stach)
 	while (line[i] != '\n' && line[i])
 		stach[i++] = 0;
 	if (!line[i])
-		return (free(stach));
+		return ((void)(free(stach), stach = NULL));
 	i++;
 	while (stach[i] != '\0')
 		stach[j++] = stach[i++];

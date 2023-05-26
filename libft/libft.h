@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 13:10:28 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/25 14:42:52 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/05/26 12:38:34 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stddef.h>
 # include <unistd.h>
 # include "gnl/get_next_line.h"
+# include "ft_printf/ft_printf.h"
 
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(char *src);

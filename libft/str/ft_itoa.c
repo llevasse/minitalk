@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 08:12:58 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/25 14:50:15 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/05/26 12:42:42 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_strcat(char *dst, const char *src);
 char	*set_minus(char *s, int len);
 void	*ft_memset(void *b, int c, size_t len);
-int		get_int_len(long n);
+int		get_long_len(long n);
 void	fill_res(char *res, int len_int, long n);
 
 char	*ft_itoa(int n)
@@ -72,11 +72,11 @@ char	*set_minus(char *s, int len)
 	return (res);
 }
 
-int	get_int_len(long n)
+int	get_long_len(long n)
 {
 	if (n < 10)
 		return (1);
-	return (1 + (get_int_len(n / 10)));
+	return (1 + (get_long_len(n / 10)));
 }
 
 void	ft_strcat(char *dst, const char *src)

@@ -6,7 +6,7 @@
 #    By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 16:33:32 by leo               #+#    #+#              #
-#    Updated: 2023/05/25 16:04:44 by llevasse         ###   ########.fr        #
+#    Updated: 2023/05/26 23:40:11 by llevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,12 +42,13 @@ BOOLEAN_FILES	=	./boolean/ft_is_in_str.c \
 					./boolean/ft_isascii.c \
 					./boolean/ft_isalpha.c \
 					./boolean/ft_isalnum.c 
-MEMORY_FILES	=	./boolean/ft_is_in_str.c \
-					./boolean/ft_isprint.c \
-					./boolean/ft_isdigit.c \
-					./boolean/ft_isascii.c \
-					./boolean/ft_isalpha.c \
-					./boolean/ft_isalnum.c
+MEMORY_FILES	=	./memory/ft_memset.c \
+					./memory/ft_bzero.c \
+					./memory/ft_memmove.c \
+					./memory/ft_memchr.c \
+					./memory/ft_memcmp.c \
+					./memory/ft_calloc.c \
+					./memory/ft_memcpy.c
 LIST_FILES		=	./list/ft_lstadd_back.c \
 					./list/ft_lstmap.c \
 					./list/ft_lstiter.c \

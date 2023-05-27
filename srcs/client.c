@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/27 00:10:46 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/05/27 11:17:09 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	send_file(int pid, int fd)
 	while (str)
 	{
 		free(str);
+		str = NULL;
 		str = get_next_line(fd);
 		if (!str)
 			break ;
@@ -110,6 +111,7 @@ void	send_char(int pid, char c)
 		ft_printf("sigaction");
 		return ;
 	}
+	ft_printf("%c", c);
 	while (size_char++ < 7)
 	{
 		if (!!((c << size_char) & 0x80))

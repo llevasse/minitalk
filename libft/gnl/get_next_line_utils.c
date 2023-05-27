@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 10:58:13 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/26 12:47:41 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/05/27 11:43:01 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,16 @@ int	is_nl(const char *str)
 	size_t	i;
 
 	i = 0;
-	while (str[i] != '\n' && str[i] != 0)
+	if (!str)
+		return (0);
+	while (str[i] != '\n' && str[i] != 0) //Invalid read of size one right in this loop
 		i++;
 	if (str[i] == '\n')
 		return (1);
 	return (0);
 }
 
-
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin_free_first(char *s1, char *s2)
 {
 	char	*joined;
 	int		i;

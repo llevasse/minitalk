@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/27 11:17:09 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/05/28 20:51:38 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 // I know it wasn't asked as a bonus, but, BUT, for readability with huge text,
 // I want to implement a "-t" flag that would indicate that the client need to read from a .txt file
+
+// check that the test files don't contain �
 
 int	main(int argc, char **argv)
 {
@@ -88,11 +90,8 @@ void	send_file(int pid, int fd)
 
 void	send_str(int pid, char *str)
 {
-	int	i;
-
-	i = 0;
-	while (str[i])
-		send_char(pid, str[i++]);
+	while (*str)
+		send_char(pid, *(str++));
 }
 
 void	send_char(int pid, char c)
@@ -111,13 +110,19 @@ void	send_char(int pid, char c)
 		ft_printf("sigaction");
 		return ;
 	}
-	ft_printf("%c", c);
 	while (size_char++ < 7)
 	{
 		if (!!((c << size_char) & 0x80))
+		{
 			kill(pid, SIGUSR2);
+			ft_printf("1");
+		}
 		else
+		{
 			kill(pid, SIGUSR1);
+			ft_printf("0");
+		}
 		usleep(1000);
 	}
+	ft_printf(")%c(", c);
 }

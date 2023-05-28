@@ -26,7 +26,7 @@ OBI-WAN: Look out, four droids inbound . . .
 
 4 EXT. CORUSCANT-SPACE BATTLE
 
-The TWO JEDI FIGHTERS swerve in unison as FOUR TRADE FEDERATION DROID DROP FIGHTERS attack. After several clever moves by the Jedi, two of the FEDERATION DROID DROP FIGHTERS collide with each other in a ball of flame.
+
 
 5 INT. OBI-WAN'S STARFIGHTER COCKPIT-SPACE
 
@@ -222,7 +222,7 @@ ANAKIN and OBI-WAN break right and left, and the missiles follow them. ANAKIN do
 
 OBI-WAN: They overshot us . . .
 
-The second missile streaks next to Obi-Wan�s Fighter and EXPLODES. Obi-Wan's ship rocks, and R-4, SCREAMS as the Starfighter rips through the explosion. Debris flies all around them.
+The second missile streaks next to Obi-Wan's Fighter and EXPLODES. Obi-Wan's ship rocks, and R-4, SCREAMS as the Starfighter rips through the explosion. Debris flies all around them.
 
 ANAKIN: They're coming around!
 
@@ -256,7 +256,7 @@ ANAKIN: Move to the right so I can get a clear shot at them.
 
 OBI-WAN: The mission. Get to the Command Ship. Get the Chancellor! I'm running out of tricks here.
 
-ANAKIN moves into position just off Obi-Wan's left side and angles his ship so his guns are pointing at the DROIDS crawling over Obi-Wan�s Starfighter. ANAKIN fires and vaporizes the TWO BUZZ DROIDS, along with the left wing of Obi-Wan's ship.
+ANAKIN moves into position just off Obi-Wan's left side and angles his ship so his guns are pointing at the DROIDS crawling over Obi-Wan's Starfighter. ANAKIN fires and vaporizes the TWO BUZZ DROIDS, along with the left wing of Obi-Wan's ship.
 
 OBI-WAN: (continuing) In the name of ...
 
@@ -630,7 +630,7 @@ ANAKIN and COUNT DOOKU move up the stairs. As they reach the upper landing of th
 ANAKIN hits the archway.
 DOOKU sends OBI-WAN flying. The Jedi tumbles to the lower level unconscious. COUNT DOOKU spins around again and, using the Force, causes a section of the balcony to drop onto OBI-WAN. ANAKIN spins and kicks COUNT DOOKU, sending him over the balcony. ANAKIN Jumps, following him down to the main floor. COUNT DOOKU and ANAKIN continue the fight.
 
-COUNT DOOKU: (continuing) I sense great fear in you, Skywalker. You have hate, you have anger, but you don�t use them.
+COUNT DOOKU: (continuing) I sense great fear in you, Skywalker. You have hate, you have anger, but you don't use them.
 
 Anakin regains his composure and attacks COUNT DOOKU as the Dark Lord continues his spin to meet him head on. Their fighting becomes even more intense.
 Anakin attacks COUNT DOOKU with a new ferociousness.
@@ -1268,7 +1268,7 @@ They embrace, then part.
 
 PADME: Anakin, this baby will change our lives. I doubt the Queen will continue to allow me to serve in the Senate, and if the Council discovers you are the father, you will be expelled from the Jedi Order.
 
-ANAKIN: I know �.
+ANAKIN: I know.
 
 PADME: Anakin, do you think Obi-Wan might be able to help us?
 
@@ -1686,7 +1686,7 @@ PALPATINE: Yes, Anakin! Come closer. I have good news. Our Clone Intelligence Un
 
 ANAKIN: At last, we'll be able to capture that monster and end this war.
 
-PALPATINE: I would worry about the collective wisdom of the Council if they didn't select you for this assignment. You are the best choice by far � but, they can't always be trusted to do the right thing.
+PALPATINE: I would worry about the collective wisdom of the Council if they didn't select you for this assignment. You are the best choice by far.but, they can't always be trusted to do the right thing.
 
 ANAKIN: They try.
 
@@ -2120,7 +2120,7 @@ TlON MEDON: There is no war here unless you've brought it with you.
 
 OBI-WAN: With your kind permission, I should like some fuel and to use your city as a base as I search nearby systems for General Grievous.
 
-A GROUND CREW rushes out and refuels Obi-Wan�s Fighter. TION MEDON leans close to OBI-WAN and speaks quietly.
+A GROUND CREW rushes out and refuels Obi-Wan's Fighter. TION MEDON leans close to OBI-WAN and speaks quietly.
 
 TlON MEDON: He is here! We are being held hostage. They are watching us.
 
@@ -2492,7 +2492,7 @@ FOUR JEDI exit the SHUTTLE and enter the Senate Office Building. MACE WINDU, AGE
 
 The FOUR JEDI enter the lobby, raising their arms, and send the Chancellor's aide, DAR WAC, flying against the wall, along with TWO REPUBLIC GUARDS. They storm into the Chancellor's office.
 
-128 INT. CORUSCANT-CHANCELLOR�S OFFICE-EARLY EVENING
+128 INT. CORUSCANT-CHANCELLOR'S OFFICE-EARLY EVENING
 
 MACE arrives with THREE JEDI to arrest PALPATINE.
 
@@ -2939,7 +2939,7 @@ OBI-WAN: Senator Organa! My Clone Troops turned on me ... I need help.
 
 BAIL ORGANA: We have just rescued Master Yoda. It appears this ambush has happened everywhere. We're sending you our coordinates.
 
-161 INT. CORUSCANT-PADME�SAPARTMENT-PRE-DAWN
+161 INT. CORUSCANT-PADME'S APARTMENT-PRE-DAWN
 
 PADME stands before the window of her living room, watching the plume of smoke from the Jedi Temple. C-3PO enters from the bedroom.
 
@@ -3647,7 +3647,7 @@ ANAKIN: Don't make me destroy you, Master. You're no match for the dark side.
 
 OBI-WAN: I've heard that before, Anakin . . . but I never thought I'd hear it from you.
 
-ANAKIN forces OBI-WAN back into the Conference Room where the quarters are much closer. Sparks fly everywhere. ANAKIN jumps onto the conference table. OBI-WAN slides across the table, knocking ANAKIN over. OBI-WAN grabs ANAKIN�s lightsaber as he falls. OBI-WAN uses the Force to summon his dropped lightsaber. ANAKIN does the same.
+ANAKIN forces OBI-WAN back into the Conference Room where the quarters are much closer. Sparks fly everywhere. ANAKIN jumps onto the conference table. OBI-WAN slides across the table, knocking ANAKIN over. OBI-WAN grabs ANAKIN's lightsaber as he falls. OBI-WAN uses the Force to summon his dropped lightsaber. ANAKIN does the same.
 
 201 INT. CORUSCANT-SENATE CHAMBER-MAIN ARENA-NIGHT
 

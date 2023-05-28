@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 10:57:39 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/27 11:25:10 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/05/28 15:48:34 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ char	*check_stach_nl(char *stach, char buff[BUFFER_SIZE + 1], int fd)
 				count = read(fd, buff, BUFFER_SIZE);
 			buff[count] = '\0';
 		}
-		if (count <= 0)
+		if (count <= 0 && stach)
 			stach = ft_strjoin_free_first(stach, "\0");
 		if (!stach)
 			return (NULL);

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/28 21:38:05 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/05/28 22:08:51 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ void	sig_handler(int sig, siginfo_t *siginfo, void *context)
 		g_sig_char.c = 0;
 		write(1, "(", 1);
 	}
-	if (sig == SIGUSR2){
+	if (sig == SIGUSR2)
+	{
 		g_sig_char.c |= (1 << g_sig_char.shift);
-		write(1,"1", 1);
+		write(1, "1", 1);
 	}
 	else
-		write(1,"0", 1);
+		write(1, "0", 1);
 	g_sig_char.shift--;
 	if (g_sig_char.shift < 0)
 	{
@@ -57,6 +58,8 @@ int	main(void)
 	sa.sa_sigaction = &sig_handler;
 	sa.sa_flags = SA_SIGINFO;
 	sigemptyset(&sa.sa_mask);
+	sigaddset(&sa.sa_mask, SIGUSR1);
+	sigaddset(&sa.sa_mask, SIGUSR2);
 	ft_printf("pid : %i\n", pid);
 	char_size = 0;
 	sigaction(SIGUSR1, &sa, NULL);
@@ -67,6 +70,6 @@ int	main(void)
 		return (1);
 	}
 	while (1)
-		pause();
+		usleep(1000);
 	(void)char_size;
 }

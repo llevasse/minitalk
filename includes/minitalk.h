@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/28 16:57:10 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/05/29 16:02:01 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 # include <signal.h>
 
 void				send_str(int pid, char *str);
-void				send_char(int pid, char c);
+int					send_char(int pid, char c);
 void				send_file(int pid, int fd);
+void				ft_exit(char *str, int status);
 
 typedef struct s_sig_char
 {

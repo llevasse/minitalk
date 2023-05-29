@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:26:40 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/29 15:50:47 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/05/29 23:14:45 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,9 @@ void	send_str(int pid, char *str)
 
 int	send_char(int pid, char c)
 {
-	int					size_char;
-	struct sigaction	sa;
+	int	size_char;
 
 	size_char = -1;
-	sa.sa_sigaction = &handler;
-	sa.sa_flags = SA_SIGINFO;
-	sigemptyset(&sa.sa_mask);
-	sigaction(SIGUSR1, &sa, NULL);
-	sigaction(SIGUSR2, &sa, NULL);
 	while (size_char++ < 7)
 	{
 		if (!!((c << size_char) & 0x80))

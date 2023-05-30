@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/30 15:22:34 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/05/30 22:19:24 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_boolean_extra
 	int				log_fd;
 	int				from_txt;
 	int				t_flag_position;
+	int				str_position;
 	int				signal_received;
 }					t_boolean_extra;
 
@@ -38,6 +39,7 @@ typedef struct s_sig_char
 void				send_str(int pid, char *str, t_boolean_extra extra);
 int					send_char(int pid, char c, t_boolean_extra);
 void				send_file(int pid, int fd, t_boolean_extra extra);
+int					log_char(int pid, t_boolean_extra extra, int sig);
 void				ft_exit(char *str, int status);
 void				handler(int sig, siginfo_t *siginfo, void *context);
 int					invalid_argument(int status);

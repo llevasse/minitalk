@@ -6,7 +6,7 @@
 #    By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/10 12:10:12 by llevasse          #+#    #+#              #
-#    Updated: 2023/05/30 14:09:20 by llevasse         ###   ########.fr        #
+#    Updated: 2023/05/30 22:15:34 by llevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,9 @@ EXTRA_SERV_FILES	=	srcs/extra/server_extra.c
 EXTRA_CLIENT_FILES	=	srcs/extra/client_extra.c \
 						srcs/extra/ft_send_extra.c
 EXTRA_FILES			=	srcs/extra/extra.c
+
+LOG_FILES			=	./client_log.log \
+						./server_log.log
 
 SERV_OBJS			=	$(SERV_FILES:.c=.o)
 CLIENT_OBJS			=	$(CLIENT_FILES:.c=.o)
@@ -43,6 +46,7 @@ $(NAME):		$(SERV_OBJS) $(CLIENT_OBJS) includes/minitalk.h Makefile
 
 extra:			$(EXTRA_OBJS) $(EXTRA_CLIENT_OBJS) $(EXTRA_SERV_OBJS) includes/minitalk_extra.h Makefile
 					make -C libft
+					rm -rf $(LOG_FILES)²
 					$(CC) -g $(EXTRA_SERV_OBJS) $(EXTRA_OBJS) libft/libft.a -o server
 					$(CC) -g $(EXTRA_CLIENT_OBJS) $(EXTRA_OBJS) libft/libft.a -o client
 					

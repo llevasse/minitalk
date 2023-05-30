@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/30 15:33:41 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/05/30 22:25:56 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int argc, char **argv)
 	struct sigaction	sa;
 	t_boolean_extra		extra;
 
+	extra.log_fd = -1;
 	check_n_get_flags(&extra, argc, argv);
 	pid = ft_atoi(argv[1]);
 	sa.sa_sigaction = &handler;
@@ -25,14 +26,14 @@ int	main(int argc, char **argv)
 	sigemptyset(&sa.sa_mask);
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
-	extra.log_fd = -1;
+	extra.str_position = argc;
 	if (extra.from_txt)
 		send_file(pid, open(argv[3], O_RDONLY), extra);
-	if (argc == 3)
-		send_str(pid, argv[2]);
-	send_char(pid, '\n');
-	send_char(pid, '\0');
-	return (1);
+	else
+		send_str(pid, argv[extra.str_position - 1], extra);
+	send_char(pid, '\n', extra);
+	send_char(pid, '\0', extra);
+	return (0);
 }
 
 void	check_n_get_flags(t_boolean_extra *extra, int argc, char **argv)
@@ -47,19 +48,23 @@ void	check_n_get_flags(t_boolean_extra *extra, int argc, char **argv)
 		if (!ft_strnstr(argv[extra->t_flag_position], ".txt",
 				ft_strlen(argv[extra->t_flag_position])))
 			invalid_argument(0);
+		//extra->str_position += 2;
 	}
 	if (check_str_in_array(argc, argv, "-l", 7))
 	{
 		ft_printf("Use of -l\n");
-		extra->log_fd = open("./client_log.log", O_RDWR, O_CREAT);
+		extra->log_fd = open("client_log.log", O_RDWR | O_CREAT, 0666);
 		extra->logged = 1;
+		//extra->str_position++;
 	}
-	if (check_str_in_array(argc, argv, "-lb", 7))
+	else if (check_str_in_array(argc, argv, "-lb", 7))
 	{
 		ft_printf("Use of -lb\n");
-		if (extra->log_fd == -1)
-			extra->log_fd = open("./client_log.log", O_RDWR, O_CREAT);
+		extra->log_fd = open("client_log.log", O_RDWR | O_CREAT, 0666);
+		ft_printf("fd : %d\n", extra->log_fd);
+		extra->logged = 1;
 		extra->binnary_logged = 1;
+		//extra->str_position++;
 	}
 }
 

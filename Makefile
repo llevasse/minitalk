@@ -6,7 +6,7 @@
 #    By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/10 12:10:12 by llevasse          #+#    #+#              #
-#    Updated: 2023/05/30 22:15:34 by llevasse         ###   ########.fr        #
+#    Updated: 2023/05/31 01:14:18 by llevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,7 @@ $(NAME):		$(SERV_OBJS) $(CLIENT_OBJS) includes/minitalk.h Makefile
 
 extra:			$(EXTRA_OBJS) $(EXTRA_CLIENT_OBJS) $(EXTRA_SERV_OBJS) includes/minitalk_extra.h Makefile
 					make -C libft
-					rm -rf $(LOG_FILES)²
+					rm -rf $(LOG_FILES)
 					$(CC) -g $(EXTRA_SERV_OBJS) $(EXTRA_OBJS) libft/libft.a -o server
 					$(CC) -g $(EXTRA_CLIENT_OBJS) $(EXTRA_OBJS) libft/libft.a -o client
 					

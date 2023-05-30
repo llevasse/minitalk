@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/29 23:27:34 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/05/30 14:01:03 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	main(void)
 
 	pid = getpid();
 	g_sig_char.shift = 7;
+	g_sig_char.extra.signal_received = 0;
 	sa.sa_sigaction = &sig_handler;
 	sa.sa_flags = SA_SIGINFO;
 	sigemptyset(&sa.sa_mask);

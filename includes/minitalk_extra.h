@@ -6,14 +6,14 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/29 23:31:32 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/05/30 14:08:41 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINITALK_H
 # define MINITALK_H
 
-# include "../libft/libft.h"
+# include "../../libft/libft.h"
 # include <fcntl.h>
 # include <signal.h>
 
@@ -24,19 +24,20 @@ void				ft_exit(char *str, int status);
 int					use_file(int pid, char **argv);
 void				handler(int sig, siginfo_t *siginfo, void *context);
 
+typedef struct s_boolean_extra
+{
+	int						logged;
+	int						binnary_logged;
+	int						from_txt;
+	int						signal_received;
+}							t_boolean_extra;	
+
 typedef struct s_sig_char
 {
-	int				shift;
-	unsigned char	c;
-	int				client_pid;
-}					t_sig_char;
-
-typedef struct boolean_extra
-{
-	int				logged;
-	int				binnary_logged;
-	int				from_txt;
-	int				signal_received;
-}
+	int						shift;
+	unsigned char			c;
+	int						client_pid;
+	t_boolean_extra			extra;
+}							t_sig_char;
 
 #endif

@@ -6,18 +6,18 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:26:40 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/29 23:27:38 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/05/30 15:22:08 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk_extra.h"
+#include "../../includes/minitalk_extra.h"
 
-void	send_file(int pid, int fd)
+void	send_file(int pid, int fd, t_boolean_extra extra)
 {
 	char	*str;
 
 	str = get_next_line(fd);
-	send_str(pid, str);
+	send_str(pid, str, extra);
 	while (str)
 	{
 		free(str);
@@ -30,11 +30,11 @@ void	send_file(int pid, int fd)
 	close(fd);
 }
 
-void	send_str(int pid, char *str)
+void	send_str(int pid, char *str, t_boolean_extra extra)
 {
 	while (*str)
 	{
-		if (!send_char(pid, *(str++)))
+		if (!send_char(pid, *(str++), extra))
 		{
 			free(str);
 			exit(0);
@@ -42,7 +42,7 @@ void	send_str(int pid, char *str)
 	}
 }
 
-int	send_char(int pid, char c)
+int	send_char(int pid, char c, t_boolean_extra extra)
 {
 	int	size_char;
 

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/31 13:31:48 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/05/31 22:34:56 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,9 @@ typedef struct s_sig_char
 	t_mini_str			*mini_str;
 }						t_sig_char;
 
-
 t_mini_str				*ft_lstlast(t_mini_str *lst);
 void					ft_lstclear(t_mini_str **lst);
-void	ft_lstadd_back(t_mini_str **lst,
-					t_mini_str *new);
+void					ft_lstadd_back(t_mini_str **lst, t_mini_str *new);
 int						ft_lstsize(t_mini_str *lst);
 void					ft_lstadd_front(t_mini_str **lst, t_mini_str *new);
 t_mini_str				*ft_lstnew(unsigned char c);

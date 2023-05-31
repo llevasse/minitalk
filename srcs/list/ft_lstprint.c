@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:11:42 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/31 13:32:02 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/05/31 22:15:49 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,6 @@ void	ft_lstprint(t_mini_str *lst)
 	write(1, &lst->c, 1);
 	if (lst->next)
 		ft_lstprint(lst->next);
+	free(lst);
+	lst = NULL;
 }

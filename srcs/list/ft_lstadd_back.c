@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 09:50:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/31 14:41:18 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/05/31 13:07:18 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ void	ft_lstadd_back(t_mini_str **lst, t_mini_str *new)
 {
 	t_mini_str	*temp;
 
-	if (!new)
-	{
+	if (!new){
 		if (*lst)
 			ft_lstclear(lst);
 	}

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/31 14:35:53 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/05/31 22:18:08 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	handler(int sig, siginfo_t *siginfo, void *context)
 	(void)context;
 	(void)siginfo;
 }
+
 void	ft_exit(char *str, int status)
 {
 	ft_printf("%s\n", str);

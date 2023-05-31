@@ -6,7 +6,7 @@
 #    By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 16:33:32 by leo               #+#    #+#              #
-#    Updated: 2023/05/27 11:09:54 by llevasse         ###   ########.fr        #
+#    Updated: 2023/05/31 12:58:51 by llevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,15 +49,6 @@ MEMORY_FILES	=	./memory/ft_memset.c \
 					./memory/ft_memcmp.c \
 					./memory/ft_calloc.c \
 					./memory/ft_memcpy.c
-LIST_FILES		=	./list/ft_lstadd_back.c \
-					./list/ft_lstmap.c \
-					./list/ft_lstiter.c \
-					./list/ft_lstnew.c \
-					./list/ft_lstlast.c \
-					./list/ft_lstclear.c \
-					./list/ft_lstsize.c \
-					./list/ft_lstdelone.c \
-					./list/ft_lstadd_front.c
 INT_FILES		=	./ft_atoi.c
 PRINTF_FILES	=	./ft_printf/flags/print_precision.c \
 					./ft_printf/flags/print_field_width.c \
@@ -81,7 +72,6 @@ OBJS			=	$(PRINTING_FILES:.c=.o) \
 					$(STR_FILES:.c=.o) \
 					$(BOOLEAN_FILES:.c=.o) \
 					$(MEMORY_FILES:.c=.o) \
-					$(LIST_FILES:.c=.o) \
 					$(INT_FILES:.c=.o) \
 					$(FILES_GNL:.c=.o) \
 					$(PRINTF_FILES:.c=.o) \

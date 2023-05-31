@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_lstprint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/12 09:55:21 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/25 14:50:11 by llevasse         ###   ########.fr       */
+/*   Created: 2023/05/31 13:11:42 by llevasse          #+#    #+#             */
+/*   Updated: 2023/05/31 14:41:11 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../../includes/minitalk.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	ft_lstprint(t_mini_str *lst)
 {
 	if (!lst)
 		return ;
-	while (lst->next != NULL)
-	{
-		f(lst->content);
-		lst = lst->next;
-	}
-	f(lst->content);
-	return ;
+	write(1, &lst->c, 1);
+	if (lst->next)
+		ft_lstprint(lst->next);
 }

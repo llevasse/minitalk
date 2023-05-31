@@ -1,28 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 09:50:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/25 14:50:10 by llevasse         ###   ########.fr       */
+/*   Created: 2022/11/10 09:07:45 by llevasse          #+#    #+#             */
+/*   Updated: 2023/05/31 12:00:20 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../../includes/minitalk.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+t_mini_str	*ft_lstnew(unsigned char c)
 {
-	t_list	*temp;
+	struct s_mini_str	*new_el;
 
-	if (*lst)
-	{
-		temp = *lst;
-		while (temp->next != NULL)
-			temp = temp->next;
-		temp->next = new;
-		return ;
-	}
-	*lst = new;
+	new_el = malloc(sizeof(struct s_mini_str));
+	if (!new_el)
+		return (NULL);
+	new_el->c = c;
+	new_el->next = NULL;
+	return (new_el);
 }

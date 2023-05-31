@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 13:10:28 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/26 12:38:34 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/05/31 12:57:15 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,22 +64,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 
 int		ft_tolower(int c);
 int		ft_toupper(int c);
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
-
-t_list	*ft_lstnew(void *content);
-int		ft_lstsize(t_list *lst);
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-void	ft_lstclear(t_list **lst, void (*del)(void *));
-void	ft_lstdelone(t_list *lst, void (*del)(void*));
 
 int		ft_is_in_str(const char *str, char c);
 

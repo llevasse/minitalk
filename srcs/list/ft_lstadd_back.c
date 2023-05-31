@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/12 10:23:15 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/25 14:50:11 by llevasse         ###   ########.fr       */
+/*   Created: 2022/11/10 09:50:34 by llevasse          #+#    #+#             */
+/*   Updated: 2023/05/31 14:41:18 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../../includes/minitalk.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+void	ft_lstadd_back(t_mini_str **lst, t_mini_str *new)
 {
-	if (lst)
+	t_mini_str	*temp;
+
+	if (!new)
 	{
-		del(lst->content);
-		free(lst);
+		if (*lst)
+			ft_lstclear(lst);
 	}
+	if (*lst)
+	{
+		temp = *lst;
+		while (temp->next != NULL)
+			temp = temp->next;
+		temp->next = new;
+		return ;
+	}
+	*lst = new;
 }

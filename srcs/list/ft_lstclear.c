@@ -6,27 +6,23 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:56:13 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/25 14:50:11 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/05/31 13:08:59 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../../includes/minitalk.h"
 
-void	free_last(t_list *lst);
+void	free_last(t_mini_str *lst);
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstclear(t_mini_str **lst)
 {
-	t_list	*temp;
+	t_mini_str	*temp;
 
 	if (*lst)
 	{
 		temp = *lst;
 		while ((*lst)->next != NULL)
-		{
-			del((*lst)->content);
 			*lst = (*lst)->next;
-		}
-		del((*lst)->content);
 		while (temp->next != NULL)
 			free_last(temp);
 		free(temp);
@@ -35,9 +31,9 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	return ;
 }
 
-void	free_last(t_list *lst)
+void	free_last(t_mini_str *lst)
 {
-	t_list	*temp;
+	t_mini_str	*temp;
 
 	temp = lst;
 	while (temp->next->next != NULL)

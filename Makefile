@@ -6,7 +6,7 @@
 #    By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/10 12:10:12 by llevasse          #+#    #+#              #
-#    Updated: 2023/05/31 11:50:48 by llevasse         ###   ########.fr        #
+#    Updated: 2023/05/31 13:17:31 by llevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,12 +17,12 @@ CC					=	cc
 SERV_FILES			=	srcs/server.c
 CLIENT_FILES		=	srcs/client.c \
 						srcs/ft_send.c
-LIST_FILES			=	./srcs/list/ft_lstadd_front.c \
-						./srcs/list/ft_lstnew.c \
+LIST_FILES			=	./srcs/list/ft_lstnew.c \
 						./srcs/list/ft_lstadd_back.c \
 						./srcs/list/ft_lstsize.c \
 						./srcs/list/ft_lstlast.c \
-						./srcs/list/ft_lstclear.c
+						./srcs/list/ft_lstclear.c \
+						./srcs/list/ft_lstprint.c
 
 
 EXTRA_SERV_FILES	=	srcs/extra/server_extra.c
@@ -35,6 +35,7 @@ LOG_FILES			=	./client_log.log \
 
 SERV_OBJS			=	$(SERV_FILES:.c=.o)
 CLIENT_OBJS			=	$(CLIENT_FILES:.c=.o)
+LIST_OBJS			=	$(LIST_FILES:.c=.o)
 
 EXTRA_SERV_OBJS		=	$(EXTRA_SERV_FILES:.c=.o)
 EXTRA_CLIENT_OBJS	=	$(EXTRA_CLIENT_FILES:.c=.o)
@@ -45,10 +46,10 @@ EXTRA_OBJS			=	$(EXTRA_FILES:.c=.o)
 
 NAME				= minitalk
 
-$(NAME):		$(SERV_OBJS) $(CLIENT_OBJS) includes/minitalk.h Makefile
+$(NAME):		$(SERV_OBJS) $(CLIENT_OBJS) $(LIST_OBJS) includes/minitalk.h Makefile
 					make -C libft
-					$(CC) -g $(SERV_OBJS) libft/libft.a -o server
-					$(CC) -g $(CLIENT_OBJS) libft/libft.a -o client
+					$(CC) -g $(SERV_OBJS) $(LIST_OBJS) libft/libft.a -o server
+					$(CC) -g $(CLIENT_OBJS) $(LIST_OBJS) libft/libft.a -o client
 
 extra:			$(EXTRA_OBJS) $(EXTRA_CLIENT_OBJS) $(EXTRA_SERV_OBJS) includes/minitalk_extra.h Makefile
 					make -C libft

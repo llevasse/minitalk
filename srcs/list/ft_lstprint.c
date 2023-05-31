@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstprint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/10 09:37:06 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/31 11:48:56 by llevasse         ###   ########.fr       */
+/*   Created: 2023/05/31 13:11:42 by llevasse          #+#    #+#             */
+/*   Updated: 2023/05/31 13:18:42 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minitalk.h"
 
-void	ft_lstadd_front(t_mini_str **lst, t_mini_str *new)
+void	ft_lstprint(t_mini_str **lst)
 {
-	new->next = (*lst);
-	(*lst) = new;
+	if (*lst)
+	{
+		while ((*lst)->next != NULL)
+		{
+			write(1, &(*lst)->c, 1);
+			*lst = (*lst)->next;
+		}
+	}
 }

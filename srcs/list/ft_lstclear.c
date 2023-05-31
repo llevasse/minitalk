@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:56:13 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/31 11:48:08 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/05/31 13:08:59 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	free_last(t_mini_str *lst);
 
 void	ft_lstclear(t_mini_str **lst)
 {
-	t_list	*temp;
+	t_mini_str	*temp;
 
 	if (*lst)
 	{

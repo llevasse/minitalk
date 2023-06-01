@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/31 22:45:12 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/01 16:07:11 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,34 +28,47 @@ void	sig_handler(int sig, siginfo_t *siginfo, void *context)
 	g_sig_char.shift--;
 	print_sig_char(siginfo);
 	if (kill(g_sig_char.client_pid, SIGUSR1) == -1)
-		ft_exit("Error in sending signal", 0);
+		ft_exit("Error in sending signal", 1);
 	(void)context;
+}
+
+void	print_single_char(void)
+{
+	if (g_sig_char.extra.binnary_logged == 1)
+		write(g_sig_char.extra.log_fd, ",", 1);
+	if (g_sig_char.extra.logged == 1)
+		write(g_sig_char.extra.log_fd, &g_sig_char.c, 1);
+	if (g_sig_char.extra.binnary_logged == 1 && g_sig_char.c != '\0')
+		write(g_sig_char.extra.log_fd, "}-{", 3);
+	else if (g_sig_char.extra.binnary_logged == 1 && g_sig_char.c == '\0')
+		write(g_sig_char.extra.log_fd, "}", 1);
+	write(1, &g_sig_char.c, 1);
 }
 
 void	print_sig_char(siginfo_t *siginfo)
 {
 	if (g_sig_char.shift < 0)
 	{
-		if (!g_sig_char.mini_str)
-			g_sig_char.mini_str = ft_lstnew(g_sig_char.c);
+		if (g_sig_char.extra.print_c_by_c == 0)
+		{
+			if (!g_sig_char.mini_str)
+				g_sig_char.mini_str = ft_lstnew(g_sig_char.c);
+			else
+				ft_lstadd_back(&g_sig_char.mini_str, ft_lstnew(g_sig_char.c));
+		}
 		else
-			ft_lstadd_back(&g_sig_char.mini_str, ft_lstnew(g_sig_char.c));
+			print_single_char();
 		if (g_sig_char.c == '\0')
 		{
-			ft_lstprint(g_sig_char.mini_str);
+			if (g_sig_char.extra.print_c_by_c == 0)
+				ft_lstprint(g_sig_char.mini_str);
 			g_sig_char.mini_str = NULL;
 			if (kill(siginfo->si_pid, SIGUSR2) == -1)
-				ft_exit("Error in sending signal", 0);
+				ft_exit("Error in sending signal", 1);
 		}
 		g_sig_char.shift = 7;
 		g_sig_char.c = 0;
 	}
-}
-
-void	ft_exit(char *str, int status)
-{
-	ft_printf("%s\n", str);
-	exit(status);
 }
 
 int	main(int argc, char **argv)
@@ -76,7 +89,7 @@ int	main(int argc, char **argv)
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	if (sigaction(SIGUSR2, &sa, NULL) < 0 || sigaction(SIGUSR1, &sa, NULL) < 0)
-		ft_exit("Error in sending signal", 0);
+		ft_exit("Error in sending signal", 1);
 	while (1)
 		;
 }

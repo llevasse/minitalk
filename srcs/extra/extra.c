@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:10:30 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/01 11:50:50 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/01 16:11:44 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,22 @@ void	check_n_get_flags_client(t_boolean_extra *extra, int argc, char **argv)
 	extra->from_txt = 0;
 	extra->logged = 0;
 	extra->binnary_logged = 0;
-	if (check_str_in_array(argc, argv, "-t", 7))
+	if (check_str_in_array(argc, argv, "-t", argc))
 	{
 		extra->from_txt = 1;
-		extra->t_flag_position = check_str_in_array(argc, argv, "-t", 7);
+		extra->t_flag_position = check_str_in_array(argc, argv, "-t", argc);
 		if (!ft_strnstr(argv[extra->t_flag_position], ".txt",
 				ft_strlen(argv[extra->t_flag_position])))
 			invalid_argument(0);
 	}
-	if (check_str_in_array(argc, argv, "-l", 7))
+	if (check_str_in_array(argc, argv, "-l", argc))
 	{
 		extra->log_fd = open("client_log.log", O_RDWR | O_CREAT, 0666);
 		extra->logged = 1;
 	}
-	else if (check_str_in_array(argc, argv, "-lb", 7))
+	else if (check_str_in_array(argc, argv, "-lb", argc))
 	{
 		extra->log_fd = open("client_log.log", O_RDWR | O_CREAT, 0666);
-		ft_printf("fd : %d\n", extra->log_fd);
 		extra->logged = 1;
 		extra->binnary_logged = 1;
 	}
@@ -69,16 +68,26 @@ void	check_n_get_flags_client(t_boolean_extra *extra, int argc, char **argv)
 
 void	check_n_get_flags_server(t_boolean_extra *extra, int argc, char **argv)
 {
-	if (check_str_in_array(argc, argv, "-l", 7))
+	if (check_str_in_array(argc, argv, "-c", argc))
+		extra->print_c_by_c = 1;
+	else
+		extra->print_c_by_c = 0;
+	if (check_str_in_array(argc, argv, "-l", argc))
 	{
 		extra->log_fd = open("server_log.log", O_RDWR | O_CREAT, 0666);
 		extra->logged = 1;
 	}
-	else if (check_str_in_array(argc, argv, "-lb", 7))
+	else if (check_str_in_array(argc, argv, "-lb", argc))
 	{
 		extra->log_fd = open("server_log.log", O_RDWR | O_CREAT, 0666);
 		extra->logged = 1;
 		extra->binnary_logged = 1;
 		write(extra->log_fd, "{", 1);
 	}
+}
+
+void	ft_exit(char *str, int status)
+{
+	ft_printf("%s\n", str);
+	exit(status);
 }

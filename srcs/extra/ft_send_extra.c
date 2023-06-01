@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:26:40 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/01 11:49:55 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/01 16:06:47 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ void	send_file(int pid, int fd, t_boolean_extra extra)
 	char	*str;
 
 	str = get_next_line(fd);
+	if (!str)
+		return ((void)(close(fd), ft_exit("Unable to open file", 1)));
+	if (extra.binnary_logged == 1)
+		write(extra.log_fd, "{", 1);
 	send_str(pid, str, extra);
 	while (str)
 	{
@@ -34,8 +38,6 @@ void	send_str(int pid, char *str, t_boolean_extra extra)
 {
 	while (*str)
 	{
-		if (extra.binnary_logged == 1)
-			write(extra.log_fd, "{", 1);
 		if (!send_char(pid, *(str++), extra))
 		{
 			free(str);
@@ -44,9 +46,9 @@ void	send_str(int pid, char *str, t_boolean_extra extra)
 		if (extra.binnary_logged == 1)
 			write(extra.log_fd, ",", 1);
 		if (extra.logged == 1)
-			write(extra.log_fd, &c, 1);
+			write(extra.log_fd, &(*str), 1);
 		if (extra.binnary_logged == 1)
-			write(extra.log_fd, "}", 1);
+			write(extra.log_fd, "}-{", 3);
 	}
 }
 

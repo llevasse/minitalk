@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:10:30 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/01 11:22:54 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/01 11:50:50 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,17 @@ void	check_n_get_flags_client(t_boolean_extra *extra, int argc, char **argv)
 	{
 		extra->from_txt = 1;
 		extra->t_flag_position = check_str_in_array(argc, argv, "-t", 7);
-		ft_printf("Use of flag -t in position %d\n", extra->t_flag_position);
 		if (!ft_strnstr(argv[extra->t_flag_position], ".txt",
 				ft_strlen(argv[extra->t_flag_position])))
 			invalid_argument(0);
 	}
 	if (check_str_in_array(argc, argv, "-l", 7))
 	{
-		ft_printf("Use of -l\n");
 		extra->log_fd = open("client_log.log", O_RDWR | O_CREAT, 0666);
 		extra->logged = 1;
 	}
 	else if (check_str_in_array(argc, argv, "-lb", 7))
 	{
-		ft_printf("Use of -lb\n");
 		extra->log_fd = open("client_log.log", O_RDWR | O_CREAT, 0666);
 		ft_printf("fd : %d\n", extra->log_fd);
 		extra->logged = 1;

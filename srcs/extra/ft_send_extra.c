@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:26:40 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/01 11:27:17 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/01 11:49:55 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,19 @@ void	send_str(int pid, char *str, t_boolean_extra extra)
 {
 	while (*str)
 	{
+		if (extra.binnary_logged == 1)
+			write(extra.log_fd, "{", 1);
 		if (!send_char(pid, *(str++), extra))
 		{
 			free(str);
 			exit(0);
 		}
+		if (extra.binnary_logged == 1)
+			write(extra.log_fd, ",", 1);
+		if (extra.logged == 1)
+			write(extra.log_fd, &c, 1);
+		if (extra.binnary_logged == 1)
+			write(extra.log_fd, "}", 1);
 	}
 }
 
@@ -47,8 +55,6 @@ int	send_char(int pid, char c, t_boolean_extra extra)
 	int	size_char;
 
 	size_char = -1;
-	if (extra.binnary_logged == 1)
-		write(extra.log_fd, "{", 1);
 	while (size_char++ < 7)
 	{
 		if (!!((c << size_char) & 0x80))
@@ -63,12 +69,6 @@ int	send_char(int pid, char c, t_boolean_extra extra)
 		}
 		usleep(1000);
 	}
-	if (extra.binnary_logged == 1)
-		write(extra.log_fd, ",", 1);
-	if (extra.logged == 1)
-		write(extra.log_fd, &c, 1);
-	if (extra.binnary_logged == 1)
-		write(extra.log_fd, "}", 1);
 	return (1);
 }
 

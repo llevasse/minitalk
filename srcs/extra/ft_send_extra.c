@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:26:40 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/30 22:14:22 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/01 11:27:17 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,14 @@ int	log_char(int pid, t_boolean_extra extra, int sig)
 {
 	if (sig == SIGUSR1)
 	{
-		write(extra.log_fd, "0", 1);
+		if (extra.binnary_logged)
+			write(extra.log_fd, "0", 1);
 		return (kill(pid, SIGUSR1));
 	}
 	if (sig == SIGUSR2)
 	{
-		write(extra.log_fd, "1", 1);
+		if (extra.binnary_logged)
+			write(extra.log_fd, "1", 1);
 		return (kill(pid, SIGUSR2));
 	}
 	return (1);

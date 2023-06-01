@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:10:30 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/31 01:20:25 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/01 11:22:54 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ int	check_str_in_array(int argc, char **ar, const char *str, int len_ar)
 
 void	check_n_get_flags_client(t_boolean_extra *extra, int argc, char **argv)
 {
+	extra->from_txt = 0;
+	extra->logged = 0;
+	extra->binnary_logged = 0;
 	if (check_str_in_array(argc, argv, "-t", 7))
 	{
 		extra->from_txt = 1;

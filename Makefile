@@ -6,7 +6,7 @@
 #    By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/10 12:10:12 by llevasse          #+#    #+#              #
-#    Updated: 2023/06/02 15:00:35 by llevasse         ###   ########.fr        #
+#    Updated: 2023/06/02 18:31:49 by llevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ LIST_FILES			=	./srcs/list/ft_lstnew.c \
 EXTRA_SERV_FILES	=	srcs/extra/server_extra.c
 EXTRA_CLIENT_FILES	=	srcs/extra/client_extra.c \
 						srcs/extra/ft_send_extra.c
-EXTRA_FILES			=	srcs/extra/extra.c
+EXTRA_FILES			=	srcs/extra/extra.c \
+						srcs/extra/extra_colour.c
 
 LOG_FILES			=	./client_log.log \
 						./server_log.log

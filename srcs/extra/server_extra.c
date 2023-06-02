@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/02 14:58:31 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/02 18:19:04 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,30 +32,10 @@ void	sig_handler(int sig, siginfo_t *siginfo, void *context)
 	(void)context;
 }
 
-void	print_color(int *color)
-{
-	if (*color != 0 && *color > 37)
-		*color = 31;
-	if (*color == 31)
-		write(1, "\033[1;31m", 8);
-	if (*color == 32)
-		write(1, "\033[1;32m", 8);
-	if (*color == 33)
-		write(1, "\033[1;33m", 8);
-	if (*color == 34)
-		write(1, "\033[1;34m", 8);
-	if (*color == 35)
-		write(1, "\033[1;35m", 8);
-	if (*color == 36)
-		write(1, "\033[1;36m", 8);
-	if (*color == 37)
-		write(1, "\033[1;37m", 8);
-	if (*color != 0)
-		(*color)++;
-}
-
 void	print_single_char(void)
 {
+	if (g_sig_char.extra.is_rbw)
+		print_color(&g_sig_char.extra.rgb);
 	if (g_sig_char.extra.binnary_logged == 1 && g_sig_char.c != '\0')
 		write(g_sig_char.extra.log_fd, ",", 1);
 	if (g_sig_char.extra.logged == 1 && g_sig_char.c != '\0')
@@ -64,7 +44,6 @@ void	print_single_char(void)
 		write(g_sig_char.extra.log_fd, "}-{", 3);
 	else if (g_sig_char.extra.binnary_logged == 1 && g_sig_char.c == '\0')
 		write(g_sig_char.extra.log_fd, "}", 1);
-	print_color(&g_sig_char.extra.rgb);
 	write(1, &g_sig_char.c, 1);
 }
 

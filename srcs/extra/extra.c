@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:10:30 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/02 14:51:11 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/02 18:32:00 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,17 @@ void	check_n_get_flags_server(t_boolean_extra *extra, int argc, char **argv)
 		extra->binnary_logged = 1;
 		write(extra->log_fd, "{", 1);
 	}
-	extra->rgb = 0;
-	if (check_str_in_array(argc, argv, "-rgb", argc))
-		extra->rgb = 31;
+	extra->is_rbw = 0;
+	if (check_str_in_array(argc, argv, "-rbw", argc))
+	{
+		extra->is_rbw = 1;
+		extra->rgb.r = 255;
+		extra->rgb.r_top = 1;
+		extra->rgb.g = 0;
+		extra->rgb.g_top = 1;
+		extra->rgb.b = 0;
+		extra->rgb.b_top = 1;
+	}
 }
 
 void	ft_exit(char *str, int status)
@@ -94,3 +102,4 @@ void	ft_exit(char *str, int status)
 	ft_printf("%s\n", str);
 	exit(status);
 }
+

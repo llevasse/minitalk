@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:10:30 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/01 16:11:44 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/02 14:51:11 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,9 @@ void	check_n_get_flags_server(t_boolean_extra *extra, int argc, char **argv)
 		extra->binnary_logged = 1;
 		write(extra->log_fd, "{", 1);
 	}
+	extra->rgb = 0;
+	if (check_str_in_array(argc, argv, "-rgb", argc))
+		extra->rgb = 31;
 }
 
 void	ft_exit(char *str, int status)

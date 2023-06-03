@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 18:32:06 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/02 18:50:20 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/03 21:45:40 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,11 @@ char	*get_color_str(t_rgb *rgb)
 	return (temp);
 }
 
+void	print_rgb_values(t_rgb rgb, char *str)
+{
+	ft_printf("(r:%d; g:%d; b:%d; str : \%s)", rgb.r, rgb.g, rgb.b, str);
+}
+
 void	print_color(t_rgb *rgb)
 {
 	char	*str;
@@ -85,7 +90,8 @@ void	print_color(t_rgb *rgb)
 	str = get_color_str(rgb);
 	if (!str)
 		return ;
-	ft_printf(str);
+	//print_rgb_values(*rgb, str);
+	ft_printf("%s", str);
 	free(str);
 	// \x1B[38;2;R;G;Bm
 	if (rgb->r_top)

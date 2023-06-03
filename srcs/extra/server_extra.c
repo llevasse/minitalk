@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/02 18:19:04 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/03 22:14:28 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	sig_handler(int sig, siginfo_t *siginfo, void *context)
 	(void)context;
 }
 
-void	print_single_char(void)
+void	print_single_char(char c)
 {
 	if (g_sig_char.extra.is_rbw)
-		print_color(&g_sig_char.extra.rgb);
+		print_color(&g_sig_char.extra.rgb, c);
 	if (g_sig_char.extra.binnary_logged == 1 && g_sig_char.c != '\0')
 		write(g_sig_char.extra.log_fd, ",", 1);
 	if (g_sig_char.extra.logged == 1 && g_sig_char.c != '\0')
@@ -59,7 +59,7 @@ void	print_sig_char(siginfo_t *siginfo)
 				ft_lstadd_back(&g_sig_char.mini_str, ft_lstnew(g_sig_char.c));
 		}
 		else
-			print_single_char();
+			print_single_char(g_sig_char.c);
 		if (g_sig_char.c == '\0')
 		{
 			if (g_sig_char.extra.print_c_by_c == 0)

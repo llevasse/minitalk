@@ -2,7 +2,6 @@
 
 int	main(void)
 {
-	write(1, "\033[1;31m", 8);
-	write(1, "hi", 2);
-	write(1, "\033[0m\n", 6);
+	printf("sizeof() of 'c' : %d\n", sizeof('c'));
+	printf("sizeof() of '😍' : %d\n", sizeof('😍'));
 }

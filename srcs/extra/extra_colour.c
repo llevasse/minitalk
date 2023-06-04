@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 18:32:06 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/04 16:01:51 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:20:42 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,17 @@ void	free_rgb(t_rgb *rgb, char *str)
 		free(rgb->b_str);
 	if (str)
 		free(str);
+}
+
+void	init_rgb(t_boolean_extra *extra)
+{
+	extra->is_rbw = 1;
+	extra->rgb.r = 255;
+	extra->rgb.r_top = 1;
+	extra->rgb.g = 0;
+	extra->rgb.g_top = 0;
+	extra->rgb.b = 0;
+	extra->rgb.b_top = 0;
 }
 
 char	*get_color_str(t_rgb *rgb)

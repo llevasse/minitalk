@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 18:32:06 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/04 16:20:42 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/04 21:30:54 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,20 @@
 void	free_rgb(t_rgb *rgb, char *str)
 {
 	if (rgb->r_str)
+	{
 		free(rgb->r_str);
+		rgb->r_str = NULL;
+	}
 	if (rgb->g_str)
+	{
 		free(rgb->g_str);
+		rgb->g_str = NULL;
+	}
 	if (rgb->b_str)
+	{
 		free(rgb->b_str);
+		rgb->b_str = NULL;
+	}
 	if (str)
 		free(str);
 }
@@ -43,50 +52,41 @@ void	init_rgb(t_boolean_extra *extra)
 	extra->rgb.b_top = 0;
 }
 
-char	*get_color_str(t_rgb *rgb)
+void	get_rgb_as_str(t_rgb *rgb)
+{
+	rgb->r_str = ft_strjoin(ft_itoa(rgb->r), ";");
+	if (!rgb->r_str)
+		return (free_rgb(rgb, NULL));
+	rgb->g_str = ft_strjoin(ft_itoa(rgb->g), ";");
+	if (!rgb->g_str)
+		return (free_rgb(rgb, NULL));
+	rgb->b_str = ft_strjoin(ft_itoa(rgb->b), "m");
+	if (!rgb->b_str)
+		return (free_rgb(rgb, NULL));
+}
+
+char	*get_escape_c(t_rgb *rgb)
 {
 	char	*str;
 	char	*temp;
 
-	str = NULL;
-	rgb->r_str = ft_itoa(rgb->r);
+	get_rgb_as_str(rgb);
 	if (!rgb->r_str)
 		return (NULL);
-	rgb->g_str = ft_itoa(rgb->g);
-	if (!rgb->g_str)
-		return (free_rgb(rgb, str), NULL);
-	rgb->b_str = ft_itoa(rgb->b);
-	if (!rgb->b_str)
-		return (free_rgb(rgb, str), NULL);
 	str = ft_strjoin("\x1B[38;2;", rgb->r_str);
 	if (!str)
 		return (free_rgb(rgb, str), NULL);
-	temp = ft_strjoin(str, ";");
-	if (temp)
-		free(str);
-	else
+	temp = ft_strjoin(str, rgb->g_str);
+	if (!temp)
 		return (free_rgb(rgb, str), NULL);
-	str = ft_strjoin(temp, rgb->g_str);
-	if (!str)
-		return (free_rgb(rgb, temp), NULL);
 	else
-		free(temp);
-	temp = ft_strjoin(str, ";");
-	if (temp)
 		free(str);
-	else
-		return (free_rgb(rgb, str), NULL);
 	str = ft_strjoin(temp, rgb->b_str);
 	if (!str)
 		return (free_rgb(rgb, temp), NULL);
 	else
 		free(temp);
-	temp = ft_strjoin(str, "m");
-	if (temp)
-		free(str);
-	else
-		return (free_rgb(rgb, str), NULL);
-	return (temp);
+	return (str);
 }
 
 void	print_color(t_rgb *rgb, unsigned char c)
@@ -94,7 +94,7 @@ void	print_color(t_rgb *rgb, unsigned char c)
 	char	*str;
 
 	(void)c;
-	str = get_color_str(rgb);
+	str = get_escape_c(rgb);
 	if (!str)
 		return ;
 	ft_printf("%s", str);

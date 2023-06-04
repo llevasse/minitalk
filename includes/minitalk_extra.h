@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/03 22:08:56 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/04 12:59:18 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void					ft_exit(char *str, int status);
 void					handler(int sig, siginfo_t *siginfo, void *context);
 int						invalid_argument(int status);
 void					print_sig_char(siginfo_t *siginfo);
-void					print_color(t_rgb *rgb, char c);
+void					print_color(t_rgb *rgb, unsigned char c);
 
 void	check_n_get_flags_client(t_boolean_extra *extra,
 								int agrc,
@@ -83,7 +83,7 @@ void					ft_lstadd_back(t_mini_str **lst, t_mini_str *new);
 int						ft_lstsize(t_mini_str *lst);
 void					ft_lstadd_front(t_mini_str **lst, t_mini_str *new);
 t_mini_str				*ft_lstnew(unsigned char c);
-void					ft_lstprint(t_mini_str *lst, t_rgb *color);
+void					ft_lstprint(t_mini_str *lst, t_boolean_extra *extra);
 
 void					ft_exit(char *str, int status);
 

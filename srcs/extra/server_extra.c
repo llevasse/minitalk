@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/03 22:14:28 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/04 12:58:15 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	sig_handler(int sig, siginfo_t *siginfo, void *context)
 	(void)context;
 }
 
-void	print_single_char(char c)
+void	print_single_char(unsigned char c)
 {
 	if (g_sig_char.extra.is_rbw)
 		print_color(&g_sig_char.extra.rgb, c);
@@ -63,7 +63,7 @@ void	print_sig_char(siginfo_t *siginfo)
 		if (g_sig_char.c == '\0')
 		{
 			if (g_sig_char.extra.print_c_by_c == 0)
-				ft_lstprint(g_sig_char.mini_str, &g_sig_char.extra.rgb);
+				ft_lstprint(g_sig_char.mini_str, &g_sig_char.extra);
 			g_sig_char.mini_str = NULL;
 			if (kill(siginfo->si_pid, SIGUSR2) == -1)
 				ft_exit("Error in sending signal", 1);

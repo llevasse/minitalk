@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 18:32:06 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/03 22:18:20 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/04 13:30:33 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*get_color_str(t_rgb *rgb)
 {
 	char	*str;
 	char	*temp;
-	
+
 	str = NULL;
 	rgb->r_str = ft_itoa(rgb->r);
 	if (!rgb->r_str)
@@ -78,18 +78,18 @@ char	*get_color_str(t_rgb *rgb)
 	return (temp);
 }
 
-void	print_color(t_rgb *rgb, char c)
+void	print_color(t_rgb *rgb, unsigned char c)
 {
 	char	*str;
 
-	if (c < 0)
-		return ((void)ft_printf("\033[0m"));
+	if (c > 127)
+		return ((void)write(1, "\U0001F41D", 5));
+	//return ((void)write(1, "\x1B[1;37m", 8));
 	str = get_color_str(rgb);
 	if (!str)
 		return ;
 	ft_printf("%s", str);
 	free(str);
-	// \x1B[38;2;R;G;Bm
 	if (rgb->r_top)
 	{
 		if (rgb->b > 0)

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:10:30 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/03 22:25:43 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:11:44 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	check_n_get_flags_server(t_boolean_extra *extra, int argc, char **argv)
 	{
 		extra->log_fd = open("server_log.log", O_RDWR | O_CREAT, 0666);
 		extra->logged = 1;
+		ft_printf("pk ça marche pas : %d\n", extra->log_fd);
 	}
 	else if (check_str_in_array(argc, argv, "-lb", argc))
 	{
@@ -87,7 +88,7 @@ void	check_n_get_flags_server(t_boolean_extra *extra, int argc, char **argv)
 	extra->is_rbw = 0;
 	if (check_str_in_array(argc, argv, "-rbw", argc))
 	{
-		extra->is_rbw = 1;
+		extra->is_rbw = 1;	
 		extra->rgb.r = 255;
 		extra->rgb.r_top = 1;
 		extra->rgb.g = 0;

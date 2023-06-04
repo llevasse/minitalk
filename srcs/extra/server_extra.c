@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/04 12:58:15 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:01:07 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	sig_handler(int sig, siginfo_t *siginfo, void *context)
 
 void	print_single_char(unsigned char c)
 {
-	if (g_sig_char.extra.is_rbw)
+	if (g_sig_char.extra.is_rbw && c <= 127)
 		print_color(&g_sig_char.extra.rgb, c);
 	if (g_sig_char.extra.binnary_logged == 1 && g_sig_char.c != '\0')
 		write(g_sig_char.extra.log_fd, ",", 1);

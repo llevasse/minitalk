@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 18:32:06 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/04 13:30:33 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:01:51 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,7 @@ void	print_color(t_rgb *rgb, unsigned char c)
 {
 	char	*str;
 
-	if (c > 127)
-		return ((void)write(1, "\U0001F41D", 5));
-	//return ((void)write(1, "\x1B[1;37m", 8));
+	(void)c;
 	str = get_color_str(rgb);
 	if (!str)
 		return ;

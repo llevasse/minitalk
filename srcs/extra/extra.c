@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:10:30 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/05 16:26:55 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/05 16:39:39 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	check_n_get_flags_server(t_extra *extra, int argc, char **argv)
 	extra->use_markdown = 0;
 	extra->md.is_bold = 0;
 	extra->md.is_stricketrough = 0;
+	extra->md.bold_c_nb = 0;
+	extra->md.stricketrough_c_nb = 0;
 	if (check_str_in_array(argc, argv, "-c", argc))
 		extra->print_c_by_c = 1;
 	if (check_str_in_array(argc, argv, "-l", argc))

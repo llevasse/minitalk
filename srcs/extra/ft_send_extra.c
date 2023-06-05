@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:26:40 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/01 16:58:30 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/05 11:58:38 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	send_str(int pid, char *str, t_boolean_extra extra)
 	while (*str)
 	{
 		if (!send_char(pid, *str, extra))
-			exit((int)(free(str),0));
+			exit((int)(free(str), 0));
 		if (extra.binnary_logged == 1)
 			write(extra.log_fd, ",", 1);
 		if (extra.logged == 1)

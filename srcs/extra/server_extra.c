@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/05 11:46:07 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/05 12:18:11 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@ void	sig_handler(int sig, siginfo_t *siginfo, void *context)
 	if (sig == SIGUSR2)
 	{
 		g_sig_char.c |= (1 << g_sig_char.shift);
-		if (g_sig_char.extra.binnary_logged)
+		if (g_sig_char.extra.binnary_logged && g_sig_char.extra.print_c_by_c)
 			write(g_sig_char.extra.log_fd, "1", 1);
 	}
-	else if (sig == SIGUSR1 && g_sig_char.extra.binnary_logged)
+	else if (sig == SIGUSR1 && g_sig_char.extra.binnary_logged
+			&& g_sig_char.extra.print_c_by_c)
 		write(g_sig_char.extra.log_fd, "0", 1);
 	g_sig_char.shift--;
 	print_sig_char(siginfo);

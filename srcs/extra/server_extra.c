@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/05 14:52:46 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:27:28 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,7 @@ void	sig_handler(int sig, siginfo_t *siginfo, void *context)
 {
 	g_sig_char.client_pid = siginfo->si_pid;
 	if (sig == SIGUSR2)
-	{
 		g_sig_char.c |= (1 << g_sig_char.shift);
-		if (g_sig_char.extra.binnary_logged && g_sig_char.extra.print_c_by_c)
-			write(g_sig_char.extra.log_fd, "1", 1);
-	}
-	else if (sig == SIGUSR1 && g_sig_char.extra.binnary_logged && \
-	g_sig_char.extra.print_c_by_c)
-		write(g_sig_char.extra.log_fd, "0", 1);
 	g_sig_char.shift--;
 	print_sig_char(siginfo);
 	if (kill(g_sig_char.client_pid, SIGUSR1) == -1)
@@ -37,14 +30,7 @@ void	print_single_char(unsigned char c)
 {
 	if (g_sig_char.extra.is_rbw && c <= 127)
 		print_color(&g_sig_char.extra.rgb);
-	if (g_sig_char.extra.binnary_logged == 1 && g_sig_char.c != '\0')
-		write(g_sig_char.extra.log_fd, ",", 1);
-	if (g_sig_char.extra.logged == 1 && g_sig_char.c != '\0')
-		write(g_sig_char.extra.log_fd, &g_sig_char.c, 1);
-	if (g_sig_char.extra.binnary_logged == 1 && g_sig_char.c != '\0')
-		write(g_sig_char.extra.log_fd, "}-{", 3);
-	else if (g_sig_char.extra.binnary_logged == 1 && g_sig_char.c == '\0')
-		write(g_sig_char.extra.log_fd, "}", 1);
+	print_log(g_sig_char.extra, c);
 	write(1, &g_sig_char.c, 1);
 }
 

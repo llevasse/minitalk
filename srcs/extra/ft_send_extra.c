@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:26:40 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/05 11:58:38 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:53:50 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,45 +32,25 @@ void	send_file(int pid, int fd, t_boolean_extra extra)
 		send_str(pid, str, extra);
 	}
 	send_char(pid, '\n', extra);
-	if (extra.binnary_logged == 1)
-		write(extra.log_fd, ",", 1);
-	if (extra.logged == 1)
-		write(extra.log_fd, "\n", 1);
-	if (extra.binnary_logged == 1)
-		write(extra.log_fd, "}-{", 3);
 	send_char(pid, '\0', extra);
-	if (extra.binnary_logged == 1)
-		write(extra.log_fd, "}", 1);
 	close(fd);
 }
 
 void	send_str(int pid, char *str, t_boolean_extra extra)
 {
+	if (!extra.from_txt && extra.binnary_logged)
+		write(extra.log_fd, "{", 1);
 	while (*str)
 	{
 		if (!send_char(pid, *str, extra))
 			exit((int)(free(str), 0));
-		if (extra.binnary_logged == 1)
-			write(extra.log_fd, ",", 1);
-		if (extra.logged == 1)
-			write(extra.log_fd, &(*str), 1);
-		if (extra.binnary_logged == 1)
-			write(extra.log_fd, "}-{", 3);
 		str++;
 	}
 	if (!extra.from_txt)
 	{
 		send_char(pid, '\n', extra);
-		if (extra.binnary_logged == 1)
-			write(extra.log_fd, ",", 1);
-		if (extra.logged == 1)
-			write(extra.log_fd, "\n", 1);
-		if (extra.binnary_logged == 1)
-			write(extra.log_fd, "}-{", 3);
 		send_char(pid, '\0', extra);
-		if (extra.binnary_logged == 1)
-			write(extra.log_fd, "}", 1);
-	}
+	}	
 }
 
 int	send_char(int pid, char c, t_boolean_extra extra)
@@ -82,32 +62,16 @@ int	send_char(int pid, char c, t_boolean_extra extra)
 	{
 		if (!!((c << size_char) & 0x80))
 		{
-			if (log_char(pid, extra, SIGUSR2) == -1)
+			if (kill(pid, SIGUSR2) == -1)
 				return (0);
 		}
 		else
 		{
-			if (log_char(pid, extra, SIGUSR1) == -1)
+			if (kill(pid, SIGUSR1) == -1)
 				return (0);
 		}
 		usleep(1000);
 	}
-	return (1);
-}
-
-int	log_char(int pid, t_boolean_extra extra, int sig)
-{
-	if (sig == SIGUSR1)
-	{
-		if (extra.binnary_logged)
-			write(extra.log_fd, "0", 1);
-		return (kill(pid, SIGUSR1));
-	}
-	if (sig == SIGUSR2)
-	{
-		if (extra.binnary_logged)
-			write(extra.log_fd, "1", 1);
-		return (kill(pid, SIGUSR2));
-	}
+	print_log(extra, c);
 	return (1);
 }

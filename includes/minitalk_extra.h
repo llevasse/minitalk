@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/05 14:45:59 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:27:03 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void					ft_rainbow_effect(t_rgb *rgb);
 void					when_red_top(t_rgb *rgb);
 void					when_green_top(t_rgb *rgb);
 void					when_blue_top(t_rgb *rgb);
+void					print_log(t_boolean_extra extra, unsigned char c);
 
 void	check_n_get_flags_client(t_boolean_extra *extra,
 								int agrc,

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:11:42 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/05 14:48:03 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/05 14:51:54 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_lstprint(t_mini_str *lst, t_boolean_extra *extra)
 
 void	print_binary(char c, int fd)
 {
-	int size_char;
+	int	size_char;
 
 	size_char = -1;
 	while (size_char++ < 7)

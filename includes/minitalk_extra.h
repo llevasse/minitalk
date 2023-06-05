@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/05 18:52:20 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/05 19:18:32 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct s_boolean_extra
 	struct s_rgb		rgb;
 	struct s_markdown	md;
 	int					is_rbw;
+	int					help;
 }						t_extra;
 
 typedef struct s_mini_str
@@ -107,5 +108,8 @@ void					ft_lstprint(t_mini_str *lst, t_extra *extra);
 void					print_binary(char c, int fd);
 
 void					ft_exit(char *str, int status);
+
+void					print_help_client(void);
+void					print_help_server(void);
 
 #endif

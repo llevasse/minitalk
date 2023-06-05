@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 18:32:06 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/05 12:11:36 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:14:40 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,29 @@ void	init_rgb(t_boolean_extra *extra)
 
 void	get_rgb_as_str(t_rgb *rgb)
 {
-	rgb->r_str = ft_strjoin(ft_itoa(rgb->r), ";");
+	char	*temp;
+
+	temp = ft_itoa(rgb->r);
+	if (!temp)
+		return (free_rgb(rgb, NULL));
+	rgb->r_str = ft_strjoin(temp, ";");
 	if (!rgb->r_str)
 		return (free_rgb(rgb, NULL));
-	rgb->g_str = ft_strjoin(ft_itoa(rgb->g), ";");
+	free(temp);
+	temp = ft_itoa(rgb->g);
+	if (!temp)
+		return (free_rgb(rgb, NULL));
+	rgb->g_str = ft_strjoin(temp, ";");
 	if (!rgb->g_str)
 		return (free_rgb(rgb, NULL));
-	rgb->b_str = ft_strjoin(ft_itoa(rgb->b), "m");
+	free(temp);
+	temp = ft_itoa(rgb->g);
+	if (!temp)
+		return (free_rgb(rgb, NULL));
+	rgb->b_str = ft_strjoin(temp, "m");
 	if (!rgb->b_str)
 		return (free_rgb(rgb, NULL));
+	free(temp);
 }
 
 char	*get_escape_c(t_rgb *rgb)
@@ -98,5 +112,6 @@ void	print_color(t_rgb *rgb)
 		return ;
 	ft_printf("%s", str);
 	free(str);
+	free_rgb(rgb, NULL);
 	ft_rainbow_effect(rgb);
 }

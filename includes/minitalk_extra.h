@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/05 16:30:51 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/05 18:52:20 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct s_rgb
 
 typedef struct s_markdown
 {
+	int					backslash;
+	int					char_since_backslash;
 	int					bold_c_nb;
 	int					is_bold;
 	int					stricketrough_c_nb;

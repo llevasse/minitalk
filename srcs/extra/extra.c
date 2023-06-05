@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:10:30 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/05 16:39:39 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/05 18:52:34 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,23 @@ void	check_n_get_flags_client(t_extra *extra, int argc, char **argv)
 	}
 }
 
-void	check_n_get_flags_server(t_extra *extra, int argc, char **argv)
+void	init_extre(t_extra *extra)
 {
 	extra->is_rbw = 0;
 	extra->print_c_by_c = 0;
 	extra->use_markdown = 0;
-	extra->md.is_bold = 0;
-	extra->md.is_stricketrough = 0;
+	extra->md.backslash = 0;
 	extra->md.bold_c_nb = 0;
+	extra->md.is_bold = 0;
 	extra->md.stricketrough_c_nb = 0;
+	extra->md.is_stricketrough = 0;
+	extra->md.is_italic = 0;
+	extra->md.char_since_backslash = 0;
+}
+
+void	check_n_get_flags_server(t_extra *extra, int argc, char **argv)
+{
+	init_extre(extra);
 	if (check_str_in_array(argc, argv, "-c", argc))
 		extra->print_c_by_c = 1;
 	if (check_str_in_array(argc, argv, "-l", argc))

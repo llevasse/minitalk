@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/05 17:07:58 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/05 19:05:04 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	sig_handler(int sig, siginfo_t *siginfo, void *context)
 void	print_single_char(unsigned char c)
 {
 	ft_put_markdown(&g_sig_char.extra, c);
-	if (g_sig_char.extra.md.bold_c_nb > 0)
-		return ;
+	if (g_sig_char.extra.md.backslash == 2 || g_sig_char.extra.md.bold_c_nb > 0 || c == '\\')
+		return ((void)(g_sig_char.extra.md.backslash = 0));
 	if (g_sig_char.extra.is_rbw && c <= 127)
 		print_color(&g_sig_char.extra.rgb);
 	print_log(g_sig_char.extra, c);

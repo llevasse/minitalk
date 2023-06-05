@@ -6,13 +6,13 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 15:21:49 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/05 15:27:03 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/05 16:14:20 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minitalk_extra.h"
 
-void	print_log(t_boolean_extra extra, unsigned char c)
+void	print_log(t_extra extra, unsigned char c)
 {
 	if (extra.binnary_logged == 1)
 		print_binary(c, extra.log_fd);

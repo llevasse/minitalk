@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/05 15:27:03 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/05 16:30:51 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,18 @@ typedef struct s_rgb
 	char				*b_str;
 }						t_rgb;
 
+typedef struct s_markdown
+{
+	int					bold_c_nb;
+	int					is_bold;
+	int					stricketrough_c_nb;
+	int					is_stricketrough;
+	int					is_italic;
+}						t_md;
+
 typedef struct s_boolean_extra
 {
+	int					use_markdown;
 	int					logged;
 	int					binnary_logged;
 	int					log_fd;
@@ -40,8 +50,9 @@ typedef struct s_boolean_extra
 	int					str_position;
 	int					print_c_by_c;
 	struct s_rgb		rgb;
+	struct s_markdown	md;
 	int					is_rbw;
-}						t_boolean_extra;
+}						t_extra;
 
 typedef struct s_mini_str
 {
@@ -55,29 +66,30 @@ typedef struct s_sig_char
 	unsigned char		c;
 	int					client_pid;
 	t_mini_str			*mini_str;
-	t_boolean_extra		extra;
+	t_extra				extra;
 }						t_sig_char;
 
-void					send_str(int pid, char *str, t_boolean_extra extra);
-int						send_char(int pid, char c, t_boolean_extra extra);
-void					send_file(int pid, int fd, t_boolean_extra extra);
-int						log_char(int pid, t_boolean_extra extra, int sig);
+void					send_str(int pid, char *str, t_extra extra);
+int						send_char(int pid, char c, t_extra extra);
+void					send_file(int pid, int fd, t_extra extra);
+int						log_char(int pid, t_extra extra, int sig);
 void					ft_exit(char *str, int status);
 void					handler(int sig, siginfo_t *siginfo, void *context);
 int						invalid_argument(int status);
 void					print_sig_char(siginfo_t *siginfo);
 void					print_color(t_rgb *rgb);
-void					init_rgb(t_boolean_extra *extra);
+void					init_rgb(t_extra *extra);
 void					ft_rainbow_effect(t_rgb *rgb);
 void					when_red_top(t_rgb *rgb);
 void					when_green_top(t_rgb *rgb);
 void					when_blue_top(t_rgb *rgb);
-void					print_log(t_boolean_extra extra, unsigned char c);
+void					print_log(t_extra extra, unsigned char c);
+void					ft_put_markdown(t_extra *extra, unsigned char c);
 
-void	check_n_get_flags_client(t_boolean_extra *extra,
+void	check_n_get_flags_client(t_extra *extra,
 								int agrc,
 								char **argv);
-void	check_n_get_flags_server(t_boolean_extra *extra,
+void	check_n_get_flags_server(t_extra *extra,
 								int agrc,
 								char **argv);
 int						check_str_in_array(int argc, char **ar, const char *str,
@@ -89,7 +101,7 @@ void					ft_lstadd_back(t_mini_str **lst, t_mini_str *new);
 int						ft_lstsize(t_mini_str *lst);
 void					ft_lstadd_front(t_mini_str **lst, t_mini_str *new);
 t_mini_str				*ft_lstnew(unsigned char c);
-void					ft_lstprint(t_mini_str *lst, t_boolean_extra *extra);
+void					ft_lstprint(t_mini_str *lst, t_extra *extra);
 void					print_binary(char c, int fd);
 
 void					ft_exit(char *str, int status);

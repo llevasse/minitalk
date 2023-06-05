@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/01 16:45:58 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/05 16:14:20 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	__pid_t				pid;
 	struct sigaction	sa;
-	t_boolean_extra		extra;
+	t_extra		extra;
 
 	if (argc <= 2)
 		invalid_argument(0);

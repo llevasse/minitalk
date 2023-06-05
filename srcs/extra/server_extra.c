@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/05 15:27:28 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/05 16:31:12 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	print_single_char(unsigned char c)
 {
 	if (g_sig_char.extra.is_rbw && c <= 127)
 		print_color(&g_sig_char.extra.rgb);
+	ft_put_markdown(&g_sig_char.extra, c);
 	print_log(g_sig_char.extra, c);
 	write(1, &g_sig_char.c, 1);
 }
@@ -64,11 +65,13 @@ int	main(int argc, char **argv)
 {
 	struct sigaction	sa;
 	__pid_t				pid;
-	t_boolean_extra		extra;
+	t_extra		extra;
 
 	pid = getpid();
 	ft_printf("pid : %i\n", pid);
 	check_n_get_flags_server(&extra, argc, argv);
+	if (extra.logged)
+		extra.log_fd = open("server_log.log", O_RDWR | O_CREAT, 0666);
 	g_sig_char.shift = 7;
 	g_sig_char.mini_str = NULL;
 	g_sig_char.extra = extra;

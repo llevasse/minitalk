@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 18:32:06 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/04 21:30:54 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/05 11:52:55 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,50 +89,14 @@ char	*get_escape_c(t_rgb *rgb)
 	return (str);
 }
 
-void	print_color(t_rgb *rgb, unsigned char c)
+void	print_color(t_rgb *rgb)
 {
 	char	*str;
 
-	(void)c;
 	str = get_escape_c(rgb);
 	if (!str)
 		return ;
 	ft_printf("%s", str);
 	free(str);
-	if (rgb->r_top)
-	{
-		if (rgb->b > 0)
-			rgb->b--;
-		else
-			rgb->g++;
-	}
-	if (rgb->g == 255)
-	{
-		rgb->g_top = 1;
-		rgb->r_top = 0;
-	}
-	if (rgb->g_top)
-	{
-		if (rgb->r > 0)
-			rgb->r--;
-		else
-			rgb->b++;
-	}
-	if (rgb->b == 255)
-	{
-		rgb->b_top = 1;
-		rgb->g_top = 0;
-	}
-	if (rgb->b_top)
-	{
-		if (rgb->g > 0)
-			rgb->g--;
-		else
-			rgb->r++;
-	}
-	if (rgb->r == 255)
-	{
-		rgb->r_top = 1;
-		rgb->b_top = 0;
-	}
+	ft_rainbow_effect(rgb);
 }

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:10:30 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/05 19:19:31 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/05 19:27:01 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@ void	init_extra(t_extra *extra)
 	extra->md.is_italic = 0;
 	extra->md.char_since_backslash = 0;
 	extra->help = 0;
+	extra->from_txt = 0;
+	extra->logged = 0;
+	extra->binnary_logged = 0;
 }
 
 /// @brief
@@ -57,9 +60,8 @@ int	check_str_in_array(int argc, char **ar, const char *str, int len_ar)
 
 void	check_n_get_flags_client(t_extra *extra, int argc, char **argv)
 {
-	extra->from_txt = 0;
-	extra->logged = 0;
-	extra->binnary_logged = 0;
+	if (check_str_in_array(argc, argv, "-h", argc))
+		return ((void)(extra->help == 1));
 	if (check_str_in_array(argc, argv, "-t", argc))
 	{
 		extra->from_txt = 1;
@@ -85,7 +87,7 @@ void	check_n_get_flags_server(t_extra *extra, int argc, char **argv)
 {
 	init_extra(extra);
 	if (check_str_in_array(argc, argv, "-h", argc))
-		return ;
+		return ((void)(extra->help == 1));
 	if (check_str_in_array(argc, argv, "-c", argc))
 		extra->print_c_by_c = 1;
 	if (check_str_in_array(argc, argv, "-l", argc))

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 10:58:13 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/27 11:46:13 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/06 11:15:53 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	is_nl(const char *str)
 	i = 0;
 	if (!str)
 		return (0);
-	while (str[i] != '\n' && str[i]) //Invalid read of size one right in this loop
+	while (str[i] != '\n' && str[i] != '\0')		//Invalid read of size one right in this loop
 		i++;
 	if (str[i] == '\n')
 		return (1);
@@ -38,14 +38,14 @@ char	*ft_strjoin_free_first(char *s1, char *s2)
 		return (NULL);
 	joined = malloc((ft_strlen(s1) + ft_strlen(s2)) * sizeof(char) + 1);
 	if (!joined)
-		return (free(s1), NULL);
+		return (free(s1), s1 = NULL, NULL);
 	while (s1[i] != '\0')
 		joined[j++] = s1[i++];
 	i = 0;
 	while (s2[i] != '\0')
 		joined[j++] = s2[i++];
 	joined[j] = '\0';
-	return (free(s1), joined);
+	return (free(s1), s1 = NULL, joined);
 }
 
 int	ft_strcmp(const char *s1, const char *s2)

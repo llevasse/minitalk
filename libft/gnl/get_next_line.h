@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 10:59:20 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/27 11:40:04 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/06 11:28:32 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <limits.h> 
 # include "../libft.h"
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 10000
 # endif
 
 # ifndef OPEN_MAX

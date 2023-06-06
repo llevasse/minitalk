@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/05 19:18:44 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/06 14:26:37 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	print_sig_char(siginfo_t *siginfo)
 		if (g_sig_char.c == '\0')
 		{
 			if (g_sig_char.extra.print_c_by_c == 0)
-				ft_lstprint(g_sig_char.mini_str, &g_sig_char.extra);
+				ft_lstprint_extra(g_sig_char.mini_str, &g_sig_char.extra);
 			g_sig_char.mini_str = NULL;
 			if (kill(siginfo->si_pid, SIGUSR2) == -1)
 				ft_exit("Error in sending signal", 1);

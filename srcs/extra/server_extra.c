@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/06 14:26:37 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/07 13:23:17 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,6 @@ int	main(int argc, char **argv)
 	sigemptyset(&sa.sa_mask);
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
-	if (sigaction(SIGUSR2, &sa, NULL) < 0 || sigaction(SIGUSR1, &sa, NULL) < 0)
-		ft_exit("Error in sending signal", 1);
 	while (1)
 		;
 }

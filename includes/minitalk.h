@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/31 22:34:56 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/07 12:53:23 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <fcntl.h>
 # include <signal.h>
 
-void					send_str(int pid, char *str);
-int						send_char(int pid, char c);
+void					send_str(int pid, unsigned char *str);
+int						send_char(int pid, unsigned char c);
 void					send_file(int pid, int fd);
 void					ft_exit(char *str, int status);
 int						use_file(int pid, char **argv);

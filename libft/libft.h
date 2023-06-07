@@ -6,18 +6,18 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 13:10:28 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/07 12:51:06 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/05/31 12:57:15 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include "ft_printf/ft_printf.h"
-# include "gnl/u_get_next_line.h"
-# include <stddef.h>
 # include <stdlib.h>
+# include <stddef.h>
 # include <unistd.h>
+# include "gnl/get_next_line.h"
+# include "ft_printf/ft_printf.h"
 
 char	*ft_strchr(const char *s, int c);
 char	*ft_strdup(char *src);
@@ -28,11 +28,10 @@ size_t	ft_strlen(const char *s);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
-int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_strjoin(char *s1, char *s2);
-void	ft_striteri(char *s, void (*f)(unsigned int, char *));
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memmove(void *dest, const void *src, size_t n);

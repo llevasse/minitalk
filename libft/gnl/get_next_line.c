@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   u_get_next_line.c                                  :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/14 10:57:39 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/07 12:54:57 by llevasse         ###   ########.fr       */
+/*   Crea	ted: 2022/12/14 10:57:39 by llevasse          #+#    #+#             */
+/*   Updated: 2023/05/28 15:48:34 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "u_get_next_line.h"
+#include "get_next_line.h"
 
-unsigned char	*get_next_line(int fd)
+char	*get_next_line(int fd)
 {
-	unsigned char			buff[BUFFER_SIZE + 1];
-	static unsigned char		*stach[OPEN_MAX];
-	unsigned char			*line;
+	char			buff[BUFFER_SIZE + 1];
+	static char		*stach[OPEN_MAX];
+	char			*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd > OPEN_MAX || read(fd, buff, 0) != 0)
 	{
@@ -36,27 +36,27 @@ unsigned char	*get_next_line(int fd)
 	line = return_line(stach, fd);
 	if (!line)
 		return (free(stach[fd]), stach[fd] = NULL, NULL);
-	if (ft_u_strcmp(line, stach[fd]))
+	if (ft_strcmp(line, stach[fd]))
 		return (get_left_over(line, stach[fd]), line);
 	return (free(stach[fd]), stach[fd] = NULL, line);
 }
 
-unsigned char	*return_line(unsigned char *stach[OPEN_MAX], int fd)
+char	*return_line(char *stach[OPEN_MAX], int fd)
 {
-	unsigned char	*line;
+	char	*line;
 	int		i;
 
 	i = 0;
 	while (stach[fd][i] != '\n' && stach[fd][i])
 		i++;
-	line = malloc((i + is_nl(stach[fd]) + 1) * sizeof(unsigned char));
+	line = malloc((i + is_nl(stach[fd]) + 1) * sizeof(char));
 	if (!line)
 		return (NULL);
 	fill_char(line, stach[fd], is_nl(stach[fd]));
 	return (line);
 }
 
-unsigned char	*stach_empty(unsigned char *stach, int fd, unsigned char buff[BUFFER_SIZE])
+char	*stach_empty(char *stach, int fd, char buff[BUFFER_SIZE])
 {
 	int	count;
 
@@ -66,7 +66,7 @@ unsigned char	*stach_empty(unsigned char *stach, int fd, unsigned char buff[BUFF
 	buff[count] = '\0';
 	if (count < 0)
 		return (NULL);
-	stach = malloc((count + 1) * sizeof(unsigned char));
+	stach = malloc((count + 1) * sizeof(char));
 	if (!stach)
 		return (NULL);
 	stach[count] = '\0';
@@ -74,7 +74,7 @@ unsigned char	*stach_empty(unsigned char *stach, int fd, unsigned char buff[BUFF
 	return (stach);
 }
 
-unsigned char	*check_stach_nl(unsigned char *stach, unsigned char buff[BUFFER_SIZE + 1], int fd)
+char	*check_stach_nl(char *stach, char buff[BUFFER_SIZE + 1], int fd)
 {
 	int	count;
 
@@ -93,15 +93,15 @@ unsigned char	*check_stach_nl(unsigned char *stach, unsigned char buff[BUFFER_SI
 				count = read(fd, buff, BUFFER_SIZE);
 			buff[count] = '\0';
 		}
-		if (count <= 0)
-			stach = ft_strjoin_free_first(stach, (unsigned char *)"\0");
+		if (count <= 0 && stach)
+			stach = ft_strjoin_free_first(stach, "\0");
 		if (!stach)
 			return (NULL);
 	}
 	return (stach);
 }
 
-void	get_left_over(unsigned char *line, unsigned char *stach)
+void	get_left_over(char *line, char *stach)
 {
 	int	i;
 	int	j;
@@ -111,7 +111,7 @@ void	get_left_over(unsigned char *line, unsigned char *stach)
 	while (line[i] != '\n' && line[i])
 		stach[i++] = 0;
 	if (!line[i])
-		return (free(stach));
+		return (free(stach), (void)(stach = NULL));
 	i++;
 	while (stach[i] != '\0')
 		stach[j++] = stach[i++];

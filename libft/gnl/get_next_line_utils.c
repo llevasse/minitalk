@@ -1,44 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   u_get_next_line_utils.c                            :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 10:58:13 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/07 12:55:18 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/06 11:15:53 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "u_get_next_line.h"
+#include "get_next_line.h"
 
-int	is_nl(const unsigned char *str)
+int	is_nl(const char *str)
 {
 	size_t	i;
 
 	i = 0;
-	while (str[i] != '\n' && str[i] != 0)
+	if (!str)
+		return (0);
+	while (str[i] != '\n' && str[i] != '\0')		//Invalid read of size one right in this loop
 		i++;
 	if (str[i] == '\n')
 		return (1);
 	return (0);
 }
 
-size_t	ft_u_strlen(const unsigned char *str)
+char	*ft_strjoin_free_first(char *s1, char *s2)
 {
-	unsigned long	i;
-
-	i = 0;
-	if (!str)
-		return (i);
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
-unsigned char	*ft_strjoin_free_first(unsigned char *s1, unsigned char *s2)
-{
-	unsigned char	*joined;
+	char	*joined;
 	int		i;
 	int		j;
 
@@ -46,19 +36,19 @@ unsigned char	*ft_strjoin_free_first(unsigned char *s1, unsigned char *s2)
 	j = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	joined = malloc((ft_u_strlen(s1) + ft_u_strlen(s2)) * sizeof(unsigned char) + 1);
+	joined = malloc((ft_strlen(s1) + ft_strlen(s2)) * sizeof(char) + 1);
 	if (!joined)
-		return (free(s1), NULL);
+		return (free(s1), s1 = NULL, NULL);
 	while (s1[i] != '\0')
 		joined[j++] = s1[i++];
 	i = 0;
 	while (s2[i] != '\0')
 		joined[j++] = s2[i++];
 	joined[j] = '\0';
-	return (free(s1), joined);
+	return (free(s1), s1 = NULL, joined);
 }
 
-int	ft_u_strcmp(const unsigned char *s1, const unsigned char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
 	unsigned int	i;
 
@@ -70,7 +60,7 @@ int	ft_u_strcmp(const unsigned char *s1, const unsigned char *s2)
 	return (s1[i] - s2[i]);
 }
 
-void	fill_char(unsigned char *dst, unsigned char *src, int till_nl)
+void	fill_char(char *dst, char *src, int till_nl)
 {
 	int	i;
 

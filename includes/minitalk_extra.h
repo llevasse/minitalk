@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/07 23:37:29 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/07 23:53:49 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct s_sig_char
 	t_extra				extra;
 }						t_sig_char;
 
-void					send_str_file(int pid, unsigned char str[42],
+void					send_str_file(int pid, unsigned char str[1],
 							t_extra extra);
 void					send_str(int pid, unsigned char *str,
 							t_extra extra);

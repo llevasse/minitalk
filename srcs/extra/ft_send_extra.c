@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:26:40 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/07 23:38:27 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/07 23:58:00 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,42 @@
 
 void	send_file(int pid, int fd, t_extra extra)
 {
-	unsigned char	str[42];
+	unsigned char	str[1];
 	int				count;
 
 	//str = get_next_line(fd);
-	count = read(fd, str, 42);
+	count = read(fd, str, 1);
 	if (count < 0 || str[0] == 0)
 		return ((void)(close(fd),
 						ft_exit("Unable to open file",
 								1)));
 	if (extra.binnary_logged == 1)
 		write(extra.log_fd, "{", 1);
-	send_str_file(pid, str, extra);
+	if (!send_char(pid, str[0], extra))
+		exit(0);
 	while (count > 0)
 	{
-		count = read(fd, str, 42);
-		if (str[0] == 0)
+		count = read(fd, str, 1);
+		if (str[0] == 0 || count <= 0)
 			break ;
-		send_str_file(pid, str, extra);
+		if (!send_char(pid, str[0], extra))
+			exit(0);
 	}
 	send_char(pid, (unsigned char)'\n', extra);
 	send_char(pid, (unsigned char)'\0', extra);
 	close(fd);
 }
 
-void	send_str_file(int pid, unsigned char str[42], t_extra extra)
+void	send_str_file(int pid, unsigned char str[1], t_extra extra)
 {
 	int	i;
 
 	i = 0;
 	if (!extra.from_txt && extra.binnary_logged)
 		write(extra.log_fd, "{", 1);
-	while (str[0])
+	while (str[i])
 	{
-		if (!send_char(pid, str[0], extra))
+		if (!send_char(pid, str[i], extra))
 			exit(0);
 		i++;
 	}

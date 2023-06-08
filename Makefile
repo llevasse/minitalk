@@ -6,7 +6,7 @@
 #    By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/10 12:10:12 by llevasse          #+#    #+#              #
-#    Updated: 2023/06/06 14:25:27 by llevasse         ###   ########.fr        #
+#    Updated: 2023/06/08 12:29:50 by llevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,7 @@ EXTRA_CLIENT_OBJS	=	$(EXTRA_CLIENT_FILES:.c=.o)
 EXTRA_OBJS			=	$(EXTRA_FILES:.c=.o)
 
 %.o: %.c
-					$(CC) $(FLAGS) -I includes -c $< -o $(<:.c=.o)
+					$(CC) -g $(FLAGS) -I includes -c $< -o $(<:.c=.o)
 
 NAME				= minitalk
 
@@ -60,8 +60,8 @@ $(NAME):		$(SERV_OBJS) $(CLIENT_OBJS) $(LIST_OBJS) includes/minitalk.h Makefile
 extra:			$(EXTRA_OBJS) $(EXTRA_CLIENT_OBJS) $(EXTRA_SERV_OBJS) $(LIST_OBJS) includes/minitalk_extra.h Makefile
 					make -C libft
 					rm -rf $(LOG_FILES)
-					$(CC) -g $(EXTRA_SERV_OBJS) $(EXTRA_OBJS) $(LIST_OBJS) libft/libft.a -o server
-					$(CC) -g $(EXTRA_CLIENT_OBJS) $(EXTRA_OBJS) $(LIST_OBJS) libft/libft.a -o client
+					$(CC) -g $(EXTRA_SERV_OBJS) $(EXTRA_OBJS) $(LIST_OBJS) libft/libft.a -o server_extra
+					$(CC) -g $(EXTRA_CLIENT_OBJS) $(EXTRA_OBJS) $(LIST_OBJS) libft/libft.a -o client_extra
 					
 
 
@@ -73,7 +73,7 @@ clean:
 
 fclean:			clean
 				make -C libft fclean
-				rm -rf srcs/server.a srcs/client.a client server
+				rm -rf srcs/server.a srcs/client.a client server client_extra server_extra
 				
 re:				fclean all
 

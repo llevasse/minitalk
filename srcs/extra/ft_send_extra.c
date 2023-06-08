@@ -6,13 +6,13 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:26:40 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/07 12:58:07 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/08 22:06:00 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minitalk_extra.h"
 
-void	send_file(int pid, int fd, t_extra extra)
+void	send_file(int pid, int fd, t_boolean_extra extra)
 {
 	unsigned char	*str;
 
@@ -36,7 +36,7 @@ void	send_file(int pid, int fd, t_extra extra)
 	close(fd);
 }
 
-void	send_str(int pid, unsigned char *str, t_extra extra)
+void	send_str(int pid, char *str, t_boolean_extra extra)
 {
 	if (!extra.from_txt && extra.binnary_logged)
 		write(extra.log_fd, "{", 1);
@@ -53,7 +53,7 @@ void	send_str(int pid, unsigned char *str, t_extra extra)
 	}	
 }
 
-int	send_char(int pid, unsigned char c, t_extra extra)
+int	send_char(int pid, char c, t_boolean_extra extra)
 {
 	int	size_char;
 

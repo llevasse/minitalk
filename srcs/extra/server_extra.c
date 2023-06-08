@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/07 13:23:17 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/08 22:06:10 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,11 @@ int	main(int argc, char **argv)
 {
 	struct sigaction	sa;
 	__pid_t				pid;
-	t_extra		extra;
+	t_boolean_extra		extra;
 
 	pid = getpid();
 	ft_printf("pid : %i\n", pid);
 	check_n_get_flags_server(&extra, argc, argv);
-	if (extra.logged)
-		extra.log_fd = open("server_log.log", O_RDWR | O_CREAT, 0666);
 	g_sig_char.shift = 7;
 	g_sig_char.mini_str = NULL;
 	g_sig_char.extra = extra;

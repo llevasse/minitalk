@@ -6,7 +6,7 @@
 #    By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/10 12:10:12 by llevasse          #+#    #+#              #
-#    Updated: 2023/06/06 14:25:27 by llevasse         ###   ########.fr        #
+#    Updated: 2023/06/08 22:04:10 by llevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,10 +31,7 @@ EXTRA_CLIENT_FILES	=	srcs/extra/client_extra.c \
 EXTRA_FILES			=	srcs/extra/extra.c \
 						srcs/extra/extra_colour.c \
 						srcs/extra/ft_rainbow_effect.c \
-						srcs/extra/log.c \
-						srcs/extra/ft_put_markdown.c \
-						srcs/extra/help.c \
-						srcs/extra/ft_lstprint_extra.c
+						srcs/extra/log.c
 
 LOG_FILES			=	./client_log.log \
 						./server_log.log

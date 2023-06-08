@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 18:32:06 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/05 22:02:47 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/08 22:05:16 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	free_rgb(t_rgb *rgb, char *str)
 		free(str);
 }
 
-void	init_rgb(t_extra *extra)
+void	init_rgb(t_boolean_extra *extra)
 {
 	extra->is_rbw = 1;
 	extra->rgb.r = 255;

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/08 22:04:44 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:27:03 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,5 @@ void					ft_lstprint(t_mini_str *lst, t_boolean_extra *extra);
 void					print_binary(char c, int fd);
 
 void					ft_exit(char *str, int status);
-
-void					print_help_client(void);
-void					print_help_server(void);
 
 #endif

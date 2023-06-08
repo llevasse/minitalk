@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/08 22:05:07 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/01 16:45:58 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	if (extra.from_txt)
 		send_file(pid, open(argv[extra.t_flag_position], O_RDONLY), extra);
 	else
-		send_str(pid, (unsigned char *)argv[extra.str_position - 1], extra);
+		send_str(pid, argv[extra.str_position - 1], extra);
 	return (0);
 }
 

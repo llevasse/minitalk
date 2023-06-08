@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/08 22:06:10 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:27:28 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,6 @@ void	sig_handler(int sig, siginfo_t *siginfo, void *context)
 
 void	print_single_char(unsigned char c)
 {
-	ft_put_markdown(&g_sig_char.extra, c);
-	if (g_sig_char.extra.md.backslash == 2 || g_sig_char.extra.md.bold_c_nb > 0 || c == '\\')
-		return ((void)(g_sig_char.extra.md.backslash = 0));
 	if (g_sig_char.extra.is_rbw && c <= 127)
 		print_color(&g_sig_char.extra.rgb);
 	print_log(g_sig_char.extra, c);
@@ -53,7 +50,7 @@ void	print_sig_char(siginfo_t *siginfo)
 		if (g_sig_char.c == '\0')
 		{
 			if (g_sig_char.extra.print_c_by_c == 0)
-				ft_lstprint_extra(g_sig_char.mini_str, &g_sig_char.extra);
+				ft_lstprint(g_sig_char.mini_str, &g_sig_char.extra);
 			g_sig_char.mini_str = NULL;
 			if (kill(siginfo->si_pid, SIGUSR2) == -1)
 				ft_exit("Error in sending signal", 1);
@@ -75,13 +72,13 @@ int	main(int argc, char **argv)
 	g_sig_char.shift = 7;
 	g_sig_char.mini_str = NULL;
 	g_sig_char.extra = extra;
-	if (extra.help == 1)
-		print_help_server();
 	sa.sa_sigaction = &sig_handler;
 	sa.sa_flags = SA_SIGINFO;
 	sigemptyset(&sa.sa_mask);
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
+	if (sigaction(SIGUSR2, &sa, NULL) < 0 || sigaction(SIGUSR1, &sa, NULL) < 0)
+		ft_exit("Error in sending signal", 1);
 	while (1)
 		;
 }

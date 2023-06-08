@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:26:40 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/08 22:06:00 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/05 15:53:50 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	send_file(int pid, int fd, t_boolean_extra extra)
 {
-	unsigned char	*str;
+	char	*str;
 
 	str = get_next_line(fd);
 	if (!str)
@@ -31,8 +31,8 @@ void	send_file(int pid, int fd, t_boolean_extra extra)
 			break ;
 		send_str(pid, str, extra);
 	}
-	send_char(pid, (unsigned char)'\n', extra);
-	send_char(pid, (unsigned char)'\0', extra);
+	send_char(pid, '\n', extra);
+	send_char(pid, '\0', extra);
 	close(fd);
 }
 
@@ -48,8 +48,8 @@ void	send_str(int pid, char *str, t_boolean_extra extra)
 	}
 	if (!extra.from_txt)
 	{
-		send_char(pid, (unsigned char)'\n', extra);
-		send_char(pid, (unsigned char)'\0', extra);
+		send_char(pid, '\n', extra);
+		send_char(pid, '\0', extra);
 	}	
 }
 

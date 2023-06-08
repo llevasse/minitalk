@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:10:30 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/08 22:05:29 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:21:04 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,6 @@ int	invalid_argument(int status)
 	ft_printf("Error. Invalid argument\n");
 	ft_printf("Use ./client -h for help\n");
 	exit(status);
-}
-
-void	init_extra(t_extra *extra)
-{
-	extra->is_rbw = 0;
-	extra->print_c_by_c = 0;
-	extra->use_markdown = 0;
-	extra->md.backslash = 0;
-	extra->md.bold_c_nb = 0;
-	extra->md.is_bold = 0;
-	extra->md.stricketrough_c_nb = 0;
-	extra->md.is_stricketrough = 0;
-	extra->md.is_italic = 0;
-	extra->md.char_since_backslash = 0;
-	extra->help = 0;
-	extra->from_txt = 0;
-	extra->logged = 0;
-	extra->binnary_logged = 0;
 }
 
 /// @brief
@@ -60,9 +42,9 @@ int	check_str_in_array(int argc, char **ar, const char *str, int len_ar)
 
 void	check_n_get_flags_client(t_boolean_extra *extra, int argc, char **argv)
 {
-	init_extra(extra);
-	if (check_str_in_array(argc, argv, "-h", argc))
-		return ((void)(extra->help == 1));
+	extra->from_txt = 0;
+	extra->logged = 0;
+	extra->binnary_logged = 0;
 	if (check_str_in_array(argc, argv, "-t", argc))
 	{
 		extra->from_txt = 1;

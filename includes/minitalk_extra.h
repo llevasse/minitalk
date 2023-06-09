@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/05 15:27:03 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/09 14:55:52 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void					ft_lstadd_back(t_mini_str **lst, t_mini_str *new);
 int						ft_lstsize(t_mini_str *lst);
 void					ft_lstadd_front(t_mini_str **lst, t_mini_str *new);
 t_mini_str				*ft_lstnew(unsigned char c);
-void					ft_lstprint(t_mini_str *lst, t_boolean_extra *extra);
+void					ft_lstprint_extra(t_mini_str *lst, t_boolean_extra *extra);
 void					print_binary(char c, int fd);
 
 void					ft_exit(char *str, int status);

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstprint_extra.c                                :+:      :+:    :+:   */
+/*   ft_lstprint.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:11:42 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/06 14:26:09 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/09 14:56:10 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minitalk_extra.h"
 
-void	ft_lstprint_extra(t_mini_str *lst, t_extra *extra)
+void	ft_lstprint_extra(t_mini_str *lst, t_boolean_extra *extra)
 {
 	if (!lst)
 		return ;

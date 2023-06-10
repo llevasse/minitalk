@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 18:32:06 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/05 15:14:40 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/10 12:25:06 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	get_rgb_as_str(t_rgb *rgb)
 	if (!rgb->g_str)
 		return (free_rgb(rgb, NULL));
 	free(temp);
-	temp = ft_itoa(rgb->g);
+	temp = ft_itoa(rgb->b);
 	if (!temp)
 		return (free_rgb(rgb, NULL));
 	rgb->b_str = ft_strjoin(temp, "m");

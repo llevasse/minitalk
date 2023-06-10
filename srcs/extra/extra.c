@@ -6,17 +6,19 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:10:30 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/04 16:21:04 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/10 21:55:07 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minitalk_extra.h"
 
-int	invalid_argument(int status)
+int	invalid_argument(char *str)
 {
+	if (!ft_strcmp(str, "-h"))
+		print_help_client();
 	ft_printf("Error. Invalid argument\n");
 	ft_printf("Use ./client -h for help\n");
-	exit(status);
+	exit(0);
 }
 
 /// @brief
@@ -40,11 +42,23 @@ int	check_str_in_array(int argc, char **ar, const char *str, int len_ar)
 	return (0);
 }
 
-void	check_n_get_flags_client(t_boolean_extra *extra, int argc, char **argv)
+void	init_extra(t_boolean_extra *extra)
 {
-	extra->from_txt = 0;
+	extra->help = 0;
 	extra->logged = 0;
 	extra->binnary_logged = 0;
+	extra->log_fd = 0;
+	extra->from_txt = 0;
+	extra->t_flag_position = 0;
+	extra->print_c_by_c = 0;
+	extra->is_rbw = 0;
+}
+
+void	check_n_get_flags_client(t_boolean_extra *extra, int argc, char **argv)
+{
+	init_extra(extra);
+	if (check_str_in_array(argc, argv, "-h", argc))
+		return ((void)(extra->help = 1));
 	if (check_str_in_array(argc, argv, "-t", argc))
 	{
 		extra->from_txt = 1;
@@ -68,10 +82,11 @@ void	check_n_get_flags_client(t_boolean_extra *extra, int argc, char **argv)
 
 void	check_n_get_flags_server(t_boolean_extra *extra, int argc, char **argv)
 {
+	init_extra(extra);
+	if (check_str_in_array(argc, argv, "-h", argc))
+		return ((void)(extra->help = 1));
 	if (check_str_in_array(argc, argv, "-c", argc))
 		extra->print_c_by_c = 1;
-	else
-		extra->print_c_by_c = 0;
 	if (check_str_in_array(argc, argv, "-l", argc))
 	{
 		extra->log_fd = open("server_log.log", O_RDWR | O_CREAT, 0666);

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/10 21:31:04 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/10 21:53:32 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ typedef struct s_rgb
 
 typedef struct s_boolean_extra
 {
+	int					help;
 	int					logged;
 	int					binnary_logged;
 	int					log_fd;
 	int					from_txt;
 	int					t_flag_position;
-	int					str_position;
 	int					print_c_by_c;
-	struct s_rgb		rgb;
 	int					is_rbw;
+	struct s_rgb		rgb;
 }						t_boolean_extra;
 
 typedef struct s_mini_str
@@ -67,13 +67,13 @@ int						send_char(int pid, char c, t_boolean_extra extra);
 void					print_sig_char(siginfo_t *siginfo);
 
 /* EXTRA.C */
-int						invalid_argument(int status);
+int						invalid_argument(char *str);
 void					check_n_get_flags_client(t_boolean_extra *extra,
-							int agrc,
-							char **argv);
-void					check_n_get_flags_server(t_boolean_extra *extra,
-							int agrc,
-							char **argv);
+								int agrc,
+								char **argv);
+void	check_n_get_flags_server(t_boolean_extra *extra,
+								int agrc,
+								char **argv);
 int						check_str_in_array(int argc, char **ar, const char *str,
 							int len_ar);
 void					ft_exit(char *str, int status);
@@ -82,8 +82,8 @@ void					ft_exit(char *str, int status);
 void					print_log(t_boolean_extra extra, unsigned char c);
 
 /* FT_LSTPRINT_EXTRA.C */
-void					ft_lstprint_extra(t_mini_str *lst,
-							t_boolean_extra *extra);
+void	ft_lstprint_extra(t_mini_str *lst,
+						t_boolean_extra *extra);
 void					print_binary(char c, int fd);
 
 /* EXTRA_COLOUR.C */
@@ -99,12 +99,13 @@ void					when_red_top(t_rgb *rgb);
 void					when_green_top(t_rgb *rgb);
 void					when_blue_top(t_rgb *rgb);
 
-
+/* HELP.C */
+void					print_help_client(void);
+void					print_help_server(void);
 
 /* {function_name}.C */
 void					ft_lstclear(t_mini_str **lst);
 void					ft_lstadd_back(t_mini_str **lst, t_mini_str *new);
 t_mini_str				*ft_lstnew(unsigned char c);
-
 
 #endif

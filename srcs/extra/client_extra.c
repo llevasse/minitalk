@@ -6,11 +6,19 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/10 21:01:26 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/10 21:15:42 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minitalk_extra.h"
+
+void	handler(int sig, siginfo_t *siginfo, void *context)
+{
+	if (sig == SIGUSR2)
+		ft_exit("Str printed", 0);
+	(void)context;
+	(void)siginfo;
+}
 
 int	main(int argc, char **argv)
 {
@@ -38,10 +46,3 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-void	handler(int sig, siginfo_t *siginfo, void *context)
-{
-	if (sig == SIGUSR2)
-		ft_exit("Str printed", 0);
-	(void)context;
-	(void)siginfo;
-}

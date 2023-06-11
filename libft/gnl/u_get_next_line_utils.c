@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 10:58:13 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/07 12:55:18 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/11 10:39:02 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,15 @@ size_t	ft_u_strlen(const unsigned char *str)
 unsigned char	*ft_strjoin_free_first(unsigned char *s1, unsigned char *s2)
 {
 	unsigned char	*joined;
-	int		i;
-	int		j;
+	int				i;
+	int				j;
 
 	i = 0;
 	j = 0;
 	if (!s1 || !s2)
 		return (NULL);
-	joined = malloc((ft_u_strlen(s1) + ft_u_strlen(s2)) * sizeof(unsigned char) + 1);
+	joined = malloc((ft_u_strlen(s1) + ft_u_strlen(s2)) * sizeof(unsigned char)
+			+ 1);
 	if (!joined)
 		return (free(s1), NULL);
 	while (s1[i] != '\0')

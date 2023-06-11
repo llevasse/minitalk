@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 10:57:39 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/07 12:54:57 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/11 10:39:35 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 unsigned char	*get_next_line(int fd)
 {
 	unsigned char			buff[BUFFER_SIZE + 1];
-	static unsigned char		*stach[OPEN_MAX];
+	static unsigned char	*stach[OPEN_MAX];
 	unsigned char			*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd > OPEN_MAX || read(fd, buff, 0) != 0)
@@ -44,7 +44,7 @@ unsigned char	*get_next_line(int fd)
 unsigned char	*return_line(unsigned char *stach[OPEN_MAX], int fd)
 {
 	unsigned char	*line;
-	int		i;
+	int				i;
 
 	i = 0;
 	while (stach[fd][i] != '\n' && stach[fd][i])
@@ -56,7 +56,8 @@ unsigned char	*return_line(unsigned char *stach[OPEN_MAX], int fd)
 	return (line);
 }
 
-unsigned char	*stach_empty(unsigned char *stach, int fd, unsigned char buff[BUFFER_SIZE])
+unsigned char	*stach_empty(unsigned char *stach, int fd,
+		unsigned char buff[BUFFER_SIZE])
 {
 	int	count;
 
@@ -74,7 +75,9 @@ unsigned char	*stach_empty(unsigned char *stach, int fd, unsigned char buff[BUFF
 	return (stach);
 }
 
-unsigned char	*check_stach_nl(unsigned char *stach, unsigned char buff[BUFFER_SIZE + 1], int fd)
+unsigned char	*check_stach_nl(unsigned char *stach,
+								unsigned char buff[BUFFER_SIZE + 1],
+								int fd)
 {
 	int	count;
 

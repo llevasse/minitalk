@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/11 10:30:45 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/11 16:28:33 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_sig_char
 	int					shift;
 	unsigned char		c;
 	int					client_pid;
+	unsigned			index;
 	t_mini_str			*mini_str;
 	t_boolean_extra		extra;
 }						t_sig_char;

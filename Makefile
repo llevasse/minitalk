@@ -6,11 +6,11 @@
 #    By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/10 12:10:12 by llevasse          #+#    #+#              #
-#    Updated: 2023/06/10 21:50:50 by llevasse         ###   ########.fr        #
+#    Updated: 2023/06/11 15:06:34 by llevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FLAGS				=	-Wall -Werror -Wextra
+FLAGS				=	-g -Wall -Werror -Wextra
 
 CC					=	cc
 

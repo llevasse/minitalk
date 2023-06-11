@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/10 21:53:32 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/11 09:56:29 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 typedef struct s_rgb
 {
+	int					offset;
 	int					r;
 	int					r_top;
 	char				*r_str;
@@ -88,7 +89,7 @@ void					print_binary(char c, int fd);
 
 /* EXTRA_COLOUR.C */
 void					free_rgb(t_rgb *rgb, char *str);
-void					init_rgb(t_boolean_extra *extra);
+void					init_rgb(t_rgb *rgb);
 void					get_rgb_as_str(t_rgb *rgb);
 char					*get_escape_c(t_rgb *rgb);
 void					print_color(t_rgb *rgb);

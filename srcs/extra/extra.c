@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:10:30 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/11 09:48:46 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/11 10:23:46 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,4 @@ void	check_n_get_flags_server(t_boolean_extra *extra, int argc, char **argv)
 	extra->is_rbw = 0;
 	if (check_str_in_array(argc, argv, "-rbw", argc))
 		(void)(init_rgb(&extra->rgb), extra->is_rbw = 1);
-}
-
-void	ft_exit(char *str, int status)
-{
-	ft_printf("%s\n", str);
-	exit(status);
 }

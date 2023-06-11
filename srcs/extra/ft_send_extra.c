@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:26:40 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/05 15:53:50 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/11 22:57:57 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,19 @@
 
 void	send_file(int pid, int fd, t_boolean_extra extra)
 {
-	char	*str;
+	unsigned char	str[1];
+	int				count;
 
-	str = get_next_line(fd);
-	if (!str)
+	count = read(fd, str, 1);
+	if (!str[0] || count <= 0)
 		return ((void)(close(fd), ft_exit("Unable to open file", 1)));
 	if (extra.binnary_logged == 1)
 		write(extra.log_fd, "{", 1);
-	send_str(pid, str, extra);
-	while (str)
+	send_char(pid, (char)str[0], extra);
+	while (count > 0)
 	{
-		free(str);
-		str = NULL;
-		str = get_next_line(fd);
-		if (!str)
-			break ;
-		send_str(pid, str, extra);
+		send_char(pid, (char)str[0], extra);
+		count = read(fd, str, 1);
 	}
 	send_char(pid, '\n', extra);
 	send_char(pid, '\0', extra);
@@ -50,7 +47,7 @@ void	send_str(int pid, char *str, t_boolean_extra extra)
 	{
 		send_char(pid, '\n', extra);
 		send_char(pid, '\0', extra);
-	}	
+	}
 }
 
 int	send_char(int pid, char c, t_boolean_extra extra)

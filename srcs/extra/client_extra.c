@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/11 19:40:21 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/11 20:33:24 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int		g_ended_send;
 void	handler(int sig, siginfo_t *siginfo, void *context)
 {
 	if (sig == SIGUSR2 && g_ended_send)
-		ft_exit("Str printed", 0);
+		ft_exit("Str printed :)", 0);
 	else if (sig == SIGUSR2)
-		ft_exit("Error while sending", 0);
+		ft_exit("Error while sending signals :(", 1);
 	(void)context;
 	(void)siginfo;
 }

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/11 20:27:39 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/11 20:31:15 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,5 @@ int	main(int argc, char **argv)
 		ft_exit("Error in sending signal", 1);
 	while (1)
 		;
+	return (0);
 }

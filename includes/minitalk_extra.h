@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/12 15:41:27 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/12 17:57:57 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_mini_str
 
 typedef struct s_sig_char
 {
+	int					receive_test;
 	int					shift;
 	unsigned char		c;
 	int					client_pid;
@@ -67,6 +68,9 @@ typedef struct s_sig_char
 void					send_file(int pid, int fd, t_boolean_extra *extra);
 void					send_str(int pid, char *str, t_boolean_extra extra);
 int						send_char(int pid, char c, t_boolean_extra extra);
+
+/* CLIENT_EXTRA.C */
+void					test_sig(int pid);
 
 /* SERVER_EXTRA.C */
 void					print_sig_char(siginfo_t *siginfo);

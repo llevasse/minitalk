@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/12 11:38:10 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/12 21:06:07 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ struct s_sig_char	g_sig_char;
 
 void	sig_handler(int sig, siginfo_t *siginfo, void *context)
 {
+	if (g_sig_char.receive_test == 1 && sig == SIGUSR1)
+		return ((void)(g_sig_char.receive_test = 0));
 	g_sig_char.client_pid = siginfo->si_pid;
 	if (sig == SIGUSR2)
 		g_sig_char.c |= (1 << g_sig_char.shift);
@@ -49,6 +51,7 @@ void	print_sig_char(siginfo_t *siginfo)
 			print_single_char(g_sig_char.c);
 		if (g_sig_char.c == '\0')
 		{
+			g_sig_char.receive_test = 1;
 			if (g_sig_char.extra.print_c_by_c == 0)
 				ft_lstprint_extra(g_sig_char.mini_str, &g_sig_char.extra);
 			g_sig_char.mini_str = NULL;
@@ -71,6 +74,7 @@ int	main(int argc, char **argv)
 	pid = getpid();
 	ft_printf("pid : %i\n", pid);
 	check_n_get_flags_server(&extra, argc, argv);
+	g_sig_char.receive_test = 1;
 	g_sig_char.shift = 7;
 	g_sig_char.mini_str = NULL;
 	g_sig_char.extra = extra;

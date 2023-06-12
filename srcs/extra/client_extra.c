@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/12 15:42:38 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/12 21:07:03 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,17 @@ void	print_next_args(int argc, char **argv, int pid)
 		while ((g_extra.print_next_args + g_extra.line_index) < argc)
 		{
 			send_str(pid, argv[(g_extra.print_next_args
-					+ g_extra.line_index++)], g_extra);
+						+ g_extra.line_index++)], g_extra);
 			send_char(pid, '\n', g_extra);
 		}
 		send_char(pid, '\n', g_extra);
 	}
+}
+
+void	test_sig(int pid)
+{
+	if (kill(pid, SIGUSR1) == -1)
+		ft_exit("Error while testing signal, check the pid", 1);
 }
 
 int	main(int argc, char **argv)
@@ -55,6 +61,7 @@ int	main(int argc, char **argv)
 	if (g_extra.help == 1)
 		print_help_client();
 	pid = ft_atoi(argv[1]);
+	test_sig(pid);
 	sa.sa_sigaction = &handler;
 	sa.sa_flags = SA_SIGINFO;
 	sigemptyset(&sa.sa_mask);

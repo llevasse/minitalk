@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:26:40 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/12 12:15:21 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/12 13:18:20 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,11 @@ void	send_file(int pid, int fd, t_boolean_extra *extra)
 	while (str)
 	{
 		send_str(pid, (char *)str, *extra);
-		extra->line_index++;
 		free(str);
+		extra->line_index++;
 		str = get_next_line(fd);
 	}
-	extra->file_ended = 1;
 	send_char(pid, '\n', *extra);
-	send_char(pid, '\0', *extra);
 	close(fd);
 }
 

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/12 12:09:44 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/12 12:43:24 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_rgb
 
 typedef struct s_boolean_extra
 {
+	int					print_next_args;
 	int					file_ended;
 	int					line_index;
 	int					help;

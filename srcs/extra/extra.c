@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:10:30 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/12 12:11:21 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/12 13:18:14 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	check_str_in_array(int argc, char **ar, const char *str, int len_ar)
 
 void	init_extra(t_boolean_extra *extra)
 {
+	extra->print_next_args = 0;
 	extra->file_ended = 1;
 	extra->line_index = 0;
 	extra->help = 0;
@@ -61,15 +62,6 @@ void	check_n_get_flags_client(t_boolean_extra *extra, int argc, char **argv)
 	init_extra(extra);
 	if (check_str_in_array(argc, argv, "-h", argc))
 		return ((void)(extra->help = 1));
-	if (check_str_in_array(argc, argv, "-t", argc))
-	{
-		extra->file_ended = 0;
-		extra->from_txt = 1;
-		extra->t_flag_position = check_str_in_array(argc, argv, "-t", argc);
-		if (!ft_strnstr(argv[extra->t_flag_position], ".txt",
-				ft_strlen(argv[extra->t_flag_position])))
-			invalid_argument(0);
-	}
 	if (check_str_in_array(argc, argv, "-l", argc))
 	{
 		extra->log_fd = open("client_log.log", O_RDWR | O_CREAT, 0666);
@@ -81,6 +73,17 @@ void	check_n_get_flags_client(t_boolean_extra *extra, int argc, char **argv)
 		extra->logged = 1;
 		extra->binnary_logged = 1;
 	}
+	if (check_str_in_array(argc, argv, "-t", argc))
+	{
+		extra->file_ended = 0;
+		extra->from_txt = 1;
+		extra->t_flag_position = check_str_in_array(argc, argv, "-t", argc);
+		if (!ft_strnstr(argv[extra->t_flag_position], ".txt",
+				ft_strlen(argv[extra->t_flag_position])))
+			invalid_argument(0);
+	}
+	if (check_str_in_array(argc, argv, "-p", argc))
+		extra->print_next_args = check_str_in_array(argc, argv, "-p", argc);
 }
 
 void	check_n_get_flags_server(t_boolean_extra *extra, int argc, char **argv)

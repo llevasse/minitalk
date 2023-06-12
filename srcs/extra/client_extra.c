@@ -6,13 +6,13 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/12 12:14:29 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/12 13:23:26 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minitalk_extra.h"
 
-struct s_boolean_extra g_extra;
+struct s_boolean_extra	g_extra;
 
 void	handler(int sig, siginfo_t *siginfo, void *context)
 {
@@ -22,6 +22,21 @@ void	handler(int sig, siginfo_t *siginfo, void *context)
 		ft_printf("Line #%d printed\n", g_extra.line_index);
 	(void)context;
 	(void)siginfo;
+}
+
+void	print_next_args(int argc, char **argv, int pid)
+{
+	g_extra.file_ended = 0;
+	if (g_extra.from_txt && (g_extra.t_flag_position < g_extra.print_next_args))
+		send_file(pid, open(argv[g_extra.t_flag_position], O_RDONLY), &g_extra);
+	g_extra.line_index = 0;
+	while ((g_extra.print_next_args + g_extra.line_index) < argc)
+	{
+		send_str(pid, argv[(g_extra.print_next_args + g_extra.line_index++)],
+				g_extra);
+		send_char(pid, '\n', g_extra);
+	}
+	send_char(pid, '\n', g_extra);
 }
 
 int	main(int argc, char **argv)
@@ -41,11 +56,12 @@ int	main(int argc, char **argv)
 	sigemptyset(&sa.sa_mask);
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
-	if (g_extra.from_txt)
-		send_file(pid, open(argv[g_extra.t_flag_position], O_RDONLY), &g_extra);
-	else
+	if (g_extra.print_next_args)
+		print_next_args(argc, argv, pid);
+	if (!g_extra.print_next_args)
 		send_str(pid, argv[argc - 1], g_extra);
 	g_extra.file_ended = 1;
+	send_char(pid, '\0', g_extra);
 	while (1)
 		;
 	return (0);

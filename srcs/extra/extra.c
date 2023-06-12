@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:10:30 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/12 13:18:14 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/12 15:17:25 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_str_in_array(int argc, char **ar, const char *str, int len_ar)
 	int	i;
 
 	i = 0;
-	if (len_ar > argc)
+	if (len_ar > argc || !len_ar)
 		len_ar = argc;
 	while (i < len_ar)
 	{
@@ -60,20 +60,11 @@ void	init_extra(t_boolean_extra *extra)
 void	check_n_get_flags_client(t_boolean_extra *extra, int argc, char **argv)
 {
 	init_extra(extra);
-	if (check_str_in_array(argc, argv, "-h", argc))
+	if (check_str_in_array(argc, argv, "-h", 3))
 		return ((void)(extra->help = 1));
-	if (check_str_in_array(argc, argv, "-l", argc))
-	{
-		extra->log_fd = open("client_log.log", O_RDWR | O_CREAT, 0666);
-		extra->logged = 1;
-	}
-	else if (check_str_in_array(argc, argv, "-lb", argc))
-	{
-		extra->log_fd = open("client_log.log", O_RDWR | O_CREAT, 0666);
-		extra->logged = 1;
-		extra->binnary_logged = 1;
-	}
-	if (check_str_in_array(argc, argv, "-t", argc))
+	if (check_str_in_array(argc, argv, "-p", argc))
+		extra->print_next_args = check_str_in_array(argc, argv, "-p", argc);
+	if (check_str_in_array(argc, argv, "-t", extra->print_next_args))
 	{
 		extra->file_ended = 0;
 		extra->from_txt = 1;
@@ -82,8 +73,19 @@ void	check_n_get_flags_client(t_boolean_extra *extra, int argc, char **argv)
 				ft_strlen(argv[extra->t_flag_position])))
 			invalid_argument(0);
 	}
-	if (check_str_in_array(argc, argv, "-p", argc))
-		extra->print_next_args = check_str_in_array(argc, argv, "-p", argc);
+	if (check_str_in_array(argc, argv, "-l", extra->print_next_args))
+	{
+		extra->log_fd = open("client_log.log",
+								O_RDWR | O_CREAT,
+								0666);
+		extra->logged = 1;
+	}
+	else if (check_str_in_array(argc, argv, "-lb", extra->print_next_args))
+	{
+		extra->log_fd = open("client_log.log", O_RDWR | O_CREAT, 0666);
+		extra->logged = 1;
+		extra->binnary_logged = 1;
+	}
 }
 
 void	check_n_get_flags_server(t_boolean_extra *extra, int argc, char **argv)

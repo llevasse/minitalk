@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/12 15:36:59 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/12 15:42:38 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void	handler(int sig, siginfo_t *siginfo, void *context)
 void	print_next_args(int argc, char **argv, int pid)
 {
 	g_extra.file_ended = 0;
-	if (g_extra.from_txt && (g_extra.t_flag_position < g_extra.print_next_args || !g_extra.print_c_by_c))
+	if (g_extra.from_txt && (g_extra.t_flag_position < g_extra.print_next_args
+			|| !g_extra.print_c_by_c))
 		send_file(pid, open(argv[g_extra.t_flag_position], O_RDONLY), &g_extra);
 	g_extra.line_index = 0;
 	if (g_extra.print_next_args)
@@ -35,7 +36,7 @@ void	print_next_args(int argc, char **argv, int pid)
 		while ((g_extra.print_next_args + g_extra.line_index) < argc)
 		{
 			send_str(pid, argv[(g_extra.print_next_args
-						+ g_extra.line_index++)], g_extra);
+					+ g_extra.line_index++)], g_extra);
 			send_char(pid, '\n', g_extra);
 		}
 		send_char(pid, '\n', g_extra);

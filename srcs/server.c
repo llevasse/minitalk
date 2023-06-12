@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/31 22:15:01 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/12 21:13:57 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,20 @@ struct s_sig_char	g_sig_char;
 
 void	sig_handler(int sig, siginfo_t *siginfo, void *context)
 {
+	if (g_sig_char.receive_test == 1 && sig == SIGUSR1)
+		return ((void)(g_sig_char.receive_test = 0));
 	g_sig_char.client_pid = siginfo->si_pid;
 	if (sig == SIGUSR2)
 		g_sig_char.c |= (1 << g_sig_char.shift);
 	g_sig_char.shift--;
+	print_sig_char(siginfo);
+	if (kill(g_sig_char.client_pid, SIGUSR1) == -1)
+		ft_exit("Error while sending signals :(", 0);
+	(void)context;
+}
+
+void	print_sig_char(siginfo_t *siginfo)
+{
 	if (g_sig_char.shift < 0)
 	{
 		if (!g_sig_char.mini_str)
@@ -30,17 +40,14 @@ void	sig_handler(int sig, siginfo_t *siginfo, void *context)
 		{
 			ft_lstprint(g_sig_char.mini_str);
 			g_sig_char.mini_str = NULL;
+			g_sig_char.receive_test = 1;
 			if (kill(siginfo->si_pid, SIGUSR2) == -1)
-				ft_exit("Error in sending signal", 0);
+				ft_exit("Error while sending signals :(", 0);
 		}
 		g_sig_char.shift = 7;
 		g_sig_char.c = 0;
 	}
-	if (kill(g_sig_char.client_pid, SIGUSR1) == -1)
-		ft_exit("Error in sending signal", 0);
-	(void)context;
 }
-
 void	ft_exit(char *str, int status)
 {
 	ft_printf("%s\n", str);
@@ -53,6 +60,7 @@ int	main(void)
 	__pid_t				pid;
 
 	pid = getpid();
+	g_sig_char.receive_test = 1;
 	g_sig_char.shift = 7;
 	g_sig_char.mini_str = NULL;
 	sa.sa_sigaction = &sig_handler;
@@ -62,7 +70,7 @@ int	main(void)
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
 	if (sigaction(SIGUSR2, &sa, NULL) < 0 || sigaction(SIGUSR1, &sa, NULL) < 0)
-		ft_exit("Error in sending signal", 0);
+		ft_exit("Error in sending signal :(", 0);
 	while (1)
 		;
 }

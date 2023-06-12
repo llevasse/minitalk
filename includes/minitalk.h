@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/11 16:28:09 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/12 21:11:56 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@
 # include <fcntl.h>
 # include <signal.h>
 
+void					test_sig(int pid);
 void					send_str(int pid, char *str);
 int						send_char(int pid, char c);
 void					send_file(int pid, int fd);
 void					ft_exit(char *str, int status);
 int						use_file(int pid, char **argv);
 void					handler(int sig, siginfo_t *siginfo, void *context);
+void					print_sig_char(siginfo_t *siginfo);
 
 typedef struct s_mini_str
 {
@@ -32,6 +34,7 @@ typedef struct s_mini_str
 
 typedef struct s_sig_char
 {
+	int					receive_test;
 	int					shift;
 	unsigned char		c;
 	int					client_pid;

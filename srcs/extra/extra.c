@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:10:30 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/12 15:31:34 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/12 15:41:36 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,24 +74,6 @@ void	check_n_get_flags_client(t_boolean_extra *extra, int argc, char **argv)
 			invalid_argument(0);
 	}
 	check_log_flags(extra, argc, argv, "client_log.log");
-}
-
-void	check_log_flags(t_boolean_extra *extra, int argc, char **argv, char *file_name)
-{
-	if (check_str_in_array(argc, argv, "-l", extra->print_next_args))
-	{
-		extra->log_fd = open(file_name,
-								O_RDWR | O_CREAT,
-								0666);
-		extra->logged = 1;
-	}
-	else if (check_str_in_array(argc, argv, "-lb", extra->print_next_args))
-	{
-		extra->log_fd = open(file_name, O_RDWR | O_CREAT, 0666);
-		extra->logged = 1;
-		extra->binnary_logged = 1;
-		write(extra->log_fd, "{", 1);
-	}
 }
 
 void	check_n_get_flags_server(t_boolean_extra *extra, int argc, char **argv)

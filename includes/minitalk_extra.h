@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/12 12:43:24 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/12 15:24:15 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,15 @@ void					print_sig_char(siginfo_t *siginfo);
 
 /* EXTRA.C */
 int						invalid_argument(char *str);
-void					check_n_get_flags_client(t_boolean_extra *extra,
-							int agrc,
-							char **argv);
-void					check_n_get_flags_server(t_boolean_extra *extra,
-							int agrc,
-							char **argv);
+void					check_log_flags(t_boolean_extra *extra, int argc,
+							char **argv, char *file_name);
+
+void	check_n_get_flags_client(t_boolean_extra *extra,
+								int agrc,
+								char **argv);
+void	check_n_get_flags_server(t_boolean_extra *extra,
+								int agrc,
+								char **argv);
 int						check_str_in_array(int argc, char **ar, const char *str,
 							int len_ar);
 void					ft_exit(char *str, int status);
@@ -87,8 +90,8 @@ void					ft_exit(char *str, int status);
 void					print_log(t_boolean_extra extra, unsigned char c);
 
 /* FT_LSTPRINT_EXTRA.C */
-void					ft_lstprint_extra(t_mini_str *lst,
-							t_boolean_extra *extra);
+void	ft_lstprint_extra(t_mini_str *lst,
+						t_boolean_extra *extra);
 void					print_binary(char c, int fd);
 
 /* EXTRA_COLOUR.C */

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:26:40 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/12 15:19:29 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/12 15:28:54 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	send_file(int pid, int fd, t_boolean_extra *extra)
 	str = get_next_line(fd);
 	if (!str)
 		return ((void)(close(fd), ft_exit("Unable to open file", 1)));
-	if (extra->binnary_logged == 1)
-		write(extra->log_fd, "{", 1);
 	while (str)
 	{
 		send_str(pid, (char *)str, *extra);

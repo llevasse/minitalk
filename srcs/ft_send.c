@@ -6,29 +6,11 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:26:40 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/29 23:14:45 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/12 12:13:53 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
-
-void	send_file(int pid, int fd)
-{
-	char	*str;
-
-	str = get_next_line(fd);
-	send_str(pid, str);
-	while (str)
-	{
-		free(str);
-		str = NULL;
-		str = get_next_line(fd);
-		if (!str)
-			break ;
-		send_str(pid, str);
-	}
-	close(fd);
-}
 
 void	send_str(int pid, char *str)
 {

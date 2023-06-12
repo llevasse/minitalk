@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/11 16:28:33 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/12 12:09:44 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct s_rgb
 
 typedef struct s_boolean_extra
 {
+	int					file_ended;
+	int					line_index;
 	int					help;
 	int					logged;
 	int					binnary_logged;
@@ -61,7 +63,7 @@ typedef struct s_sig_char
 }						t_sig_char;
 
 /* FT_SEND_EXTRA.C */
-void					send_file(int pid, int fd, t_boolean_extra extra);
+void					send_file(int pid, int fd, t_boolean_extra *extra);
 void					send_str(int pid, char *str, t_boolean_extra extra);
 int						send_char(int pid, char c, t_boolean_extra extra);
 

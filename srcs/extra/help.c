@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 19:13:00 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/11 10:26:57 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/12 11:54:50 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ in server_log.log. \
 void	print_help_client(void)
 {
 	ft_printf("\n%-10sPrint this helper. \
-				\n%-10sGet input from a file (.txt). \
+				\n%-10sGet input from a .txt file (but will have to print line by line). \
 				\n%-10sPrint read characters in client_log.log. \
 				\n%-10sPrint read characters (in binary and ASCII) \
 in client_log.log.\n\n",

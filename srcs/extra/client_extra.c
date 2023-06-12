@@ -6,20 +6,20 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/11 20:33:24 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/12 12:14:29 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minitalk_extra.h"
 
-int		g_ended_send;
+struct s_boolean_extra g_extra;
 
 void	handler(int sig, siginfo_t *siginfo, void *context)
 {
-	if (sig == SIGUSR2 && g_ended_send)
+	if (sig == SIGUSR2 && g_extra.file_ended)
 		ft_exit("Str printed :)", 0);
 	else if (sig == SIGUSR2)
-		ft_exit("Error while sending signals :(", 1);
+		ft_printf("Line #%d printed\n", g_extra.line_index);
 	(void)context;
 	(void)siginfo;
 }
@@ -28,14 +28,12 @@ int	main(int argc, char **argv)
 {
 	__pid_t				pid;
 	struct sigaction	sa;
-	t_boolean_extra		extra;
 
 	if (argc <= 2)
 		invalid_argument(argv[1]);
-	extra.log_fd = -1;
-	g_ended_send = 0;
-	check_n_get_flags_client(&extra, argc, argv);
-	if (extra.help == 1)
+	g_extra.log_fd = -1;
+	check_n_get_flags_client(&g_extra, argc, argv);
+	if (g_extra.help == 1)
 		print_help_client();
 	pid = ft_atoi(argv[1]);
 	sa.sa_sigaction = &handler;
@@ -43,11 +41,11 @@ int	main(int argc, char **argv)
 	sigemptyset(&sa.sa_mask);
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
-	if (extra.from_txt)
-		send_file(pid, open(argv[extra.t_flag_position], O_RDONLY), extra);
+	if (g_extra.from_txt)
+		send_file(pid, open(argv[g_extra.t_flag_position], O_RDONLY), &g_extra);
 	else
-		send_str(pid, argv[argc - 1], extra);
-	g_ended_send = 1;
+		send_str(pid, argv[argc - 1], g_extra);
+	g_extra.file_ended = 1;
 	while (1)
 		;
 	return (0);

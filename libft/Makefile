@@ -6,7 +6,7 @@
 #    By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 16:33:32 by leo               #+#    #+#              #
-#    Updated: 2023/05/31 12:58:51 by llevasse         ###   ########.fr        #
+#    Updated: 2023/06/12 12:17:03 by llevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ STR_FILES		=	./str/ft_strchr.c \
 					./str/ft_split.c \
 					./str/ft_striteri.c \
 					./str/ft_strncmp.c \
+					./str/ft_strcmp.c \
 					./str/ft_strrchr.c \
 					./str/ft_tolower.c \
 					./str/ft_strjoin.c \
@@ -65,8 +66,8 @@ PRINTF_FILES	=	./ft_printf/flags/print_precision.c \
 					./ft_printf/ft_printf.c
 
 
-FILES_GNL		=	./gnl/get_next_line.c \
-					./gnl/get_next_line_utils.c
+FILES_GNL		=	./gnl/u_get_next_line.c \
+					./gnl/u_get_next_line_utils.c
 
 OBJS			=	$(PRINTING_FILES:.c=.o) \
 					$(STR_FILES:.c=.o) \

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/12 15:41:27 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:06:51 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_mini_str
 
 typedef struct s_sig_char
 {
+	int					nb_null_received;
 	int					shift;
 	unsigned char		c;
 	int					client_pid;

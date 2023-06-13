@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/13 14:47:31 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:09:20 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@ void	handler(int sig, siginfo_t *siginfo, void *context)
 		ft_printf("Line #%d printed\n", g_extra.line_index);
 	(void)context;
 	(void)siginfo;
+}
+
+void	test_serv(int pid)
+{
+	if (!send_char(pid, '\0', g_extra))
+		ft_exit("Enable to make connexion to server, check pid :(", 1);
 }
 
 void	print_next_args(int argc, char **argv, int pid)
@@ -62,6 +68,7 @@ int	main(int argc, char **argv)
 	sigemptyset(&sa.sa_mask);
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
+	test_serv(pid);
 	if (g_extra.print_next_args || g_extra.from_txt)
 		print_next_args(argc, argv, pid);
 	else

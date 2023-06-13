@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/13 15:10:25 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:53:21 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,9 @@ void	print_sig_char(siginfo_t *siginfo)
 int	main(int argc, char **argv)
 {
 	struct sigaction	sa;
-	__pid_t				pid;
 	t_boolean_extra		extra;
 
-	if (argc > 1 && !ft_strcmp("-h", argv[1]))
-		print_help_server();
-	pid = getpid();
-	ft_printf("pid : %i\n", pid);
-	check_n_get_flags_server(&extra, argc, argv);
-	g_sig_char.shift = 7;
-	g_sig_char.mini_str = NULL;
-	g_sig_char.extra = extra;
+	init_server(&extra, argc, argv, &g_sig_char);
 	sa.sa_sigaction = &sig_handler;
 	sa.sa_flags = SA_SIGINFO;
 	sigemptyset(&sa.sa_mask);

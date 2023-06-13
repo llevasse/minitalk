@@ -6,13 +6,13 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/13 17:19:19 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:46:12 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minitalk_extra.h"
 
-struct s_boolean_extra	g_extra;
+struct s_extra	g_extra;
 
 void	handler(int sig, siginfo_t *siginfo, void *context)
 {

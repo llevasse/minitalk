@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/13 14:57:18 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:06:43 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void					send_file(int pid, int fd);
 void					ft_exit(char *str, int status);
 int						use_file(int pid, char **argv);
 void					handler(int sig, siginfo_t *siginfo, void *context);
+void					print_sig_char(siginfo_t *siginfo);
 
 typedef struct s_mini_str
 {

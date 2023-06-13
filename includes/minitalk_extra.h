@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/13 15:06:51 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:10:17 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,10 @@ int						send_char(int pid, char c, t_boolean_extra extra);
 /* SERVER_EXTRA.C */
 void					print_sig_char(siginfo_t *siginfo);
 
+/* INIT.C */
+void					init_rgb(t_rgb *rgb);
+void					init_extra(t_boolean_extra *extra);
+
 /* EXTRA.C */
 int						invalid_argument(char *str);
 
@@ -97,7 +101,6 @@ void					print_binary(char c, int fd);
 
 /* EXTRA_COLOUR.C */
 void					free_rgb(t_rgb *rgb, char *str);
-void					init_rgb(t_rgb *rgb);
 void					get_rgb_as_str(t_rgb *rgb);
 char					*get_escape_c(t_rgb *rgb);
 void					print_color(t_rgb *rgb);

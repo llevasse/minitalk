@@ -6,11 +6,23 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:08:29 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/13 17:10:16 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:19:26 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minitalk_extra.h"
+
+void	init_client(t_boolean_extra *extra, int argc, char **argv, int *pid)
+{
+	check_n_get_flags_client(extra, argc, argv);
+	if (extra->help)
+		print_help_client();
+	if (argc <= 2)
+		invalid_argument(argv[1]);
+	*pid = ft_atoi(argv[1]);
+	if (*pid == 0)
+		ft_exit("Invalid pid", 1);
+}
 
 void	init_rgb(t_rgb *rgb)
 {
@@ -31,7 +43,7 @@ void	init_extra(t_boolean_extra *extra)
 	extra->help = 0;
 	extra->logged = 0;
 	extra->binnary_logged = 0;
-	extra->log_fd = 0;
+	extra->log_fd = -1;
 	extra->from_txt = 0;
 	extra->t_flag_position = 0;
 	extra->print_c_by_c = 0;

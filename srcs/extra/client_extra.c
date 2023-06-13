@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/13 15:09:20 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:19:19 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,7 @@ int	main(int argc, char **argv)
 	__pid_t				pid;
 	struct sigaction	sa;
 
-	if (argc <= 2)
-		invalid_argument(argv[1]);
-	g_extra.log_fd = -1;
-	check_n_get_flags_client(&g_extra, argc, argv);
-	if (g_extra.help == 1)
-		print_help_client();
-	pid = ft_atoi(argv[1]);
-	if (pid == 0)
-		ft_exit("Invalid pid", 1);
+	init_client(&g_extra, argc, argv, &pid);
 	sa.sa_sigaction = &handler;
 	sa.sa_flags = SA_SIGINFO;
 	sigemptyset(&sa.sa_mask);

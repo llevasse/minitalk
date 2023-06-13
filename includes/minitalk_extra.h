@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/13 17:10:17 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/13 17:18:32 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ void					print_sig_char(siginfo_t *siginfo);
 /* INIT.C */
 void					init_rgb(t_rgb *rgb);
 void					init_extra(t_boolean_extra *extra);
+void					init_client(t_boolean_extra *extra, int argc,
+							char **argv, int *pid);
 
 /* EXTRA.C */
 int						invalid_argument(char *str);

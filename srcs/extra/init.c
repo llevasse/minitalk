@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:08:29 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/13 21:56:16 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/13 22:23:16 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_client(t_boolean_extra *extra, int argc, char **argv, int *pid)
 		ft_exit("Invalid pid", 1);
 }
 
-void	init_server(t_boolean_extra *extra, int argc, char **argv, t_sig_char *sig_char)
+void	init_server(t_boolean_extra *extra, int argc, char **argv)
 {
 	__pid_t	pid;
 
@@ -33,9 +33,6 @@ void	init_server(t_boolean_extra *extra, int argc, char **argv, t_sig_char *sig_
 	pid = getpid();
 	ft_printf("pid : %i\n", pid);
 	check_n_get_flags_server(extra, argc, argv);
-	sig_char = ft_new_sig_c(pid, extra, 0);
-	if (!sig_char)
-		ft_exit("Error initialising malloc", 1);
 }
 
 void	init_rgb(t_rgb *rgb)

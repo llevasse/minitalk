@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/13 22:00:42 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/13 22:22:55 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void					init_extra(t_boolean_extra *extra);
 void					init_client(t_boolean_extra *extra, int argc,
 							char **argv, int *pid);
 void					init_server(t_boolean_extra *extra, int argc,
-							char **argv, t_sig_char *sig_char);
+							char **argv);
 
 /* EXTRA.C */
 int						invalid_argument(char *str);

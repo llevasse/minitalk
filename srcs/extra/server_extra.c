@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/13 22:12:04 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/13 22:23:50 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,10 @@ int	main(int argc, char **argv)
 	struct sigaction	sa;
 	t_boolean_extra		extra;
 
-	init_server(&extra, argc, argv, g_sig_char);
+	init_server(&extra, argc, argv);
+	g_sig_char = ft_new_sig_c(getpid(), &extra, 0);
+	if (!g_sig_char)
+		ft_exit("Error initialising malloc", 1);
 	sa.sa_sigaction = &sig_handler;
 	sa.sa_flags = SA_SIGINFO;
 	sigemptyset(&sa.sa_mask);

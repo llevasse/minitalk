@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:08:29 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/13 17:53:48 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/13 21:56:16 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	init_server(t_boolean_extra *extra, int argc, char **argv, t_sig_char *sig_
 	pid = getpid();
 	ft_printf("pid : %i\n", pid);
 	check_n_get_flags_server(extra, argc, argv);
-	sig_char->shift = 7;
-	sig_char->mini_str = NULL;
-	sig_char->extra = *extra;
+	sig_char = ft_new_sig_c(pid, extra, 0);
+	if (!sig_char)
+		ft_exit("Error initialising malloc", 1);
 }
 
 void	init_rgb(t_rgb *rgb)

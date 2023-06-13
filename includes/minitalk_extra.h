@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/13 17:52:51 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/13 22:00:42 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ typedef struct s_sig_char
 	int					shift;
 	unsigned char		c;
 	int					client_pid;
-	unsigned			index;
+	unsigned int		index_sig_char;
 	t_mini_str			*mini_str;
-	t_boolean_extra		extra;
-	struct s_sig_char			*next;
+	t_boolean_extra		*extra;
+	struct s_sig_char	*next;
 }						t_sig_char;
 
 /* FT_SEND_EXTRA.C */
@@ -124,5 +124,7 @@ void					print_help_server(void);
 void					ft_lstclear(t_mini_str **lst);
 void					ft_lstadd_back(t_mini_str **lst, t_mini_str *new);
 t_mini_str				*ft_lstnew(unsigned char c);
+t_sig_char				*ft_new_sig_c(int pid, t_boolean_extra *extra,
+							unsigned index_sig);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/12 21:14:15 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/12 12:32:57 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	pid = ft_atoi(argv[1]);
-	test_sig(pid);
 	sa.sa_sigaction = &handler;
 	sa.sa_flags = SA_SIGINFO;
 	sigemptyset(&sa.sa_mask);
@@ -39,16 +38,10 @@ int	main(int argc, char **argv)
 	return (1);
 }
 
-void	test_sig(int pid)
-{
-	if (kill(pid, SIGUSR1) == -1)
-		ft_exit("Error while testing signal, check the pid", 1);
-}
-
 void	handler(int sig, siginfo_t *siginfo, void *context)
 {
 	if (sig == SIGUSR2)
-		ft_exit("Str printed :)", 0);
+		ft_exit("Str printed", 0);
 	(void)context;
 	(void)siginfo;
 }

@@ -6,7 +6,7 @@
 #    By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/10 12:10:12 by llevasse          #+#    #+#              #
-#    Updated: 2023/06/14 14:25:52 by llevasse         ###   ########.fr        #
+#    Updated: 2023/06/13 17:10:41 by llevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,10 @@ CLIENT_FILES		=	srcs/client.c \
 						srcs/ft_send.c
 LIST_FILES			=	./srcs/list/ft_lstnew.c \
 						./srcs/list/ft_lstadd_back.c \
+						./srcs/list/ft_lstsize.c \
+						./srcs/list/ft_lstlast.c \
 						./srcs/list/ft_lstclear.c \
-						./srcs/list/ft_lstprint.c \
-						./srcs/list/ft_new_sig_c.c \
-						./srcs/list/ft_add_back_sig_c.c \
-						./srcs/list/ft_clear_sig_c.c \
-						./srcs/list/ft_del_one_sig_c.c
+						./srcs/list/ft_lstprint.c
 
 
 EXTRA_SERV_FILES	=	srcs/extra/server_extra.c

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/14 14:57:34 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/14 16:41:24 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,20 @@ void	print_sig_char(siginfo_t *siginfo, t_sig_char *sig_char)
 				if (sig_char->extra->print_c_by_c == 0)
 					ft_lstprint_extra(sig_char->mini_str, sig_char->extra);
 				if (kill(sig_char->client_pid, SIGUSR2) == -1)
-					ft_exit("Error in sending signal :(", 1);
+					(void)(free(g_sig_char),
+							ft_exit("Error in sending SIGUSR2 :(", 1));
 				sig_char->mini_str = NULL;
 				ft_del_one_sig_c(g_sig_char, sig_char->client_pid);
 			}
 		}
-		sig_char->shift = 7;
-		sig_char->c = 0;
+		if (sig_char)
+		{
+			sig_char->shift = 7;
+			sig_char->c = 0;
+		}
 	}
 	else if (kill(sig_char->client_pid, SIGUSR1) == -1)
-		ft_exit("Error while sending signal :(", 1);
+		(void)(free(g_sig_char), ft_exit("Error while sending SIGUSR1 :(", 1));
 	(void)siginfo;
 }
 
@@ -81,6 +85,7 @@ int	main(int argc, char **argv)
 
 	init_server(&extra, argc, argv);
 	g_sig_char = ft_new_sig_c(getpid(), &extra, 0);
+	g_sig_char->extra->pid = getpid();
 	if (!g_sig_char)
 		ft_exit("Error initialising malloc", 1);
 	sa.sa_sigaction = &sig_handler;

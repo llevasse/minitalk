@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/14 14:16:22 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/14 15:07:34 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_extra
 	int					print_c_by_c;
 	int					is_rbw;
 	struct s_rgb		rgb;
+	int					pid;
 }						t_boolean_extra;
 
 typedef struct s_mini_str

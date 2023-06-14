@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:08:29 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/13 22:23:16 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/14 15:08:01 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	init_server(t_boolean_extra *extra, int argc, char **argv)
 		print_help_server();
 	pid = getpid();
 	ft_printf("pid : %i\n", pid);
+	extra->pid = pid;
 	check_n_get_flags_server(extra, argc, argv);
 }
 

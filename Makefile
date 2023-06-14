@@ -6,7 +6,7 @@
 #    By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/10 12:10:12 by llevasse          #+#    #+#              #
-#    Updated: 2023/06/13 21:59:43 by llevasse         ###   ########.fr        #
+#    Updated: 2023/06/14 11:11:41 by llevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,9 @@ LIST_FILES			=	./srcs/list/ft_lstnew.c \
 						./srcs/list/ft_lstadd_back.c \
 						./srcs/list/ft_lstclear.c \
 						./srcs/list/ft_lstprint.c \
-						./srcs/list/ft_new_sig_c.c
+						./srcs/list/ft_new_sig_c.c \
+						./srcs/list/ft_add_back_sig_c.c \
+						./srcs/list/ft_clear_sig_c.c
 
 
 EXTRA_SERV_FILES	=	srcs/extra/server_extra.c

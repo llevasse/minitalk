@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/14 11:10:08 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/14 14:57:34 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	sig_handler(int sig, siginfo_t *siginfo, void *context)
 	if (g_sig_char->client_pid != siginfo->si_pid
 		&& g_sig_char->index_sig_char == 0)
 		g_sig_char->client_pid = siginfo->si_pid;
-	else if (g_sig_char->client_pid != siginfo->si_pid)
+	if (g_sig_char->client_pid != siginfo->si_pid)
 		connect_temp(siginfo->si_pid, g_sig_char, temp);
 	else
 		temp = g_sig_char;
@@ -30,8 +30,6 @@ void	sig_handler(int sig, siginfo_t *siginfo, void *context)
 		temp->c |= (1 << temp->shift);
 	temp->shift--;
 	print_sig_char(siginfo, temp);
-	if (kill(temp->client_pid, SIGUSR1) == -1)
-		ft_exit("Error while sending signal :(", 1);
 	(void)context;
 }
 
@@ -62,14 +60,18 @@ void	print_sig_char(siginfo_t *siginfo, t_sig_char *sig_char)
 			{
 				if (sig_char->extra->print_c_by_c == 0)
 					ft_lstprint_extra(sig_char->mini_str, sig_char->extra);
+				if (kill(sig_char->client_pid, SIGUSR2) == -1)
+					ft_exit("Error in sending signal :(", 1);
 				sig_char->mini_str = NULL;
-				if (kill(siginfo->si_pid, SIGUSR2) == -1)
-					ft_exit("Error in sending signal", 1);
+				ft_del_one_sig_c(g_sig_char, sig_char->client_pid);
 			}
 		}
 		sig_char->shift = 7;
 		sig_char->c = 0;
 	}
+	else if (kill(sig_char->client_pid, SIGUSR1) == -1)
+		ft_exit("Error while sending signal :(", 1);
+	(void)siginfo;
 }
 
 int	main(int argc, char **argv)

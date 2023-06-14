@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/14 11:06:46 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/14 14:16:22 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void					send_str(int pid, char *str, t_boolean_extra extra);
 int						send_char(int pid, char c, t_boolean_extra extra);
 
 /* SERVER_EXTRA.C */
-void					print_sig_char(siginfo_t *siginfo,
-							t_sig_char *sig_char);
+void	print_sig_char(siginfo_t *siginfo,
+					t_sig_char *sig_char);
 
 /* INIT.C */
 void					init_rgb(t_rgb *rgb);
@@ -131,5 +131,7 @@ void					ft_clear_sig_c(t_sig_char **lst);
 void					ft_add_back_sig_c(t_sig_char **lst, t_sig_char *new);
 void					connect_temp(int wanted_pid, t_sig_char *sig_char,
 							t_sig_char *temp);
+void					ft_del_one_sig_c(t_sig_char *sig_char,
+							int wanted_pid_del);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/13 17:53:21 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/14 22:07:31 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,13 @@ struct s_sig_char	g_sig_char;
 
 void	sig_handler(int sig, siginfo_t *siginfo, void *context)
 {
-	g_sig_char.client_pid = siginfo->si_pid;
+	if (g_sig_char.need_set_pid == 1)
+	{
+		g_sig_char.client_pid = siginfo->si_pid;
+		g_sig_char.need_set_pid = 0;
+	}
+	if (siginfo->si_pid != g_sig_char.client_pid)
+		return ((void)kill(siginfo->si_pid, SIGUSR2));
 	if (sig == SIGUSR2)
 		g_sig_char.c |= (1 << g_sig_char.shift);
 	g_sig_char.shift--;
@@ -56,6 +62,8 @@ void	print_sig_char(siginfo_t *siginfo)
 				g_sig_char.mini_str = NULL;
 				if (kill(siginfo->si_pid, SIGUSR2) == -1)
 					ft_exit("Error in sending signal", 1);
+				g_sig_char.need_set_pid = 1;
+				g_sig_char.nb_null_received = 0;
 			}
 		}
 		g_sig_char.shift = 7;

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:08:29 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/13 17:53:48 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/14 22:05:45 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	init_client(t_boolean_extra *extra, int argc, char **argv, int *pid)
 		ft_exit("Invalid pid", 1);
 }
 
-void	init_server(t_boolean_extra *extra, int argc, char **argv, t_sig_char *sig_char)
+void	init_server(t_boolean_extra *extra, int argc, char **argv,
+		t_sig_char *sig_char)
 {
 	__pid_t	pid;
 
@@ -36,6 +37,9 @@ void	init_server(t_boolean_extra *extra, int argc, char **argv, t_sig_char *sig_
 	sig_char->shift = 7;
 	sig_char->mini_str = NULL;
 	sig_char->extra = *extra;
+	sig_char->need_set_pid = 1;
+	sig_char->client_pid = pid;
+	sig_char->server_pid = pid;
 }
 
 void	init_rgb(t_rgb *rgb)

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/15 14:11:06 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/15 15:13:13 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,16 +70,20 @@ void					send_file(int pid, int fd, t_extra *extra);
 void					send_str(int pid, char *str, t_extra extra);
 int						send_char(int pid, char c, t_extra extra);
 
-/* SERVER_EXTRA.C */
-void					print_sig_char(siginfo_t *siginfo);
+/* SIG_CHAR.C */
+void					print_sig_char(siginfo_t *siginfo,
+							t_sig_char *sig_char);
+void					print_single_char(unsigned char c,
+							t_sig_char *sig_char);
+void					receive_null(siginfo_t *siginfo, t_sig_char *sig_char);
 
 /* INIT.C */
 void					init_rgb(t_rgb *rgb);
 void					init_extra(t_extra *extra);
-void					init_client(t_extra *extra, int argc,
-							char **argv, int *pid);
-void					init_server(t_extra *extra, int argc,
-							char **argv, t_sig_char *sig_char);
+void					init_client(t_extra *extra, int argc, char **argv,
+							int *pid);
+void					init_server(t_extra *extra, int argc, char **argv,
+							t_sig_char *sig_char);
 
 /* EXTRA.C */
 int						invalid_argument(char *str);
@@ -94,8 +98,8 @@ void					ft_exit(char *str, int status);
 
 /* LOG.C */
 void					print_log(t_extra extra, unsigned char c);
-void					check_log_flags(t_extra *extra, int argc,
-							char **argv, char *file_name);
+void					check_log_flags(t_extra *extra, int argc, char **argv,
+							char *file_name);
 
 /* FT_LSTPRINT_EXTRA.C */
 void					ft_lstprint_extra(t_mini_str *lst,

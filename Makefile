@@ -6,7 +6,7 @@
 #    By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/10 12:10:12 by llevasse          #+#    #+#              #
-#    Updated: 2023/06/13 17:10:41 by llevasse         ###   ########.fr        #
+#    Updated: 2023/06/15 15:13:49 by llevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ EXTRA_FILES			=	srcs/extra/extra.c \
 						srcs/extra/log.c \
 						srcs/extra/ft_lstprint_extra.c \
 						srcs/extra/help.c \
+						srcs/extra/sig_char.c \
 						srcs/extra/init.c
 
 LOG_FILES			=	./client_log.log \

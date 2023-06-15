@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/15 13:35:55 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/15 13:57:00 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@ struct s_extra	g_extra;
 
 void	handler(int sig, siginfo_t *siginfo, void *context)
 {
-	if (sig == SIGUSR2 && g_extra.line_index == -1)
-		ft_exit("Enable to make connection. \nTry again in a few seconds.", 1);
-	if (sig == SIGUSR2 && g_extra.file_ended)
+	if (sig == SIGUSR2 && g_extra.file_ended && g_extra.line_index >= 0)
 		ft_exit("Str printed :)", 0);
-	else if (sig == SIGUSR2)
+	else if (sig == SIGUSR2 && g_extra.line_index >= 0)
 		ft_printf("Line #%d printed\n", g_extra.line_index);
+	if (sig == SIGUSR2 && g_extra.line_index == -1)
+	{
+		sleep(3);
+		ft_exit("Enable to make connection. \nTry again in a few seconds.", 1);
+	}
 	(void)context;
 	(void)siginfo;
 }

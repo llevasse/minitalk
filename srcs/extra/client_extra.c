@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/13 17:46:12 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/15 13:35:55 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ struct s_extra	g_extra;
 
 void	handler(int sig, siginfo_t *siginfo, void *context)
 {
+	if (sig == SIGUSR2 && g_extra.line_index == -1)
+		ft_exit("Enable to make connection. \nTry again in a few seconds.", 1);
 	if (sig == SIGUSR2 && g_extra.file_ended)
 		ft_exit("Str printed :)", 0);
 	else if (sig == SIGUSR2)
@@ -26,8 +28,10 @@ void	handler(int sig, siginfo_t *siginfo, void *context)
 
 void	test_serv(int pid)
 {
+	g_extra.line_index = -1;
 	if (!send_char(pid, '\0', g_extra))
 		ft_exit("Enable to make connexion to server, check pid :(", 1);
+	g_extra.line_index = 0;
 }
 
 void	print_next_args(int argc, char **argv, int pid)
@@ -42,7 +46,7 @@ void	print_next_args(int argc, char **argv, int pid)
 		while ((g_extra.print_next_args + g_extra.line_index) < argc)
 		{
 			send_str(pid, argv[(g_extra.print_next_args
-					+ g_extra.line_index++)], g_extra);
+						+ g_extra.line_index++)], g_extra);
 			send_char(pid, '\n', g_extra);
 		}
 		send_char(pid, '\n', g_extra);

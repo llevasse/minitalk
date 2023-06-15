@@ -6,19 +6,11 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 18:32:06 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/15 21:31:28 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/15 22:29:28 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minitalk_extra.h"
-
-// rainbow effect : when R == 255, start increasing G
-//					when G == 255, start decreasing R
-//					when R == 0, start increasing B;
-//					when B == 255, start decreasing G;
-//					when G == 0, start increasing R;
-//					when R == 255,start decreasing B;
-//					repeat
 
 /// @brief Free content of rgb structur and/or str.
 /// @param rgb Pointer to rgb structur,

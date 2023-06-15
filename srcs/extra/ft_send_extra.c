@@ -6,12 +6,16 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:26:40 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/15 14:09:44 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/15 22:38:57 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minitalk_extra.h"
 
+/// @brief Send str to server.
+/// @param pid Process id of server,
+/// @param fd file descriptor of file,
+/// @param extra pointer to extra structure containing clients options.
 void	send_file(int pid, int fd, t_extra *extra)
 {
 	unsigned char	*str;
@@ -30,6 +34,10 @@ void	send_file(int pid, int fd, t_extra *extra)
 	close(fd);
 }
 
+/// @brief Send str to server.
+/// @param pid Process id of server,
+/// @param str str to send,
+/// @param extra extra structure containing clients options.
 void	send_str(int pid, char *str, t_extra extra)
 {
 	if (!extra.from_txt && extra.binnary_logged)
@@ -45,6 +53,11 @@ void	send_str(int pid, char *str, t_extra extra)
 	send_char(pid, '\0', extra);
 }
 
+/// @brief Send char to server.
+/// @param pid Process id of server,
+/// @param c character to send,
+/// @param extra extra structure containing clients options.
+/// @return Return 1 if char was correctly sent or 0 if not.
 int	send_char(int pid, char c, t_extra extra)
 {
 	int	size_char;

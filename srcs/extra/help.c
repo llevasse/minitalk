@@ -6,12 +6,15 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 19:13:00 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/12 16:07:52 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/15 22:43:49 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minitalk_extra.h"
 
+
+/// @brief Print with a rainbow effect str in terminal.
+/// @param str Str to print.
 void	ft_taste_the_rainbow(char *str)
 {
 	t_rgb	rgb;
@@ -26,6 +29,7 @@ void	ft_taste_the_rainbow(char *str)
 	ft_printf("\x1B[1;m");
 }
 
+/// @brief Print helper of server in terminal.
 void	print_help_server(void)
 {
 	ft_printf("\n%-10sPrint this helper. \
@@ -44,6 +48,7 @@ in server_log.log. \
 	exit(0);
 }
 
+/// @brief Print helper of client in terminal.
 void	print_help_client(void)
 {
 	ft_printf("\n%-10sPrint this helper. \
@@ -63,6 +68,9 @@ in client_log.log. \
 	exit(0);
 }
 
+/// @brief Exit the program and print str in terminal.
+/// @param str Str to print,
+/// @param status value the program return on exit.
 void	ft_exit(char *str, int status)
 {
 	ft_printf("%s\n", str);

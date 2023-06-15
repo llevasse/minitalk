@@ -6,12 +6,17 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:08:29 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/15 14:09:44 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/15 22:49:57 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minitalk_extra.h"
 
+/// @brief Init extra structure of client.
+/// @param extra Pointer to extra structur,
+/// @param argc Nb of element in argv,
+/// @param argv Elements given to the client,
+/// @param pid Process id {PID} of the server.
 void	init_client(t_extra *extra, int argc, char **argv, int *pid)
 {
 	check_flags_client(extra, argc, argv);
@@ -24,6 +29,11 @@ void	init_client(t_extra *extra, int argc, char **argv, int *pid)
 		ft_exit("Invalid pid", 1);
 }
 
+/// @brief Init extra structure of server.
+/// @param extra Pointer to extra structur,
+/// @param argc Nb of element in argv,
+/// @param argv Elements given to the server,
+/// @param sig_char pointer to sig_char structur.
 void	init_server(t_extra *extra, int argc, char **argv,
 		t_sig_char *sig_char)
 {
@@ -42,6 +52,8 @@ void	init_server(t_extra *extra, int argc, char **argv,
 	sig_char->server_pid = pid;
 }
 
+/// @brief Init rgb values (to start a rainbow).
+/// @param rgb Pointer to rgb structur.
 void	init_rgb(t_rgb *rgb)
 {
 	rgb->offset = 1;
@@ -53,6 +65,8 @@ void	init_rgb(t_rgb *rgb)
 	rgb->b_top = 0;
 }
 
+/// @brief Init extra values.
+/// @param extra Pointer to extra structur.
 void	init_extra(t_extra *extra)
 {
 	extra->print_next_args = 0;

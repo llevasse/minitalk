@@ -6,13 +6,13 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:59:41 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/13 21:56:09 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/15 14:09:44 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minitalk_extra.h"
 
-t_sig_char	*ft_new_sig_c(int pid, t_boolean_extra *extra, unsigned index_sig)
+t_sig_char	*ft_new_sig_c(int pid, t_extra *extra, unsigned index_sig)
 {
 	struct s_sig_char	*new_el;
 

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/14 22:07:31 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/15 14:09:44 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	print_sig_char(siginfo_t *siginfo)
 int	main(int argc, char **argv)
 {
 	struct sigaction	sa;
-	t_boolean_extra		extra;
+	t_extra		extra;
 
 	init_server(&extra, argc, argv, &g_sig_char);
 	sa.sa_sigaction = &sig_handler;

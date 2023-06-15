@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/15 13:33:08 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/15 14:11:06 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_extra
 	int					print_c_by_c;
 	int					is_rbw;
 	struct s_rgb		rgb;
-}						t_boolean_extra;
+}						t_extra;
 
 typedef struct s_mini_str
 {
@@ -61,49 +61,45 @@ typedef struct s_sig_char
 	int					client_pid;
 	int					server_pid;
 	int					need_set_pid;
-	unsigned			index;
 	t_mini_str			*mini_str;
-	t_boolean_extra		extra;
-	struct s_sig_char			*next;
+	t_extra				extra;
 }						t_sig_char;
 
 /* FT_SEND_EXTRA.C */
-void					send_file(int pid, int fd, t_boolean_extra *extra);
-void					send_str(int pid, char *str, t_boolean_extra extra);
-int						send_char(int pid, char c, t_boolean_extra extra);
+void					send_file(int pid, int fd, t_extra *extra);
+void					send_str(int pid, char *str, t_extra extra);
+int						send_char(int pid, char c, t_extra extra);
 
 /* SERVER_EXTRA.C */
 void					print_sig_char(siginfo_t *siginfo);
 
 /* INIT.C */
 void					init_rgb(t_rgb *rgb);
-void					init_extra(t_boolean_extra *extra);
-void					init_client(t_boolean_extra *extra, int argc,
+void					init_extra(t_extra *extra);
+void					init_client(t_extra *extra, int argc,
 							char **argv, int *pid);
-void					init_server(t_boolean_extra *extra, int argc,
+void					init_server(t_extra *extra, int argc,
 							char **argv, t_sig_char *sig_char);
 
 /* EXTRA.C */
 int						invalid_argument(char *str);
 
-void	check_n_get_flags_client(t_boolean_extra *extra,
-								int agrc,
-								char **argv);
-void	check_n_get_flags_server(t_boolean_extra *extra,
-								int agrc,
-								char **argv);
+void					check_flags_client(t_extra *extra, int agrc,
+							char **argv);
+void					check_flags_server(t_extra *extra, int agrc,
+							char **argv);
 int						check_str_in_array(int argc, char **ar, const char *str,
 							int len_ar);
 void					ft_exit(char *str, int status);
 
 /* LOG.C */
-void					print_log(t_boolean_extra extra, unsigned char c);
-void					check_log_flags(t_boolean_extra *extra, int argc,
+void					print_log(t_extra extra, unsigned char c);
+void					check_log_flags(t_extra *extra, int argc,
 							char **argv, char *file_name);
 
 /* FT_LSTPRINT_EXTRA.C */
-void	ft_lstprint_extra(t_mini_str *lst,
-						t_boolean_extra *extra);
+void					ft_lstprint_extra(t_mini_str *lst,
+							t_extra *extra);
 void					print_binary(char c, int fd);
 
 /* EXTRA_COLOUR.C */

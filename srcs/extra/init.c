@@ -6,15 +6,15 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:08:29 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/15 13:33:18 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/15 14:09:44 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minitalk_extra.h"
 
-void	init_client(t_boolean_extra *extra, int argc, char **argv, int *pid)
+void	init_client(t_extra *extra, int argc, char **argv, int *pid)
 {
-	check_n_get_flags_client(extra, argc, argv);
+	check_flags_client(extra, argc, argv);
 	if (extra->help)
 		print_help_client();
 	if (argc <= 2)
@@ -24,7 +24,7 @@ void	init_client(t_boolean_extra *extra, int argc, char **argv, int *pid)
 		ft_exit("Invalid pid", 1);
 }
 
-void	init_server(t_boolean_extra *extra, int argc, char **argv,
+void	init_server(t_extra *extra, int argc, char **argv,
 		t_sig_char *sig_char)
 {
 	__pid_t	pid;
@@ -33,7 +33,7 @@ void	init_server(t_boolean_extra *extra, int argc, char **argv,
 		print_help_server();
 	pid = getpid();
 	ft_printf("pid : %i\n", pid);
-	check_n_get_flags_server(extra, argc, argv);
+	check_flags_server(extra, argc, argv);
 	sig_char->shift = 7;
 	sig_char->mini_str = NULL;
 	sig_char->extra = *extra;
@@ -53,7 +53,7 @@ void	init_rgb(t_rgb *rgb)
 	rgb->b_top = 0;
 }
 
-void	init_extra(t_boolean_extra *extra)
+void	init_extra(t_extra *extra)
 {
 	extra->print_next_args = 0;
 	extra->file_ended = 1;

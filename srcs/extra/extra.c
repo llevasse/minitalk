@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:10:30 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/13 17:09:05 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/15 14:09:44 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_str_in_array(int argc, char **ar, const char *str, int len_ar)
 	return (0);
 }
 
-void	check_n_get_flags_client(t_boolean_extra *extra, int argc, char **argv)
+void	check_flags_client(t_extra *extra, int argc, char **argv)
 {
 	init_extra(extra);
 	if (check_str_in_array(argc, argv, "-h", 3))
@@ -61,7 +61,7 @@ void	check_n_get_flags_client(t_boolean_extra *extra, int argc, char **argv)
 	check_log_flags(extra, argc, argv, "client_log.log");
 }
 
-void	check_n_get_flags_server(t_boolean_extra *extra, int argc, char **argv)
+void	check_flags_server(t_extra *extra, int argc, char **argv)
 {
 	init_extra(extra);
 	if (check_str_in_array(argc, argv, "-h", argc))

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/15 13:57:00 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/15 14:14:11 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	print_next_args(int argc, char **argv, int pid)
 		while ((g_extra.print_next_args + g_extra.line_index) < argc)
 		{
 			send_str(pid, argv[(g_extra.print_next_args
-						+ g_extra.line_index++)], g_extra);
+					+ g_extra.line_index++)], g_extra);
 			send_char(pid, '\n', g_extra);
 		}
 		send_char(pid, '\n', g_extra);

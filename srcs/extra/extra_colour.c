@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 18:32:06 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/13 17:08:50 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/15 21:31:28 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 //					when R == 255,start decreasing B;
 //					repeat
 
+/// @brief Free content of rgb structur and/or str.
+/// @param rgb Pointer to rgb structur,
+/// @param str str.
 void	free_rgb(t_rgb *rgb, char *str)
 {
 	if (rgb->r_str)
@@ -41,6 +44,8 @@ void	free_rgb(t_rgb *rgb, char *str)
 		free(str);
 }
 
+/// @brief Assign str in rgb structur.
+/// @param rgb Pointer to rgb structur.
 void	get_rgb_as_str(t_rgb *rgb)
 {
 	char	*temp;
@@ -68,6 +73,9 @@ void	get_rgb_as_str(t_rgb *rgb)
 	free(temp);
 }
 
+/// @brief Get escape sequence to print in color.
+/// @param rgb Pointer to rgb structur.
+/// @return Return escape sequence as str or NULL if malloc failed.
 char	*get_escape_c(t_rgb *rgb)
 {
 	char	*str;
@@ -92,6 +100,8 @@ char	*get_escape_c(t_rgb *rgb)
 	return (str);
 }
 
+/// @brief Print escape sequence to print in color.
+/// @param rgb Pointer to rgb structur.
 void	print_color(t_rgb *rgb)
 {
 	char	*str;

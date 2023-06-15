@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/15 15:13:13 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/15 21:02:31 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void					init_server(t_extra *extra, int argc, char **argv,
 							t_sig_char *sig_char);
 
 /* EXTRA.C */
-int						invalid_argument(char *str);
+void					invalid_argument(void);
 
 void					check_flags_client(t_extra *extra, int agrc,
 							char **argv);

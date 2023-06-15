@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/15 14:14:11 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/15 21:23:54 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	handler(int sig, siginfo_t *siginfo, void *context)
 	(void)siginfo;
 }
 
-void	test_serv(int pid)
+/// @brief Check the connection to the server.
+/// @param pid Process id {PID} of the server.
 {
 	g_extra.line_index = -1;
 	if (!send_char(pid, '\0', g_extra))
@@ -37,6 +38,10 @@ void	test_serv(int pid)
 	g_extra.line_index = 0;
 }
 
+/// @brief Send text file content and/or rest of arguments to the server.
+/// @param argc Nb of element in argv,
+/// @param argv Elements given to the client.
+/// @param pid Process id {PID} of the server.
 void	print_next_args(int argc, char **argv, int pid)
 {
 	g_extra.file_ended = 0;

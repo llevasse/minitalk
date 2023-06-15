@@ -6,27 +6,26 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:10:30 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/15 14:09:44 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/15 21:22:21 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minitalk_extra.h"
 
-int	invalid_argument(char *str)
+/// @brief Print error message in terminal and exit.
+void	invalid_argument(void)
 {
-	if (!ft_strcmp(str, "-h"))
-		print_help_client();
 	ft_printf("Error. Invalid argument\n");
 	ft_printf("Use ./client -h for help\n");
-	exit(0);
+	exit(1);
 }
 
-/// @brief
-/// @param argc numbers of items in array
-/// @param ar array of string
-/// @param str string to search in array
-/// @param len_ar numbers of array items to check
-/// @return
+/// @brief Check if str is in array of strings.
+/// @param argc Numbers of items in array,
+/// @param ar Array of string,
+/// @param str String to search in array,
+/// @param len_ar Numbers of array items to check.
+///	@return Return index of str or 0 if str is not present.
 int	check_str_in_array(int argc, char **ar, const char *str, int len_ar)
 {
 	int	i;
@@ -42,6 +41,10 @@ int	check_str_in_array(int argc, char **ar, const char *str, int len_ar)
 	return (0);
 }
 
+/// @brief Get and assign to t_extra flags for client.
+/// @param extra Pointer to t_extra of client,
+/// @param argc Nb of element in argv,
+/// @param argv Elements given to the client.
 void	check_flags_client(t_extra *extra, int argc, char **argv)
 {
 	init_extra(extra);
@@ -61,6 +64,10 @@ void	check_flags_client(t_extra *extra, int argc, char **argv)
 	check_log_flags(extra, argc, argv, "client_log.log");
 }
 
+/// @brief Get and assign to t_extra flags for server.
+/// @param extra Pointer to t_extra of server,
+/// @param argc Nb of element in argv,
+/// @param argv Elements given to the server.
 void	check_flags_server(t_extra *extra, int argc, char **argv)
 {
 	init_extra(extra);

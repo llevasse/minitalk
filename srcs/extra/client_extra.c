@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/16 11:50:10 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/16 14:16:06 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	print_next_args(int argc, char **argv, int pid)
 			send_char(pid, '\n', g_extra);
 		}
 		send_char(pid, '\n', g_extra);
+		send_char(pid, '\0', g_extra);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/16 12:03:50 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/16 14:01:29 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,4 @@ void	handler(int sig, siginfo_t *siginfo, void *context)
 		ft_exit("Unable to connect to server :(", 1);
 	(void)context;
 	(void)siginfo;
-}
-
-void	ft_exit(char *str, int status)
-{
-	ft_printf("%s\n", str);
-	exit(status);
 }

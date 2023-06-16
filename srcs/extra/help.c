@@ -6,12 +6,11 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 19:13:00 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/15 22:43:49 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/16 14:05:44 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minitalk_extra.h"
-
 
 /// @brief Print with a rainbow effect str in terminal.
 /// @param str Str to print.

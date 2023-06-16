@@ -6,13 +6,36 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/16 12:11:53 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/16 14:04:20 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
 
 struct s_sig_char	g_sig_char;
+
+int	main(void)
+{
+	struct sigaction	sa;
+	__pid_t				pid;
+
+	pid = getpid();
+	g_sig_char.shift = 7;
+	g_sig_char.mini_str = NULL;
+	g_sig_char.nb_null_received = 0;
+	g_sig_char.need_set_pid = 1;
+	g_sig_char.c = 0;
+	sa.sa_sigaction = &sig_handler;
+	sa.sa_flags = SA_SIGINFO;
+	sigemptyset(&sa.sa_mask);
+	ft_printf("pid : %i\n", pid);
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
+	if (sigaction(SIGUSR2, &sa, NULL) < 0 || sigaction(SIGUSR1, &sa, NULL) < 0)
+		ft_exit("Error in sending signal", 0);
+	while (1)
+		;
+}
 
 void	sig_handler(int sig, siginfo_t *siginfo, void *context)
 {
@@ -61,33 +84,4 @@ void	print_sig_char(siginfo_t *siginfo)
 		receive_null(siginfo);
 	g_sig_char.shift = 7;
 	g_sig_char.c = 0;
-}
-
-void	ft_exit(char *str, int status)
-{
-	ft_printf("%s\n", str);
-	exit(status);
-}
-
-int	main(void)
-{
-	struct sigaction	sa;
-	__pid_t				pid;
-
-	pid = getpid();
-	g_sig_char.shift = 7;
-	g_sig_char.mini_str = NULL;
-	g_sig_char.nb_null_received = 0;
-	g_sig_char.need_set_pid = 1;
-	g_sig_char.c = 0;
-	sa.sa_sigaction = &sig_handler;
-	sa.sa_flags = SA_SIGINFO;
-	sigemptyset(&sa.sa_mask);
-	ft_printf("pid : %i\n", pid);
-	sigaction(SIGUSR1, &sa, NULL);
-	sigaction(SIGUSR2, &sa, NULL);
-	if (sigaction(SIGUSR2, &sa, NULL) < 0 || sigaction(SIGUSR1, &sa, NULL) < 0)
-		ft_exit("Error in sending signal", 0);
-	while (1)
-		;
 }

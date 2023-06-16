@@ -6,11 +6,13 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/13 14:48:37 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/16 12:03:50 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
+
+int	g_is_test;
 
 int	main(int argc, char **argv)
 {
@@ -31,6 +33,7 @@ int	main(int argc, char **argv)
 	sigemptyset(&sa.sa_mask);
 	sigaction(SIGUSR1, &sa, NULL);
 	sigaction(SIGUSR2, &sa, NULL);
+	test_serv(pid);
 	if (argc == 3)
 		send_str(pid, argv[2]);
 	send_char(pid, '\n');
@@ -40,10 +43,22 @@ int	main(int argc, char **argv)
 	return (1);
 }
 
+/// @brief Check the connection to the server.
+/// @param pid Process id {PID} of the server.
+void	test_serv(int pid)
+{
+	g_is_test = 1;
+	if (!send_char(pid, '\0'))
+		ft_exit("Unable to make connexion to server, check pid :(", 1);
+	g_is_test = 0;
+}
+
 void	handler(int sig, siginfo_t *siginfo, void *context)
 {
-	if (sig == SIGUSR2)
+	if (sig == SIGUSR2 && g_is_test == 0)
 		ft_exit("Str printed", 0);
+	if (sig == SIGUSR2 && g_is_test == 1)
+		ft_exit("Unable to connect to server :(", 1);
 	(void)context;
 	(void)siginfo;
 }

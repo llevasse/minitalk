@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 19:13:00 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/16 14:05:44 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/16 17:09:53 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ in server_log.log. \
 		"-l",
 		"-lb",
 		"-rbw");
-	ft_taste_the_rainbow("Taste the rainbow!!!!!!!\n\n");
+	ft_taste_the_rainbow("Taste the rainbow!!!!!!! \
+(\"-rbw {int}\" to change offset)\n\n");
 	exit(0);
 }
 

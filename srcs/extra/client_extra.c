@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/16 16:26:46 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/16 16:56:55 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ void	test_serv(int pid)
 void	print_next_args(int argc, char **argv, int pid)
 {
 	g_extra.file_ended = 0;
-	if (g_extra.from_txt && (g_extra.t_flag_position < g_extra.print_next_args || !g_extra.print_next_args))
+	if (g_extra.from_txt && (g_extra.t_flag_position < g_extra.print_next_args
+			|| !g_extra.print_next_args))
 		send_file(pid, open(argv[g_extra.t_flag_position], O_RDONLY), &g_extra);
 	if (g_extra.print_next_args)
 	{

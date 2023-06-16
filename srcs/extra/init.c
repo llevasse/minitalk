@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:08:29 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/15 22:49:57 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/16 14:07:50 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_client(t_extra *extra, int argc, char **argv, int *pid)
 	if (extra->help)
 		print_help_client();
 	if (argc <= 2)
-		invalid_argument(argv[1]);
+		invalid_argument();
 	*pid = ft_atoi(argv[1]);
 	if (*pid == 0)
 		ft_exit("Invalid pid", 1);

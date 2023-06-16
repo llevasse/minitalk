@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:10:30 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/15 21:22:21 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/16 14:07:33 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	check_flags_client(t_extra *extra, int argc, char **argv)
 		extra->t_flag_position = check_str_in_array(argc, argv, "-t", argc);
 		if (!ft_strnstr(argv[extra->t_flag_position], ".txt",
 				ft_strlen(argv[extra->t_flag_position])))
-			invalid_argument(0);
+			invalid_argument();
 	}
 	check_log_flags(extra, argc, argv, "client_log.log");
 }

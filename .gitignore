@@ -4,4 +4,5 @@ client
 server
 *.pdf
 *.log
+*.a
 test.c

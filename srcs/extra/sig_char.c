@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:55:49 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/16 11:01:13 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/16 14:43:41 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	print_sig_char(siginfo_t *siginfo, t_sig_char *sig_char)
 {
 	if (sig_char->shift >= 0)
 		return ;
+	if (sig_char->c == '\0')
+		receive_null(siginfo, sig_char);
 	if (sig_char->extra.print_c_by_c == 0)
 	{
 		if (!sig_char->mini_str)
@@ -39,8 +41,6 @@ void	print_sig_char(siginfo_t *siginfo, t_sig_char *sig_char)
 	}
 	else
 		print_single_char(sig_char->c, sig_char);
-	if (sig_char->c == '\0')
-		receive_null(siginfo, sig_char);
 	sig_char->shift = 7;
 	sig_char->c = 0;
 }

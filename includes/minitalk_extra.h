@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/15 21:02:31 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/16 15:48:37 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void					check_log_flags(t_extra *extra, int argc, char **argv,
 /* FT_LSTPRINT_EXTRA.C */
 void					ft_lstprint_extra(t_mini_str *lst,
 							t_extra *extra);
-void					print_binary(char c, int fd);
+void					print_binary(unsigned char c, int fd);
 
 /* EXTRA_COLOUR.C */
 void					free_rgb(t_rgb *rgb, char *str);

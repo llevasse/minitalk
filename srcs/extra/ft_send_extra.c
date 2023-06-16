@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:26:40 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/15 22:38:57 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/16 16:04:08 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	send_file(int pid, int fd, t_extra *extra)
 		str = get_next_line(fd);
 	}
 	send_char(pid, '\n', *extra);
+	send_char(pid, '\0', *extra);
 	close(fd);
 }
 
@@ -40,8 +41,8 @@ void	send_file(int pid, int fd, t_extra *extra)
 /// @param extra extra structure containing clients options.
 void	send_str(int pid, char *str, t_extra extra)
 {
-	if (!extra.from_txt && extra.binnary_logged)
-		write(extra.log_fd, "{", 1);
+	// if (!extra.from_txt && extra.binnary_logged)
+	// 	write(extra.log_fd, "{", 1);
 	while (*str)
 	{
 		if (!send_char(pid, *str, extra))

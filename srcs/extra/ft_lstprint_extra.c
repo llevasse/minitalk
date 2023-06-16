@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 13:11:42 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/15 22:28:59 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/16 15:48:21 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	ft_lstprint_extra(t_mini_str *lst, t_extra *extra)
 /// @brief Print binary of char at fd.
 /// @param c character being printed,
 /// @param fd file descriptor.
-void	print_binary(char c, int fd)
+void	print_binary(unsigned char c, int fd)
 {
 	int	size_char;
 

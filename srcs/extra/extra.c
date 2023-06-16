@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:10:30 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/16 17:03:32 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/16 17:27:36 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,22 @@ void	check_flags_server(t_extra *extra, int argc, char **argv)
 			extra->rgb.offset = ft_atoi(argv[extra->is_rbw]);
 	}
 	check_log_flags(extra, argc, argv, "server_log.log");
+	check_only_flags(extra, argc, argv);
+}
+
+void	check_only_flags(t_extra *extra, int argc, char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (i < argc)
+	{
+		if (!ft_strnstr("-h-c-rbw-l-lb", argv[i++], 14))
+		{
+			if (!extra->is_rbw)
+				ft_exit("No such argument, use ./server -h for help", 1);
+			if (extra->is_rbw && ft_atoi(argv[i - 1]) == 0)
+				ft_exit("No such argument, use ./server -h for help", 1);
+		}
+	}
 }

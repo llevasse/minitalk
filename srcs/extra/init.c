@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 17:08:29 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/16 14:07:50 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/16 17:29:13 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ void	init_server(t_extra *extra, int argc, char **argv,
 
 	if (argc > 1 && !ft_strcmp("-h", argv[1]))
 		print_help_server();
+	check_flags_server(extra, argc, argv);
 	pid = getpid();
 	ft_printf("pid : %i\n", pid);
-	check_flags_server(extra, argc, argv);
 	sig_char->shift = 7;
 	sig_char->mini_str = NULL;
 	sig_char->extra = *extra;

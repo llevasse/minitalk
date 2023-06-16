@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/16 15:48:37 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/16 17:27:06 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void					check_flags_server(t_extra *extra, int agrc,
 int						check_str_in_array(int argc, char **ar, const char *str,
 							int len_ar);
 void					ft_exit(char *str, int status);
+void					check_only_flags(t_extra *extra, int argc, char **argv);
 
 /* LOG.C */
 void					print_log(t_extra extra, unsigned char c);

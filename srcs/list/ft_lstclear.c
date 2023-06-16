@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 10:56:13 by llevasse          #+#    #+#             */
-/*   Updated: 2023/05/31 13:08:59 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/16 11:09:22 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	free_last(t_mini_str *lst);
 
+/// @brief Free every element of mini_str list.
+/// @param lst Pointer to list of mini_str structur.
 void	ft_lstclear(t_mini_str **lst)
 {
 	t_mini_str	*temp;
@@ -31,6 +33,8 @@ void	ft_lstclear(t_mini_str **lst)
 	return ;
 }
 
+/// @brief Free and assign to null last element of list.
+/// @param lst Pointer to list of mini_str structur.
 void	free_last(t_mini_str *lst)
 {
 	t_mini_str	*temp;

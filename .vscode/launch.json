@@ -8,9 +8,9 @@
 			"name": "test server",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/server_extra",
+			"program": "${workspaceFolder}/server",
 			"args": [
-				"-+0"
+				""
 			],
 			"cwd": ".",
 			"environment": [],
@@ -22,7 +22,7 @@
 					"text": "-enable-pretty-printing",
 					"ignoreFailures": true
 				},
-							{
+				{
 					"description": "ignore SIGUSR1 signal",
 					"text": "handle SIGUSR1 nostop noprint pass"
 				},
@@ -32,6 +32,35 @@
 				}
 			],
 			"preLaunchTask": "debug server"
+		},
+		{
+			"name": "test server extra",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/server",
+			"args": [
+				""
+			],
+			"cwd": ".",
+			"environment": [],
+			"stopAtEntry": false,
+			"MIMode": "gdb",
+			"setupCommands": [
+				{
+					"description": "Enable pretty-printing for gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				},
+				{
+					"description": "ignore SIGUSR1 signal",
+					"text": "handle SIGUSR1 nostop noprint pass"
+				},
+				{
+					"description": "ignore SIGUSR2 signal",
+					"text": "handle SIGUSR2 nostop noprint pass"
+				}
+			],
+			"preLaunchTask": "debug server extra"
 		}
 	]
 }

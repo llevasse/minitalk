@@ -31,7 +31,7 @@
 					"text": "handle SIGUSR2 nostop noprint pass"
 				}
 			],
-			"preLaunchTask": "debug server"
+			"preLaunchTask": "debug"
 		},
 		{
 			"name": "test server extra",
@@ -60,7 +60,65 @@
 					"text": "handle SIGUSR2 nostop noprint pass"
 				}
 			],
-			"preLaunchTask": "debug server extra"
+			"preLaunchTask": "debug extra"
+		},
+		{
+			"name": "test client",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/client",
+			"args": [
+				""
+			],
+			"cwd": ".",
+			"environment": [],
+			"stopAtEntry": false,
+			"MIMode": "gdb",
+			"setupCommands": [
+				{
+					"description": "Enable pretty-printing for gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				},
+				{
+					"description": "ignore SIGUSR1 signal",
+					"text": "handle SIGUSR1 nostop noprint pass"
+				},
+				{
+					"description": "ignore SIGUSR2 signal",
+					"text": "handle SIGUSR2 nostop noprint pass"
+				}
+			],
+			"preLaunchTask": "debug"
+		},
+		{
+			"name": "test client extra",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceFolder}/client",
+			"args": [
+				""
+			],
+			"cwd": ".",
+			"environment": [],
+			"stopAtEntry": false,
+			"MIMode": "gdb",
+			"setupCommands": [
+				{
+					"description": "Enable pretty-printing for gdb",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				},
+				{
+					"description": "ignore SIGUSR1 signal",
+					"text": "handle SIGUSR1 nostop noprint pass"
+				},
+				{
+					"description": "ignore SIGUSR2 signal",
+					"text": "handle SIGUSR2 nostop noprint pass"
+				}
+			],
+			"preLaunchTask": "debug extra"
 		}
 	]
 }

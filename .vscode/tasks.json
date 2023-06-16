@@ -4,7 +4,7 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "debug server extra",
+            "label": "debug extra",
             "type": "shell",
             "command": "make extra",
             "group": {
@@ -14,7 +14,7 @@
             "problemMatcher": "$gcc"
         },
         {
-            "label": "debug server",
+            "label": "debug",
             "type": "shell",
             "command": "make",
             "group": {

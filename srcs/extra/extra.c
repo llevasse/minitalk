@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 15:10:30 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/16 14:07:33 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/16 17:03:32 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,11 @@ void	check_flags_server(t_extra *extra, int argc, char **argv)
 	if (check_str_in_array(argc, argv, "-c", argc))
 		extra->print_c_by_c = 1;
 	if (check_str_in_array(argc, argv, "-rbw", argc))
-		(void)(init_rgb(&extra->rgb), extra->is_rbw = 1);
+	{
+		init_rgb(&extra->rgb);
+		extra->is_rbw = check_str_in_array(argc, argv, "-rbw", argc);
+		if (extra->is_rbw < argc)
+			extra->rgb.offset = ft_atoi(argv[extra->is_rbw]);
+	}
 	check_log_flags(extra, argc, argv, "server_log.log");
 }

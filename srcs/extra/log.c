@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 15:21:49 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/16 16:02:17 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/16 16:21:47 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,8 @@ void	check_log_flags(t_extra *extra, int argc, char **argv, char *file_name)
 	else if (check_str_in_array(argc, argv, "-lb", extra->print_next_args))
 	{
 		extra->log_fd = open(file_name, O_RDWR | O_CREAT, 0666);
-		extra->print_c_by_c = 1;
 		extra->logged = 1;
 		extra->binnary_logged = 1;
-		//write(extra->log_fd, "{", 1);
+		extra->print_c_by_c = 1;
 	}
 }

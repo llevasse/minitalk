@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/15 21:23:54 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/16 11:50:10 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	handler(int sig, siginfo_t *siginfo, void *context)
 	if (sig == SIGUSR2 && g_extra.line_index == -1)
 	{
 		sleep(3);
-		ft_exit("Enable to make connection. \nTry again in a few seconds.", 1);
+		ft_exit("Unable to make connection. \nTry again in a few seconds.", 1);
 	}
 	(void)context;
 	(void)siginfo;
@@ -31,10 +31,11 @@ void	handler(int sig, siginfo_t *siginfo, void *context)
 
 /// @brief Check the connection to the server.
 /// @param pid Process id {PID} of the server.
+void	test_serv(int pid)
 {
 	g_extra.line_index = -1;
 	if (!send_char(pid, '\0', g_extra))
-		ft_exit("Enable to make connexion to server, check pid :(", 1);
+		ft_exit("Unable to make connexion to server, check pid :(", 1);
 	g_extra.line_index = 0;
 }
 

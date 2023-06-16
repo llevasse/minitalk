@@ -6,7 +6,7 @@
 #    By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/10 12:10:12 by llevasse          #+#    #+#              #
-#    Updated: 2023/06/15 15:13:49 by llevasse         ###   ########.fr        #
+#    Updated: 2023/06/16 11:02:55 by llevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,6 @@ CLIENT_FILES		=	srcs/client.c \
 						srcs/ft_send.c
 LIST_FILES			=	./srcs/list/ft_lstnew.c \
 						./srcs/list/ft_lstadd_back.c \
-						./srcs/list/ft_lstsize.c \
-						./srcs/list/ft_lstlast.c \
 						./srcs/list/ft_lstclear.c \
 						./srcs/list/ft_lstprint.c
 

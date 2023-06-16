@@ -6,12 +6,15 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 15:21:49 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/15 14:09:44 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/16 10:57:07 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minitalk_extra.h"
 
+/// @brief Print char in log file.
+/// @param extra Pointer to extra structur,
+/// @param c Character to print.
 void	print_log(t_extra extra, unsigned char c)
 {
 	if (extra.binnary_logged == 1)
@@ -26,6 +29,11 @@ void	print_log(t_extra extra, unsigned char c)
 		write(extra.log_fd, "}", 1);
 }
 
+/// @brief Get and assign log flags to t_extra.
+/// @param extra Pointer to extra structur,
+/// @param argc Nb of element in argv,
+/// @param argv Elements given to the program,
+/// @param file_name name of the file to open/create for logs.
 void	check_log_flags(t_extra *extra, int argc, char **argv,
 		char *file_name)
 {

@@ -6,12 +6,15 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:55:49 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/15 15:13:24 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/16 11:01:13 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk_extra.h"
 
+/// @brief Print char currently in sig_char.
+/// @param c Character to print,
+/// @param sig_char Pointer to sig_char structur.
 void	print_single_char(unsigned char c, t_sig_char *sig_char)
 {
 	if (sig_char->extra.is_rbw && c <= 127)
@@ -20,6 +23,9 @@ void	print_single_char(unsigned char c, t_sig_char *sig_char)
 	write(1, &sig_char->c, 1);
 }
 
+/// @brief Reset sig_char or print sig_char->mini_str.
+/// @param siginfo Pointer to siginfo structur,
+/// @param sig_char Pointer to sig_char structur.
 void	print_sig_char(siginfo_t *siginfo, t_sig_char *sig_char)
 {
 	if (sig_char->shift >= 0)
@@ -39,6 +45,9 @@ void	print_sig_char(siginfo_t *siginfo, t_sig_char *sig_char)
 	sig_char->c = 0;
 }
 
+/// @brief Handle first tests signals and print sig_char->mini_str.
+/// @param siginfo Pointer to siginfo structur,
+/// @param sig_char Pointer to sig_char structur.
 void	receive_null(siginfo_t *siginfo, t_sig_char *sig_char)
 {
 	if (sig_char->nb_null_received++ >= 1)

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/16 16:56:55 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/17 19:52:56 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ struct s_extra	g_extra;
 void	handler(int sig, siginfo_t *siginfo, void *context)
 {
 	if (sig == SIGUSR2 && g_extra.file_ended && g_extra.line_index >= 0)
-		ft_exit("Str printed :)", 0);
+		ft_exit("\33[2K\rStr printed :)", 0);
 	else if (sig == SIGUSR2 && g_extra.line_index >= 0)
-		ft_printf("Line #%d printed\n", g_extra.line_index);
+		ft_printf("\33[2K\rLine #%d printed", g_extra.line_index);
 	if (sig == SIGUSR2 && g_extra.line_index == -1)
 	{
 		sleep(3);
@@ -51,6 +51,7 @@ void	print_next_args(int argc, char **argv, int pid)
 		send_file(pid, open(argv[g_extra.t_flag_position], O_RDONLY), &g_extra);
 	if (g_extra.print_next_args)
 	{
+		g_extra.line_index = 0;
 		while ((g_extra.print_next_args + g_extra.line_index) < argc)
 		{
 			send_str(pid, argv[(g_extra.print_next_args

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:26:40 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/16 14:01:31 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/17 20:31:27 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,4 @@ int	send_char(int pid, char c)
 		usleep(1000);
 	}
 	return (1);
-}
-
-void	ft_exit(char *str, int status)
-{
-	ft_printf("%s\n", str);
-	exit(status);
 }

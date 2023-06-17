@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:56:24 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/16 14:05:03 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/17 20:28:39 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_sig_char
 
 /* CLIENT.C */
 void					test_serv(int pid);
+void					handler(int sig, siginfo_t *siginfo, void *context);
 
 /* FT_SEND.C */
 void					send_str(int pid, char *str);
@@ -45,6 +46,7 @@ void					ft_exit(char *str, int status);
 /* SERVER.C */
 void					print_sig_char(siginfo_t *siginfo);
 void					receive_null(siginfo_t *siginfo);
+void					sig_handler(int sig, siginfo_t *siginfo, void *context);
 
 /* {function_name}.C */
 void					ft_lstclear(t_mini_str **lst);

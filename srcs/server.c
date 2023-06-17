@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/16 14:04:20 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/17 20:32:08 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,10 @@ void	print_sig_char(siginfo_t *siginfo)
 		receive_null(siginfo);
 	g_sig_char.shift = 7;
 	g_sig_char.c = 0;
+}
+
+void	ft_exit(char *str, int status)
+{
+	ft_printf("%s\n", str);
+	exit(status);
 }

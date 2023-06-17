@@ -6,7 +6,7 @@
 #    By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/10 12:10:12 by llevasse          #+#    #+#              #
-#    Updated: 2023/06/16 11:02:55 by llevasse         ###   ########.fr        #
+#    Updated: 2023/06/17 20:26:32 by llevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,8 +46,10 @@ EXTRA_SERV_OBJS		=	$(EXTRA_SERV_FILES:.c=.o)
 EXTRA_CLIENT_OBJS	=	$(EXTRA_CLIENT_FILES:.c=.o)
 EXTRA_OBJS			=	$(EXTRA_FILES:.c=.o)
 
+GREEN				=	\e[0;32m
+NC					=	\e[0m
 %.o: %.c
-					$(CC) $(FLAGS) -I includes -c $< -o $(<:.c=.o)
+					@$(CC) $(FLAGS) -I includes -c $< -o $(<:.c=.o)
 
 NAME				= minitalk
 
@@ -55,26 +57,29 @@ $(NAME):		$(SERV_OBJS) $(CLIENT_OBJS) $(LIST_OBJS) includes/minitalk.h Makefile
 					make -C libft
 					$(CC) -g $(SERV_OBJS) $(LIST_OBJS) libft/libft.a -o server
 					$(CC) -g $(CLIENT_OBJS) $(LIST_OBJS) libft/libft.a -o client
+					echo "$(GREEN)All files compiled succesfully :D$(NC)"
 
 extra:			$(EXTRA_OBJS) $(EXTRA_CLIENT_OBJS) $(EXTRA_SERV_OBJS) $(LIST_OBJS) includes/minitalk_extra.h Makefile
 					make -C libft
 					rm -rf $(LOG_FILES)
 					$(CC) -g $(EXTRA_SERV_OBJS) $(EXTRA_OBJS) $(LIST_OBJS) libft/libft.a -o server
 					$(CC) -g $(EXTRA_CLIENT_OBJS) $(EXTRA_OBJS) $(LIST_OBJS) libft/libft.a -o client
-					
+					echo "$(GREEN)All files compiled succesfully :D$(NC)"
 
 
 all:			$(NAME)
 
 clean:
-					make -C libft clean
-					rm -f $(SERV_OBJS) $(CLIENT_OBJS) $(LIST_OBJS) $(EXTRA_OBJS) $(EXTRA_CLIENT_OBJS) $(EXTRA_SERV_OBJS)
+				@make -C libft clean
+				@rm -f $(SERV_OBJS) $(CLIENT_OBJS) $(LIST_OBJS) $(EXTRA_OBJS) $(EXTRA_CLIENT_OBJS) $(EXTRA_SERV_OBJS)
+				echo "$(GREEN)All object files deleted succesfully :D$(NC)"
 
 fclean:			clean
-				make -C libft fclean
-				rm -rf srcs/server.a srcs/client.a client server
+				@make -C libft fclean
+				@rm -rf srcs/server.a srcs/client.a client server
+				echo "$(GREEN)All library and programm files deleted succesfully :D$(NC)"
 				
 re:				fclean all
 
-
+.SILENT:
 .PHONY:			all clean fclean re

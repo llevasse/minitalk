@@ -2,6 +2,8 @@
 a.out
 client
 server
+client_extra
+server_extra
 *.pdf
 *.log
 *.a

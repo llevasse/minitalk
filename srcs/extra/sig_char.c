@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 14:55:49 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/18 13:01:41 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/18 21:03:40 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void	print_sig_char(siginfo_t *siginfo, t_sig_char *sig_char)
 		receive_null(siginfo, sig_char);
 	if (sig_char->extra.print_c_by_c == 0)
 	{
-			if (!sig_char->mini_str)
-				sig_char->mini_str = ft_lstnew(sig_char->c);
-			else
-				ft_lstadd_back(&sig_char->mini_str, ft_lstnew(sig_char->c));
+		if (!sig_char->mini_str)
+			sig_char->mini_str = ft_lstnew(sig_char->c);
+		else
+			ft_lstadd_back(&sig_char->mini_str, ft_lstnew(sig_char->c));
 	}
 	else
 		print_single_char(sig_char->c, sig_char);

@@ -6,7 +6,7 @@
 #    By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/10 12:10:12 by llevasse          #+#    #+#              #
-#    Updated: 2023/06/18 11:36:00 by llevasse         ###   ########.fr        #
+#    Updated: 2023/06/18 15:11:29 by llevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,23 +49,34 @@ EXTRA_OBJS			=	$(EXTRA_FILES:.c=.o)
 GREEN				=	\e[0;32m
 NC					=	\e[0m
 
+LIBFT				= libft/libft.a
+
 %.o:				%.c Makefile includes/minitalk.h includes/minitalk_extra.h
 					$(CC) $(FLAGS) -I includes -c $< -o $(<:.c=.o)
 
 NAME				= minitalk
 
-$(NAME):		$(CLIENT_OBJS) $(SERV_OBJS) $(LIST_OBJS) includes/minitalk.h Makefile
-					@make -s -C libft
-					$(CC) -g $(SERV_OBJS) $(LIST_OBJS) libft/libft.a -o server
-					$(CC) -g $(CLIENT_OBJS) $(LIST_OBJS) libft/libft.a -o client
+
+$(NAME):		libft server client includes/minitalk.h Makefile
 					@echo "$(GREEN)All files compiled succesfully :D$(NC)"
 
-extra:			$(EXTRA_OBJS) $(EXTRA_CLIENT_OBJS) $(EXTRA_SERV_OBJS) $(LIST_OBJS) includes/minitalk_extra.h Makefile
-					@make -s -C libft
-					$(CC) -g $(EXTRA_SERV_OBJS) $(EXTRA_OBJS) $(LIST_OBJS) libft/libft.a -o server
-					$(CC) -g $(EXTRA_CLIENT_OBJS) $(EXTRA_OBJS) $(LIST_OBJS) libft/libft.a -o client
+extra:			libft server_extra client_extra includes/minitalk_extra.h Makefile
 					@echo "$(GREEN)All files compiled succesfully :D$(NC)"
 
+$(LIBFT):
+				@make -s -C libft
+
+server:			$(SERV_OBJS) $(LIST_OBJS) $(LIBFT) includes/minitalk.h Makefile
+					$(CC) -g $(SERV_OBJS) $(LIST_OBJS) $(LIBFT) -o server
+
+client:			$(CLIENT_OBJS) $(LIST_OBJS) $(LIBFT) includes/minitalk.h Makefile
+					$(CC) -g $(CLIENT_OBJS) $(LIST_OBJS) $(LIBFT) -o client
+
+server_extra:	$(EXTRA_SERV_OBJS) $(EXTRA_OBJS) $(LIST_OBJS) $(LIBFT) includes/minitalk_extra.h Makefile
+					$(CC) -g $(EXTRA_SERV_OBJS) $(EXTRA_OBJS) $(LIST_OBJS) $(LIBFT) -o server_extra
+
+client_extra:	$(EXTRA_CLIENT_OBJS) $(EXTRA_OBJS) $(LIST_OBJS) $(LIBFT) includes/minitalk_extra.h Makefile
+					$(CC) -g $(EXTRA_CLIENT_OBJS) $(EXTRA_OBJS) $(LIST_OBJS) $(LIBFT) -o client_extra
 
 all:			$(NAME)
 
@@ -76,7 +87,7 @@ clean:
 
 fclean:			clean
 				@make -s -C libft fclean
-				@rm -rf srcs/server.a srcs/client.a client server
+				@rm -rf srcs/server.a srcs/client.a client server client_extra server_extra
 				@echo "$(GREEN)All library and programm files deleted succesfully :D$(NC)"
 				
 re:				fclean all

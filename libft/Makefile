@@ -6,7 +6,7 @@
 #    By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/21 16:33:32 by leo               #+#    #+#              #
-#    Updated: 2023/06/12 12:17:03 by llevasse         ###   ########.fr        #
+#    Updated: 2023/06/18 11:30:02 by llevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,7 @@ NAME			=	libft.a
 HEADER			=	libft.h
 
 %.o:			%.c $(HEADER)
-					$(CC) $(FLAGS) -D BUFFER_SIZE=10000 -c $< -o $(<:.c=.o)
+					@$(CC) $(FLAGS) -D BUFFER_SIZE=10000 -c $< -o $(<:.c=.o)
 
 $(NAME):		$(OBJS)
 					ar rcs $(NAME) $(OBJS)

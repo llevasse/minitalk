@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 09:07:45 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/16 11:06:15 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/18 13:06:56 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ t_mini_str	*ft_lstnew(unsigned char c)
 {
 	struct s_mini_str	*new_el;
 
+	if (c == '\0')
+		return (NULL);
 	new_el = malloc(sizeof(struct s_mini_str));
 	if (!new_el)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 13:22:34 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/17 20:32:08 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/18 21:02:47 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,12 @@ void	print_sig_char(siginfo_t *siginfo)
 {
 	if (g_sig_char.shift >= 0)
 		return ;
+	if (g_sig_char.c == '\0')
+		receive_null(siginfo);
 	if (!g_sig_char.mini_str)
 		g_sig_char.mini_str = ft_lstnew(g_sig_char.c);
 	else
 		ft_lstadd_back(&g_sig_char.mini_str, ft_lstnew(g_sig_char.c));
-	if (g_sig_char.c == '\0')
-		receive_null(siginfo);
 	g_sig_char.shift = 7;
 	g_sig_char.c = 0;
 }

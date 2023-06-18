@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 22:41:46 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/17 20:15:06 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/18 21:28:41 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	handler(int sig, siginfo_t *siginfo, void *context)
 	if (sig == SIGUSR2 && g_extra.file_ended && g_extra.line_index >= 0)
 		ft_exit("\33[2K\rStr printed :)", 0);
 	else if (sig == SIGUSR2 && g_extra.line_index >= 0)
-		ft_printf("\33[2K\rLine #%d printed", g_extra.line_index);
+		ft_printf("\33[2K\rLine #%d printed", g_extra.line_index++);
 	if (sig == SIGUSR2 && g_extra.line_index == -1)
 	{
 		sleep(3);
@@ -55,11 +55,10 @@ void	print_next_args(int argc, char **argv, int pid)
 		while ((g_extra.print_next_args + g_extra.line_index) < argc)
 		{
 			send_str(pid, argv[(g_extra.print_next_args
-					+ g_extra.line_index++)], g_extra);
-			send_char(pid, '\n', g_extra);
+					+ g_extra.line_index)], g_extra);
 		}
-		send_char(pid, '\n', g_extra);
 	}
+	send_char(pid, '\n', g_extra);
 	send_char(pid, '\0', g_extra);
 }
 

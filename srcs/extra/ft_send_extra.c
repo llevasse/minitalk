@@ -6,7 +6,7 @@
 /*   By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 15:26:40 by llevasse          #+#    #+#             */
-/*   Updated: 2023/06/16 16:56:01 by llevasse         ###   ########.fr       */
+/*   Updated: 2023/06/18 21:28:13 by llevasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	send_str(int pid, char *str, t_extra extra)
 			exit((int)(free(str), 0));
 		str++;
 	}
-	if (!extra.from_txt && !extra.print_next_args)
+	if (!extra.from_txt)
 		send_char(pid, '\n', extra);
 	send_char(pid, '\0', extra);
 }

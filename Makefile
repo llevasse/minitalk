@@ -6,7 +6,7 @@
 #    By: llevasse <llevasse@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/10 12:10:12 by llevasse          #+#    #+#              #
-#    Updated: 2023/06/18 15:11:29 by llevasse         ###   ########.fr        #
+#    Updated: 2023/06/19 10:30:06 by llevasse         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,12 +83,12 @@ all:			$(NAME)
 clean:
 				@make -s -C libft clean
 				@rm -f $(SERV_OBJS) $(CLIENT_OBJS) $(LIST_OBJS) $(EXTRA_OBJS) $(EXTRA_CLIENT_OBJS) $(EXTRA_SERV_OBJS)
-				@echo "$(GREEN)All object files deleted succesfully :D$(NC)"
+				@echo "$(GREEN)All object files were deleted succesfully :D$(NC)"
 
 fclean:			clean
 				@make -s -C libft fclean
 				@rm -rf srcs/server.a srcs/client.a client server client_extra server_extra
-				@echo "$(GREEN)All library and programm files deleted succesfully :D$(NC)"
+				@echo "$(GREEN)All library and programm files were deleted succesfully :D$(NC)"
 				
 re:				fclean all
 
